@@ -10,7 +10,6 @@ public class HookshotItem : Item
 
     public void Trigger()
     {
-        ItemChangerPlugin.Log!.LogInfo("Giving hookshot");
         WeaponSwitcher.instance.UnlockHooskhot();
     }
 

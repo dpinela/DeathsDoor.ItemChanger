@@ -25,7 +25,7 @@ public class DropLocation : Location
                 return true;
             }
 
-            ItemChangerPlugin.Log!.LogInfo($"Awake: replacing {__instance.uniqueId} with {item.UniqueName}");
+            ItemChangerPlugin.LogInfo($"Awake: replacing {__instance.uniqueId} with {item.UniqueName}");
 
             if (item.Obtained)
             {
@@ -45,10 +45,10 @@ public class DropLocation : Location
             {
                 return true;
             }
-            __instance.showSouls = true;
+            __instance.showSouls = false;
             __instance.doSpeech = false;
 
-            ItemChangerPlugin.Log!.LogInfo($"Start: replacing {__instance.uniqueId} with {item.UniqueName}");
+            ItemChangerPlugin.LogInfo($"Start: replacing {__instance.uniqueId} with {item.UniqueName}");
 
             if (item.Obtained)
             {
@@ -83,42 +83,29 @@ public class DropLocation : Location
                 return true;
             }
 
-            ItemChangerPlugin.Log!.LogInfo($"Trigger: replacing {__instance.uniqueId} with {item.UniqueName}");
             if (__instance.poi != null)
             {
                 __instance.poi.gameObject.SetActive(false);
             }
-            ItemChangerPlugin.Log!.LogInfo("POI destroyed");
             if (__instance.prompt != null)
             {
                 UE.Object.Destroy(__instance.prompt.gameObject);
             }
-            ItemChangerPlugin.Log!.LogInfo("Prompt destroyed");
             GameSave.SaveGameState();
-            ItemChangerPlugin.Log!.LogInfo("Game saved");
             __instance.getPickedUp();
-            ItemChangerPlugin.Log!.LogInfo("Set pickup");
-            ShowCornerPopup(item.DisplayName);
-            ItemChangerPlugin.Log!.LogInfo("Showed pickup");
+            CornerPopup.Show(item.DisplayName);
             item.Trigger();
 
             return false;
         }
     }
 
-    internal static void ShowCornerPopup(string s)
+    [HL.HarmonyPatch(typeof(UICount), nameof(UICount.Update))]
+    internal static class CountUpdatePatch
     {
-        foreach (var c in UICount.countList)
+        internal static void Postfix(UICount __instance)
         {
-            ItemChangerPlugin.Log!.LogInfo($"UICount: found counter with name {c.name} at {c.onScreenPos} / {c.offScreenPos}");
-            if (c.name == "SOULS")
-            {
-                c.count = (float)c.realCount;
-
-                c.counter.text = s;
-                c.Show(1.5f);
-                return;
-            }
+            ItemChangerPlugin.LogInfo($"counter {__instance.name} pos: {__instance.moveable.localPosition} text: '{__instance.counter.text}'");
         }
     }
 }
