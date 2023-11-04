@@ -45,7 +45,7 @@ public class DropLocation : Location
             {
                 return true;
             }
-            __instance.showSouls = false;
+            __instance.showSouls = true;
             __instance.doSpeech = false;
 
             ItemChangerPlugin.Log!.LogInfo($"Start: replacing {__instance.uniqueId} with {item.UniqueName}");
@@ -84,12 +84,23 @@ public class DropLocation : Location
             }
 
             ItemChangerPlugin.Log!.LogInfo($"Trigger: replacing {__instance.uniqueId} with {item.UniqueName}");
-
-            item.Trigger();
-            __instance.poi?.gameObject?.SetActive(false);
-            UE.Object.Destroy(__instance.prompt.gameObject);
+            if (__instance.poi != null)
+            {
+                __instance.poi.gameObject.SetActive(false);
+            }
+            ItemChangerPlugin.Log!.LogInfo("POI destroyed");
+            if (__instance.prompt != null)
+            {
+                UE.Object.Destroy(__instance.prompt.gameObject);
+            }
+            ItemChangerPlugin.Log!.LogInfo("Prompt destroyed");
             GameSave.SaveGameState();
+            ItemChangerPlugin.Log!.LogInfo("Game saved");
+            __instance.getPickedUp();
+            ItemChangerPlugin.Log!.LogInfo("Set pickup");
             ShowCornerPopup(item.DisplayName);
+            ItemChangerPlugin.Log!.LogInfo("Showed pickup");
+            item.Trigger();
 
             return false;
         }
@@ -99,15 +110,13 @@ public class DropLocation : Location
     {
         foreach (var c in UICount.countList)
         {
+            ItemChangerPlugin.Log!.LogInfo($"UICount: found counter with name {c.name} at {c.onScreenPos} / {c.offScreenPos}");
             if (c.name == "SOULS")
             {
-                if (c.notGlobal && Inventory.instance != null)
-                {
-                    c.lastCount = Inventory.instance.GetSoulCount();
-                }
                 c.count = (float)c.realCount;
 
                 c.counter.text = s;
+                c.Show(1.5f);
                 return;
             }
         }
