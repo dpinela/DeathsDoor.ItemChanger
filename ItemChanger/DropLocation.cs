@@ -99,13 +99,4 @@ public class DropLocation : Location
             return false;
         }
     }
-
-    [HL.HarmonyPatch(typeof(UICount), nameof(UICount.Update))]
-    internal static class CountUpdatePatch
-    {
-        internal static void Postfix(UICount __instance)
-        {
-            ItemChangerPlugin.LogInfo($"counter {__instance.name} pos: {__instance.moveable.localPosition} text: '{__instance.counter.text}'");
-        }
-    }
 }

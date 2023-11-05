@@ -13,6 +13,18 @@ public class CornerPopup
         {
             Instance = new();
         }
+        if (Instance.counter.moveable == null)
+        {
+            if (Instance.go == null)
+            {
+                ItemChangerPlugin.LogInfo("CornerPopup go dead");
+            }
+            else
+            {
+                UE.Object.Destroy(Instance.go);
+            }
+            Instance = new();
+        }
         Instance.ShowMessage(msg);
     }
 
@@ -22,10 +34,11 @@ public class CornerPopup
     internal CornerPopup()
     {
         var origCounter = FindSoulsCounter();
-        go = UE.Object.Instantiate(origCounter.gameObject, origCounter.gameObject.transform);
+        go = UE.Object.Instantiate(origCounter.gameObject, origCounter.gameObject.transform.parent);
         UE.Object.DontDestroyOnLoad(go);
-        go.SetActive(true);
         counter = go.GetComponent<UICount>();
+        // this should happen before the go goes active
+        // so it doesn't get inserted into the global UICount.countList
         counter.notGlobal = true;
         counter.maxOffsetX = Xpos;
         counter.count = 0;
@@ -33,6 +46,12 @@ public class CornerPopup
         counter.showTimer = 0;
         counter.name = "IC-CornerPopup";
         counter.enabled = true;
+        var cs = origCounter.gameObject.transform.parent.gameObject;
+        var rt = cs.GetComponent<UE.RectTransform>();
+        rt.SetSizeWithCurrentAnchors(UE.RectTransform.Axis.Horizontal, 800f);
+        go.SetActive(true);
+        // cs also has an Image component, probably the sprite (which we will want
+        // to change at some point)
     }
 
     private const float DisplayTime = 3f;
@@ -58,6 +77,11 @@ public class CornerPopup
     {
         foreach (var c in UICount.countList)
         {
+            if (c == null)
+            {
+                ItemChangerPlugin.LogInfo("null counter in UICount.countList");
+                continue;
+            }
             if (c.name == "SOULS")
             {
                 return c;
