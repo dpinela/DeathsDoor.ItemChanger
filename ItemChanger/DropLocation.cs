@@ -13,7 +13,12 @@ public class DropLocation : Location
         ActiveReplacements[UniqueId] = replacement;
     }
 
-    internal static Collections.Dictionary<string, Item> ActiveReplacements = new();
+    internal static void ResetReplacements()
+    {
+        ActiveReplacements.Clear();
+    }
+
+    private static Collections.Dictionary<string, Item> ActiveReplacements = new();
 
     [HL.HarmonyPatch(typeof(FrogLever), nameof(FrogLever.Start))]
     internal static class FLAwakePatch

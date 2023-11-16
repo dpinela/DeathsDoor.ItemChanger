@@ -19,7 +19,7 @@ internal class ItemChangerPlugin : Bep.BaseUnityPlugin
         };
         SaveFile.OnLoadGame += () =>
         {
-            DropLocation.ActiveReplacements.Clear();
+            DropLocation.ResetReplacements();
             foreach (var p in SaveFile.CurrentData!.Placements)
             {
                 var loc = Predefined.Location(p.LocationName);
