@@ -1,4 +1,5 @@
 ﻿<!-- Credit to SFGrenade https://github.com/SFGrenade -->
+<!-- (this is a heavily-modified version of the HK mod template) -->
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <RootNamespace>ItemChanger</RootNamespace>
@@ -14,6 +15,9 @@
     <LangVersion>10.0</LangVersion>
     <Nullable>enable</Nullable>
     <WarningsAsErrors>Nullable</WarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -136,5 +140,8 @@
   <ItemGroup>
     <None Include=".gitignore" />
     <None Include="ReadMe.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 </Project>

@@ -11,11 +11,23 @@ internal class ItemChangerPlugin : Bep.BaseUnityPlugin
     public void Start()
     {
         Instance = this;
-        var loc = new DropLocation { UniqueId = "umbrella" };
-        var item = HookshotItem.Instance;
-        loc.Replace(item);
+        SaveFile.OnNewGame += () =>
+        {
+            SaveFile.CurrentData!.Placements.Add(
+                new() { LocationName = "Discarded_Umbrella", ItemName = "Hookshot" }
+            );
+        };
+        SaveFile.OnLoadGame += () =>
+        {
+            DropLocation.ActiveReplacements.Clear();
+            foreach (var p in SaveFile.CurrentData!.Placements)
+            {
+                var loc = Predefined.Location(p.LocationName);
+                var item = Predefined.Item(p.ItemName);
+                loc.Replace(item);
+            }
+        };
         new HL.Harmony("deathsdoor.itemchanger").PatchAll();
-        Logger.LogInfo("Under Construction");
     }
 
     internal static void LogInfo(string msg)
@@ -23,6 +35,14 @@ internal class ItemChangerPlugin : Bep.BaseUnityPlugin
         if (Instance != null)
         {
             Instance.Logger.LogInfo(msg);
+        }
+    }
+
+    internal static void LogError(string msg)
+    {
+        if (Instance != null)
+        {
+            Instance.Logger.LogError(msg);
         }
     }
 }

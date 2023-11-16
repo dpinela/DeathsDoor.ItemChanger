@@ -15,61 +15,29 @@ public class DropLocation : Location
 
     internal static Collections.Dictionary<string, Item> ActiveReplacements = new();
 
-    [HL.HarmonyPatch(typeof(DropItem), nameof(DropItem.Awake))]
-    internal static class AwakePatch
+    [HL.HarmonyPatch(typeof(FrogLever), nameof(FrogLever.Start))]
+    internal static class FLAwakePatch
     {
-        internal static bool Prefix(DropItem __instance)
+        internal static void Postfix(FrogLever __instance)
         {
-            if (!ActiveReplacements.TryGetValue(__instance.uniqueId, out var item))
+            if (__instance.key is {} bk)
             {
-                return true;
+                ItemChangerPlugin.LogInfo($"Vanilla FL keyId: {bk.uniqueId}");
             }
-
-            ItemChangerPlugin.LogInfo($"Awake: replacing {__instance.uniqueId} with {item.UniqueName}");
-
-            if (item.Obtained)
-            {
-                UE.Object.Destroy(__instance.gameObject);
-            }
-            return false;
         }
     }
 
     [HL.HarmonyPatch(typeof(DropItem), nameof(DropItem.Start))]
     internal static class StartPatch
     {
-        internal static bool Prefix(DropItem __instance, out string? __state)
+        internal static bool Prefix(DropItem __instance)
         {
-            __state = null;
-            if (!ActiveReplacements.TryGetValue(__instance.uniqueId, out var item))
+            if (ActiveReplacements.ContainsKey(__instance.uniqueId))
             {
-                return true;
+                __instance.showSouls = false;
+                __instance.doSpeech = false;
             }
-            __instance.showSouls = false;
-            __instance.doSpeech = false;
-
-            ItemChangerPlugin.LogInfo($"Start: replacing {__instance.uniqueId} with {item.UniqueName}");
-
-            if (item.Obtained)
-            {
-                UE.Object.Destroy(__instance.gameObject);
-                return false;
-            }
-
-            // Prevent the original method from destroying the object,
-            // but allow the rest of it to run.
-            // We'll restore the uniqueId in the postfix.
-            __state = __instance.uniqueId;
-            __instance.uniqueId = "###########";
-            return false;
-        }
-
-        internal static void Postfix(DropItem __instance, string? __state)
-        {
-            if (__state != null)
-            {
-                __instance.uniqueId = __state;
-            }
+            return true;
         }
     }
 
@@ -91,10 +59,13 @@ public class DropLocation : Location
             {
                 UE.Object.Destroy(__instance.prompt.gameObject);
             }
-            GameSave.SaveGameState();
+            
             __instance.getPickedUp();
+            __instance.saveCollected();
             CornerPopup.Show(item.DisplayName);
             item.Trigger();
+
+            GameSave.SaveGameState();
 
             return false;
         }
