@@ -13,9 +13,9 @@ internal class ItemChangerPlugin : Bep.BaseUnityPlugin
         Instance = this;
         SaveFile.OnNewGame += () =>
         {
-            SaveFile.CurrentData!.Placements.Add(
-                new() { LocationName = "Discarded_Umbrella", ItemName = "Hookshot" }
-            );
+            var placements = SaveFile.CurrentData!.Placements;
+            placements.Add(new() { LocationName = "Discarded_Umbrella", ItemName = "Hookshot" });
+            placements.Add(new() { LocationName = "100_Souls-Hall_of_Doors_(Hookshot_Secret)", ItemName = "Hookshot" });
         };
         SaveFile.OnLoadGame += () =>
         {

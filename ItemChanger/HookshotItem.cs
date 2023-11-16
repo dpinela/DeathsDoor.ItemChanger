@@ -4,14 +4,19 @@ public class HookshotItem : Item
 {
     public static readonly HookshotItem Instance = new();
 
-    public string DisplayName => "Hookshot";
-
-    public string UniqueName => "Hookshot";
+    public string DisplayName => HasLevel1 ? "Hookshot Level 2" : "Hookshot";
 
     public void Trigger()
     {
-        WeaponSwitcher.instance.UnlockHooskhot();
+        if (HasLevel1)
+        {
+            WeaponSwitcher.instance.Upgrade("hookshot");
+        }
+        else
+        {
+            WeaponSwitcher.instance.UnlockHooskhot();
+        }
     }
 
-    public bool Obtained => GameSave.GetSaveData().IsKeyUnlocked("unlocked_hookshot");
+    private static bool HasLevel1 => WeaponSwitcher.instance.unlocked_hookshot;
 }
