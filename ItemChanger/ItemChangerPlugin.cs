@@ -16,10 +16,12 @@ internal class ItemChangerPlugin : Bep.BaseUnityPlugin
             var placements = SaveFile.CurrentData!.Placements;
             placements.Add(new() { LocationName = "Discarded_Umbrella", ItemName = "Hookshot" });
             placements.Add(new() { LocationName = "100_Souls-Hall_of_Doors_(Hookshot_Secret)", ItemName = "Hookshot" });
+            placements.Add(new() { LocationName = "Frog_King", ItemName = "Giant_Soul_of_The_Beast" });
         };
         SaveFile.OnLoadGame += () =>
         {
             DropLocation.ResetReplacements();
+
             foreach (var p in SaveFile.CurrentData!.Placements)
             {
                 var loc = Predefined.Location(p.LocationName);

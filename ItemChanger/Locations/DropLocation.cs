@@ -1,4 +1,5 @@
 using Collections = System.Collections.Generic;
+using SysDiag = System.Diagnostics;
 using HL = HarmonyLib;
 using UE = UnityEngine;
 
@@ -10,6 +11,10 @@ public class DropLocation : Location
 
     public void Replace(Item replacement)
     {
+        if (replacement == null)
+        {
+            throw new System.InvalidOperationException("replacement item must be non-null");
+        }
         ActiveReplacements[UniqueId] = replacement;
     }
 
@@ -20,15 +25,47 @@ public class DropLocation : Location
 
     private static Collections.Dictionary<string, Item> ActiveReplacements = new();
 
-    [HL.HarmonyPatch(typeof(FrogLever), nameof(FrogLever.Start))]
-    internal static class FLAwakePatch
+    [HL.HarmonyPatch(typeof(GameSave), nameof(GameSave.SetKeyState))]
+    internal static class SKSPatch
     {
-        internal static void Postfix(FrogLever __instance)
+        internal static void Postfix(string id, bool state, bool save)
         {
-            if (__instance.key is {} bk)
-            {
-                ItemChangerPlugin.LogInfo($"Vanilla FL keyId: {bk.uniqueId}");
-            }
+            var st = new SysDiag.StackTrace(true);
+            ItemChangerPlugin.LogInfo($"SET {id} = {state}");
+            ItemChangerPlugin.LogInfo($"FROM: {st}");
+        }
+    }
+
+    [HL.HarmonyPatch(typeof(GameSave), nameof(GameSave.AddToCountKey))]
+    internal static class ATCKPatch
+    {
+        internal static void Postfix(string id, int quantity)
+        {
+            var st = new SysDiag.StackTrace(true);
+            ItemChangerPlugin.LogInfo($"INC {id} += {quantity}");
+            ItemChangerPlugin.LogInfo($"FROM: {st}");
+        }
+    }
+
+    [HL.HarmonyPatch(typeof(GameSave), nameof(GameSave.IncreaseCountKey))]
+    internal static class ICKPatch
+    {
+        internal static void Postfix(string id, int value)
+        {
+            var st = new SysDiag.StackTrace(true);
+            ItemChangerPlugin.LogInfo($"INC {id} += {value}");
+            ItemChangerPlugin.LogInfo($"FROM: {st}");
+        }
+    }
+
+    [HL.HarmonyPatch(typeof(GameSave), nameof(GameSave.SetCountKey))]
+    internal static class SCKPatch
+    {
+        internal static void Postfix(string id, int value)
+        {
+            var st = new SysDiag.StackTrace(true);
+            ItemChangerPlugin.LogInfo($"SET {id} = {value}");
+            ItemChangerPlugin.LogInfo($"FROM: {st}");
         }
     }
 
