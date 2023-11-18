@@ -20,6 +20,7 @@ internal class ItemChangerPlugin : Bep.BaseUnityPlugin
             placements.Add(new() { LocationName = "100_Souls-Hall_of_Doors_(Hookshot_Secret)", ItemName = "Hookshot" });
             placements.Add(new() { LocationName = "Frog_King", ItemName = "Giant_Soul_of_Betty" });
             placements.Add(new() { LocationName = "Hookshot_Avarice", ItemName = "Giant_Soul_of_The_Frog_King" });
+            placements.Add(new() { LocationName = "Magic_Shrine_(Forest_Turn_Cam)", ItemName = "Giant_Soul_of_The_Urn_Witch" });
         };
         SaveFile.OnLoadGame += () =>
         {

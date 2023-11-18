@@ -16,6 +16,8 @@ public static class Predefined
         {"Fire_Avarice", new AvariceLocation { PowerId = "fire" }},
         {"Bomb_Avarice", new AvariceLocation { PowerId = "bombs" }},
         {"Hookshot_Avarice", new AvariceLocation { PowerId = "hookshot" }},
+
+        {"Magic_Shrine_(Forest_Turn_Cam)", new ShrineLocation { UniqueId = "shrine_forestturncam" }},
     };
 
     public static Location Location(string name)
