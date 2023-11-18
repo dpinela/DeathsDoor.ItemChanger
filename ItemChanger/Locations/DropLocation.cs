@@ -9,22 +9,6 @@ public class DropLocation : Location
 {
     public string UniqueId { get; set; } = "";
 
-    public void Replace(Item replacement)
-    {
-        if (replacement == null)
-        {
-            throw new System.InvalidOperationException("replacement item must be non-null");
-        }
-        ActiveReplacements[UniqueId] = replacement;
-    }
-
-    internal static void ResetReplacements()
-    {
-        ActiveReplacements.Clear();
-    }
-
-    private static Collections.Dictionary<string, Item> ActiveReplacements = new();
-
     [HL.HarmonyPatch(typeof(GameSave), nameof(GameSave.SetKeyState))]
     internal static class SKSPatch
     {
@@ -74,7 +58,7 @@ public class DropLocation : Location
     {
         internal static bool Prefix(DropItem __instance)
         {
-            if (ActiveReplacements.ContainsKey(__instance.uniqueId))
+            if (ItemChangerPlugin.TryGetPlacedItem(typeof(DropLocation), __instance.uniqueId, out var _))
             {
                 __instance.showSouls = false;
                 __instance.doSpeech = false;
@@ -88,7 +72,7 @@ public class DropLocation : Location
     {
         internal static bool Prefix(DropItem __instance)
         {
-            if (!ActiveReplacements.TryGetValue(__instance.uniqueId, out var item))
+            if (!ItemChangerPlugin.TryGetPlacedItem(typeof(DropLocation), __instance.uniqueId, out var item))
             {
                 return true;
             }

@@ -12,6 +12,10 @@ public static class Predefined
         {"Betty", new CutsceneItemLocation { ItemId = "soul_yeti" }},
         {"Frog_King", new CutsceneItemLocation { ItemId = "soul_frog" }},
         {"Grandma", new CutsceneItemLocation { ItemId = "soul_gran" }},
+
+        {"Fire_Avarice", new AvariceLocation { PowerId = "fire" }},
+        {"Bomb_Avarice", new AvariceLocation { PowerId = "bombs" }},
+        {"Hookshot_Avarice", new AvariceLocation { PowerId = "hookshot" }},
     };
 
     public static Location Location(string name)
