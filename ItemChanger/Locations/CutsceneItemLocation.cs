@@ -35,6 +35,19 @@ internal class CutsceneItemLocation : Location
             {
                 return true;
             }
+            // Negate the increment of this variable that the game does after
+            // a Giant Soul fight.
+            // It would be preferable to suppress the increment in the first place,
+            // but there is not enough context at the point of that call to
+            // distinguish it from one that we do ourselves.
+            switch (itemId)
+            {
+                case "soul_yeti":
+                case "soul_frog":
+                case "soul_gran":
+                    GameSave.GetSaveData().IncreaseCountKey("boss_souls", -1);
+                    break;
+            }
             CornerPopup.Show(item.DisplayName);
             item.Trigger();
             return false;

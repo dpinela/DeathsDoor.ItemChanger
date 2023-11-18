@@ -22,14 +22,14 @@ public static class Predefined
     private static readonly Collections.Dictionary<string, Item> predefinedItems = new()
     {
         {"Hookshot", HookshotItem.Instance},
-        {"Giant_Soul_of_The_Urn_Witch", new InventoryUniqueItem {
+        {"Giant_Soul_of_The_Urn_Witch", new GiantSoulItem {
             DisplayName = "Giant Soul of The Urn Witch", ItemId = "soul_gran"
         }},
-        {"Giant_Soul_of_The_Frog_King", new InventoryUniqueItem {
+        {"Giant_Soul_of_The_Frog_King", new GiantSoulItem {
             DisplayName = "Giant Soul of The Frog King", ItemId = "soul_frog"
         }},
-        {"Giant_Soul_of_The_Beast", new InventoryUniqueItem {
-            DisplayName = "Giant Soul of The Beast", ItemId = "soul_yeti"
+        {"Giant_Soul_of_Betty", new GiantSoulItem {
+            DisplayName = "Giant Soul of Betty", ItemId = "soul_yeti"
         }},
     };
 

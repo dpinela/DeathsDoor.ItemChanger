@@ -1,6 +1,6 @@
 namespace DDoorItemChanger;
 
-internal class InventoryUniqueItem : Item
+internal class GiantSoulItem : Item
 {
     public string DisplayName { get; set; } = "";
 
@@ -9,5 +9,6 @@ internal class InventoryUniqueItem : Item
     public void Trigger()
     {
         Inventory.instance.AddItem(ItemId);
+        GameSave.GetSaveData().IncreaseCountKey("boss_souls");
     }
 }

@@ -35,16 +35,14 @@ public class CornerPopup
     {
         var origCounter = FindSoulsCounter();
         go = UE.Object.Instantiate(origCounter.gameObject, origCounter.gameObject.transform.parent);
-        UE.Object.DontDestroyOnLoad(go);
         counter = go.GetComponent<UICount>();
-        // this should happen before the go goes active
-        // so it doesn't get inserted into the global UICount.countList
-        counter.notGlobal = true;
+        counter.notGlobal = false;
         counter.maxOffsetX = Xpos;
         counter.count = 0;
         counter.realCount = 0;
         counter.showTimer = 0;
         counter.name = "IC-CornerPopup";
+        counter.id = "IC-CornerPopup";
         counter.enabled = true;
         var cs = origCounter.gameObject.transform.parent.gameObject;
         var rt = cs.GetComponent<UE.RectTransform>();
