@@ -20,6 +20,8 @@ internal class SpellUpgradeLocation : Location
         }
     }
 
+    private const string locationCollectedKey = "ItemChanger-collected_spell_upgrade_location_";
+
     [HL.HarmonyPatch(typeof(UpgraderSoul), nameof(UpgraderSoul.updatePlayer))]
     private static class UpdatePlayerPatch
     {
@@ -33,6 +35,40 @@ internal class SpellUpgradeLocation : Location
                 __instance.didUpgrade = true;
 
                 item.Trigger();
+                GameSave.GetSaveData().SetKeyState(locationCollectedKey + __instance.upgradeKey, true, false);
+            }
+        }
+    }
+
+    [HL.HarmonyPatch(typeof(DoorTrigger), nameof(DoorTrigger.Awake))]
+    private static class EntryConditionPatch
+    {
+        private static void Prefix(DoorTrigger __instance)
+        {
+            void AlterDoorCondition(string vanillaSpell)
+            {
+                if (ItemChangerPlugin.TryGetPlacedItem(typeof(SpellUpgradeLocation), vanillaSpell, out var _))
+                {
+                    __instance.destroyKey = locationCollectedKey + vanillaSpell;
+                }
+            }
+
+            switch (__instance.doorId)
+            {
+                case "tdoor_hookshot":
+                    AlterDoorCondition("hookshot");
+                    break;
+                case "tdoor_fire":
+                    AlterDoorCondition("fire");
+                    break;
+                case "tdoor_bombs":
+                    AlterDoorCondition("bombs");
+                    break;
+                // not a typo, this door's name really is just inconsistent with
+                // the upgradeKey for arrows
+                case "tdoor_arrow":
+                    AlterDoorCondition("arrows");
+                    break;
             }
         }
     }
