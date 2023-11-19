@@ -17,6 +17,8 @@ public static class Predefined
         {"Bomb_Avarice", new AvariceLocation { PowerId = "bombs" }},
         {"Hookshot_Avarice", new AvariceLocation { PowerId = "hookshot" }},
 
+        {"Hookshot_Silent_Servant", new SpellUpgradeLocation { UpgradeKey = "hookshot" }},
+
         {"Magic_Shrine_(Forest_Turn_Cam)", new ShrineLocation { UniqueId = "shrine_forestturncam" }},
     };
 
@@ -28,6 +30,8 @@ public static class Predefined
     private static readonly Collections.Dictionary<string, Item> predefinedItems = new()
     {
         {"Hookshot", HookshotItem.Instance},
+        {"Fire", FireItem.Instance},
+
         {"Giant_Soul_of_The_Urn_Witch", new GiantSoulItem {
             DisplayName = "Giant Soul of The Urn Witch", ItemId = "soul_gran"
         }},

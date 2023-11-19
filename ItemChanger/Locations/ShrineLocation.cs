@@ -23,22 +23,7 @@ internal class ShrineLocation : Location
             // ButtonTarget.Trigger so it wouldn't really help with anything.
             __instance.triggered = true;
 
-            var speechKey = "ItemChanger-Temp";
-            DialogueManager.instance.speechChains.Remove(speechKey);
-            DialogueManager.instance.addSpeechData(new string[]
-            {
-                speechKey,
-                $"You obtained {item.DisplayName}!"
-            });
-            __instance.speech.speech_id = new NPCCharacter.SpeechKey[1];
-            __instance.speech.speech_id[0] = new NPCCharacter.SpeechKey
-            {
-                id = speechKey,
-                requiredKey = "",
-                unlocks = "",
-                responseList = new string[0],
-                nextScript = new NPCCharacter[0]
-            };
+            SpeechPopup.Modify(__instance.speech, $"You obtained {item.DisplayName}!");
             PlayerGlobal.instance.PauseInput_Cutscene();
             return false;
         }
