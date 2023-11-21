@@ -8,6 +8,7 @@ public static class Predefined
     {
         {"Discarded_Umbrella", new DropLocation { UniqueId = "umbrella" }},
         {"100_Souls-Hall_of_Doors_(Hookshot_Secret)", new DropLocation { UniqueId = "dropsoul_hodhookshotsecret" }},
+        {"Seed-Stranded_Sailor_(Cave)", new DropLocation { UniqueId = "seed_cavescrate" }},
 
         {"Betty", new CutsceneItemLocation { ItemId = "soul_yeti" }},
         {"Frog_King", new CutsceneItemLocation { ItemId = "soul_frog" }},
@@ -20,6 +21,8 @@ public static class Predefined
         {"Hookshot_Silent_Servant", new SpellUpgradeLocation { UpgradeKey = "hookshot" }},
 
         {"Magic_Shrine_(Forest_Turn_Cam)", new ShrineLocation { UniqueId = "shrine_forestturncam" }},
+
+        {"Hookshot_Silent_Servant_Lever", new FrogLeverLocation { UniqueId = "lever_connectcave" }},
     };
 
     public static Location Location(string name)
@@ -41,6 +44,8 @@ public static class Predefined
         {"Giant_Soul_of_Betty", new GiantSoulItem {
             DisplayName = "Giant Soul of Betty", ItemId = "soul_yeti"
         }},
+
+        {"Hookshot_Silent_Servant_Lever", new KeyItem { UniqueId = "lever_connectcave", DisplayName = "Hookshot Silent Servant Lever" }},
     };
 
     public static Item Item(string name)
