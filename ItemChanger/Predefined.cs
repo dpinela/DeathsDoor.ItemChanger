@@ -9,6 +9,7 @@ public static class Predefined
         {"Discarded_Umbrella", new DropLocation { UniqueId = "umbrella" }},
         {"100_Souls-Hall_of_Doors_(Hookshot_Secret)", new DropLocation { UniqueId = "dropsoul_hodhookshotsecret" }},
         {"Seed-Stranded_Sailor_(Cave)", new DropLocation { UniqueId = "seed_cavescrate" }},
+        {"Seed-Stranded Sailor_(Mountain)", new DropLocation { UniqueId = "seed_sailormountain" }},
 
         {"Betty", new CutsceneItemLocation { ItemId = "soul_yeti" }},
         {"Frog_King", new CutsceneItemLocation { ItemId = "soul_frog" }},
@@ -23,6 +24,7 @@ public static class Predefined
         {"Magic_Shrine_(Forest_Turn_Cam)", new ShrineLocation { UniqueId = "shrine_forestturncam" }},
 
         {"Hookshot_Silent_Servant_Lever", new FrogLeverLocation { UniqueId = "lever_connectcave" }},
+        {"Greatsword_Lever", new IronLeverLocation { UniqueId = "sailorgate" }},
     };
 
     public static Location Location(string name)
@@ -46,6 +48,8 @@ public static class Predefined
         }},
 
         {"Hookshot_Silent_Servant_Lever", new KeyItem { UniqueId = "lever_connectcave", DisplayName = "Hookshot Silent Servant Lever" }},
+        {"Greatsword_Lever", new KeyItem { UniqueId = "sailorgate", DisplayName = "Greatsword Lever" }},
+        {"Stranded_Sailor_Upper_Shrine_Lever", new KeyItem { UniqueId = "lever_sailorturncam1", DisplayName = "Stranded Sailor Upper Shrine Lever" }},
     };
 
     public static Item Item(string name)
