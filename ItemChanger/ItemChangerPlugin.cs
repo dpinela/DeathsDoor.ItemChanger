@@ -26,6 +26,8 @@ internal class ItemChangerPlugin : Bep.BaseUnityPlugin
             placements.Add(new() { LocationName = "Seed-Stranded_Sailor_(Cave)", ItemName = "Hookshot_Silent_Servant_Lever" });
             placements.Add(new() { LocationName = "Greatsword_Lever", ItemName = "Stranded_Sailor_Upper_Shrine_Lever" });
             placements.Add(new() { LocationName = "Seed-Stranded Sailor_(Mountain)", ItemName = "Greatsword_Lever" });
+            placements.Add(new() { LocationName = "Grove_of_Spirits_Door", ItemName = "Mushroom_Dungeon_Door" });
+            placements.Add(new() { LocationName = "Mushroom_Dungeon_Door", ItemName = "Grove_of_Spirits_Door" });
         };
         SaveFile.OnLoadGame += () =>
         {

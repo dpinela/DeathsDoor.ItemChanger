@@ -25,6 +25,9 @@ public static class Predefined
 
         {"Hookshot_Silent_Servant_Lever", new FrogLeverLocation { UniqueId = "lever_connectcave" }},
         {"Greatsword_Lever", new IronLeverLocation { UniqueId = "sailorgate" }},
+
+        {"Grove_of_Spirits_Door", new DoorLocation { KeyId = "sdoor_tutorial" }},
+        {"Mushroom_Dungeon_Door", new DoorLocation { KeyId = "sdoor_forest_dung" }},
     };
 
     public static Location Location(string name)
@@ -50,6 +53,9 @@ public static class Predefined
         {"Hookshot_Silent_Servant_Lever", new KeyItem { UniqueId = "lever_connectcave", DisplayName = "Hookshot Silent Servant Lever" }},
         {"Greatsword_Lever", new KeyItem { UniqueId = "sailorgate", DisplayName = "Greatsword Lever" }},
         {"Stranded_Sailor_Upper_Shrine_Lever", new KeyItem { UniqueId = "lever_sailorturncam1", DisplayName = "Stranded Sailor Upper Shrine Lever" }},
+
+        {"Mushroom_Dungeon_Door", new KeyItem { UniqueId = "sdoor_forest_dung", DisplayName = "Mushroom Dungeon Door" }},
+        {"Grove_of_Spirits_Door", new KeyItem { UniqueId = "sdoor_tutorial", DisplayName = "Grove of Spirits Door" }},
     };
 
     public static Item Item(string name)
