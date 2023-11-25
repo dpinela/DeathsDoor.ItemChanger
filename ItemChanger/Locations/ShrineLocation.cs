@@ -43,6 +43,9 @@ internal class ShrineLocation : Location
             UE.Object.Destroy(__instance.uiItem3D);
             UE.Object.Destroy(__instance.gameObject);
             PlayerGlobal.instance.UnPauseInput_Cutscene();
+            
+            // mark the shrine as collected
+            __instance.theKey.Unlock();
 
             item.Trigger();
             return false;
