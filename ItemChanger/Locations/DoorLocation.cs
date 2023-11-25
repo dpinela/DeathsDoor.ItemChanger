@@ -45,6 +45,9 @@ internal class DoorLocation : Location
 
     // Open the door immediately if you collect its item in the same room where
     // the door is.
+    // This applies to doors outside the Hall of Doors, and also to the Grove
+    // door in Hall of Doors (the one that is normally given at the start);
+    // therefore this patch and the one in KeyItem are complementary.
     [HL.HarmonyPatch(typeof(ShortcutDoor), nameof(ShortcutDoor.FixedUpdate))]
     private static class VanillaRoomOpenPatch
     {
@@ -52,7 +55,6 @@ internal class DoorLocation : Location
         {
             if (!__instance.unlocked && GameSave.GetSaveData().IsKeyUnlocked(__instance.keyId))
             {
-                // doesn't work for any door other than Grove?
                 TriggerPatch.OrigTrigger(__instance);
             }
         }
