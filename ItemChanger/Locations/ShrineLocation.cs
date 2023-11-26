@@ -46,6 +46,7 @@ internal class ShrineLocation : Location
             
             // mark the shrine as collected
             __instance.theKey.Unlock();
+            GameSave.GetSaveData().IncreaseCountKey("shrine_count");
 
             item.Trigger();
             return false;
