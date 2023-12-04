@@ -6,28 +6,267 @@ public static class Predefined
 {
     private static readonly Collections.Dictionary<string, Location> predefinedLocations = new()
     {
-        {"Discarded_Umbrella", new DropLocation { UniqueId = "umbrella" }},
-        {"100_Souls-Hall_of_Doors_(Hookshot_Secret)", new DropLocation { UniqueId = "dropsoul_hodhookshotsecret" }},
-        {"Seed-Stranded_Sailor_(Cave)", new DropLocation { UniqueId = "seed_cavescrate" }},
-        {"Seed-Stranded Sailor_(Mountain)", new DropLocation { UniqueId = "seed_sailormountain" }},
+        // Spells and their upgrades
+        {"Fire Avarice", new AvariceLocation { PowerId = "fire" }},
+        {"Bomb Avarice", new AvariceLocation { PowerId = "bombs" }},
+        {"Hookshot Avarice", new AvariceLocation { PowerId = "hookshot" }},
+        {"Fire Silent Servant", new SpellUpgradeLocation { UpgradeKey = "fire" }},
+        {"Bomb Silent Servant", new SpellUpgradeLocation { UpgradeKey = "bombs" }},
+        {"Hookshot Silent Servant", new SpellUpgradeLocation { UpgradeKey = "hookshot" }},
+        {"Arrow Silent Servant", new SpellUpgradeLocation { UpgradeKey = "arrows" }},
 
+        // Weapons
+        {"Rogue Daggers", new DropLocation { UniqueId = "daggers" }},
+        {"Discarded Umbrella", new DropLocation { UniqueId = "umbrella" }},
+        {"Reaper's Greatsword", new DropLocation { UniqueId = "sword_heavy" }},
+        {"Thunder Hammer", new DropLocation { UniqueId = "hammer" }},
+
+        // Giant Souls
         {"Betty", new CutsceneItemLocation { ItemId = "soul_yeti" }},
-        {"Frog_King", new CutsceneItemLocation { ItemId = "soul_frog" }},
+        {"Frog King", new CutsceneItemLocation { ItemId = "soul_frog" }},
         {"Grandma", new CutsceneItemLocation { ItemId = "soul_gran" }},
 
-        {"Fire_Avarice", new AvariceLocation { PowerId = "fire" }},
-        {"Bomb_Avarice", new AvariceLocation { PowerId = "bombs" }},
-        {"Hookshot_Avarice", new AvariceLocation { PowerId = "hookshot" }},
+        // Shrines
+        {"Heart Shrine-Cemetery Behind Entrance", new ShrineLocation { UniqueId = "shrine_graveyardhookshot" }},
+        {"Magic Shrine-Cemetery After Smough Arena ", new ShrineLocation { UniqueId = "shrine_graveyardbomb" }},
+        {"Heart Shrine-Cemetery Winding Bridge End", new ShrineLocation { UniqueId = "shrine_graveyardturncam" }},
+        {"Heart Shrine-Hookshot Arena", new ShrineLocation { UniqueId = "shrine_sailorhookshot" }},
+        {"Magic Shrine-Sailor Turncam", new ShrineLocation { UniqueId = "shrine_sailorturncam" }},
+        {"Magic Shrine-Lockstone Secret West", new ShrineLocation { UniqueId = "shrine_fortress" }},
+        {"Heart Shrine-Camp Ice Skating", new ShrineLocation { UniqueId = "shrine_icechallenge" }},
+        {"Magic Shrine-Ruins Hookshot Arena", new ShrineLocation { UniqueId = "shrine_foresthookshot" }},
+        {"Magic Shrine-Ruins Turncam", new ShrineLocation { UniqueId = "shrine_forestturncam" }},
+        {"Heart Shrine-Dungeon Water Arena", new ShrineLocation { UniqueId = "shrine_dungeonbomb" }},
+        {"Heart Shrine-Ruins Sewer", new ShrineLocation { UniqueId = "shrine_forestsewer" }},
+        {"Magic Shrine-Fortress Bow Secret", new ShrineLocation { UniqueId = "shrine_swamp" }},
+        {"Magic Shrine-Estate Left of Manor", new ShrineLocation { UniqueId = "shrine_gardenturncam" }},
+        {"Heart Shrine-Garden of Life", new ShrineLocation { UniqueId = "shrine_gardendrop" }},
+        {"Magic Shrine-Manor Bathroom Puzzle", new ShrineLocation { UniqueId = "shrine_mansionreflection" }},
+        {"Heart Shrine-Furnace Cart Puzzle", new ShrineLocation { UniqueId = "shrine_basement" }},
 
-        {"Hookshot_Silent_Servant", new SpellUpgradeLocation { UpgradeKey = "hookshot" }},
+        // Shiny Things
+        {"Engagement Ring", new DropLocation { UniqueId = "trinket_ring" }},
+        {"Old Compass", new DropLocation { UniqueId = "trinket_compass" }},
+        {"Incense", new DropLocation { UniqueId = "trinket_incense" }},
+        {"Undying Blossom", new DropLocation { UniqueId = "trinket_flower" }},
+        {"Old Photograph", new DropLocation { UniqueId = "trinket_photo" }},
+        {"Sludge-Filled Urn", new DropLocation { UniqueId = "trinket_elixir" }},
+        {"Token of Death", new DropLocation { UniqueId = "trinket_coin" }},
+        {"Rusty Garden Trowel", new DropLocation { UniqueId = "trinket_trowel" }},
+        {"Captain's Log", new DropLocation { UniqueId = "trinket_journal" }},
+        {"Giant Arrowhead", new DropLocation { UniqueId = "trinket_arrow" }},
+        {"Malformed Seed", new DropLocation { UniqueId = "trinket_seed" }},
+        {"Corrupted Antler", new DropLocation { UniqueId = "trinket_antler" }},
+        {"Magical Forest Horn", new DropLocation { UniqueId = "trinket_basoon" }},
+        {"Ancient Crown", new DropLocation { UniqueId = "trinket_crown" }},
+        {"Grunt's Old Mask", new DropLocation { UniqueId = "trinket_mask" }},
+        {"Ancient Door Scale Model", new DropLocation { UniqueId = "trinket_door_old" }},
+        {"Modern Door Scale Model", new DropLocation { UniqueId = "trinket_door_new" }},
+        {"Rusty Belltower Key", new DropLocation { UniqueId = "trinket_rusty_key" }},
+        {"Surveillance Device", new DropLocation { UniqueId = "trinket_surv" }},
+        {"Shiny Medallion", new DropLocation { UniqueId = "trinket_medal" }},
+        {"Ink-Covered Teddy Bear", new DropLocation { UniqueId = "trinket_teddy" }},
+        {"Death's Contract", new DropLocation { UniqueId = "trinket_contract" }},
+        {"Makeshift Soul Key", new DropLocation { UniqueId = "trinket_soulkey" }},
+        {"Mysterious Locket", new DropLocation { UniqueId = "trinket_locket" }},
 
-        {"Magic_Shrine_(Forest_Turn_Cam)", new ShrineLocation { UniqueId = "shrine_forestturncam" }},
+        // Seeds
+        {"Seed-Cemetery Broken Bridge", new DropLocation { UniqueId = "seed_graveyardbrokenbridge" }},
+        {"Seed-Catacombs Tower", new DropLocation { UniqueId = "seed_graveyardtower" }},
+        {"Seed-Cemetery Left of Main Entrance", new DropLocation { UniqueId = "seed_graveyardbuilding" }},
+        {"Seed-Cemetery Near Tablet Gate", new DropLocation { UniqueId = "seed_graveyardcliff" }},
+        {"Seed-Between Cemetery and Sailor", new DropLocation { UniqueId = "seed_cavescrate" }},
+        {"Seed-Sailor Upper", new DropLocation { UniqueId = "seed_sailormountain" }},
+        {"Seed-Lockstone Upper East", new DropLocation { UniqueId = "seed_castlegardeneast" }},
+        {"Seed-Lockstone Soul Door", new DropLocation { UniqueId = "seed_castledoor" }},
+        {"Seed-Lockstone Behind Bars", new DropLocation { UniqueId = "seed_castleelevator" }},
+        {"Seed-Lockstone Entrance West", new DropLocation { UniqueId = "seed_castlegardenwest" }},
+        {"Seed-Lockstone North", new DropLocation { UniqueId = "seed_castleeast" }},
+        {"Seed-Camp Ledge With Huts", new DropLocation { UniqueId = "seed_crowcavesledge" }},
+        {"Seed-Camp Stall", new DropLocation { UniqueId = "seed_crowcampstall" }},
+        {"Seed-Camp Rooftops", new DropLocation { UniqueId = "seed_fortressexteriorcrate" }},
+        {"Seed-Watchtowers Ice Skating", new DropLocation { UniqueId = "seed_mountaintopsice" }},
+        {"Seed-Watchtowers Tablet Door", new DropLocation { UniqueId = "seed_mountaintopstruth" }},
+        {"Seed-Watchtowers Archer Platform", new DropLocation { UniqueId = "seed_mountaintopshookshot" }},
+        {"Seed-Watchtowers Boxes", new DropLocation { UniqueId = "seed_mountaintopsroute1" }},
+        {"Seed-Dungeon Fire Puzzle Near Water Arena", new DropLocation { UniqueId = "seed_dungeonconnect" }},
+        {"Seed-Ruins Lord of Doors Arena", new DropLocation { UniqueId = "seed_forestgargoyle" }},
+        {"Seed-Ruins Fire Plant Corridor", new DropLocation { UniqueId = "seed_forestcorridor" }},
+        {"Seed-Dungeon Water Arena Left Exit", new DropLocation { UniqueId = "seed_dungeontwindoor" }},
+        {"Seed-Ruins Right Middle", new DropLocation { UniqueId = "seed_forestmiddle" }},
+        {"Seed-Ruins On Settlement Wall", new DropLocation { UniqueId = "seed_forestvillage" }},
+        {"Seed-Ruins Behind Boxes", new DropLocation { UniqueId = "seed_forestintro" }},
+        {"Seed-Ruins Down Through Bomb Wall", new DropLocation { UniqueId = "seed_forestdrop" }},
+        {"Seed-Dungeon Above Crow 2", new DropLocation { UniqueId = "seed_dungeoneastexit" }},
+        {"Seed-Dungeon Right Above Key", new DropLocation { UniqueId = "seed_dungeonprisonbreak" }},
+        {"Seed-Dungeon Avarice Bridge", new DropLocation { UniqueId = "seed_dungeonbridge" }},
+        {"Seed-Fortress Watchtower", new DropLocation { UniqueId = "seed_swampwatchtower" }},
+        {"Seed-Fortress Statue", new DropLocation { UniqueId = "seed_swampstatue" }},
+        {"Seed-Fortress Bridge", new DropLocation { UniqueId = "seed_swampbridge" }},
+        {"Seed-Fortress Intro Crate", new DropLocation { UniqueId = "seed_swampintrocrate" }},
+        {"Seed-Fortress East After Statue", new DropLocation { UniqueId = "seed_swampintroeast" }},
+        {"Seed-Estate Family Tomb", new DropLocation { UniqueId = "seed_gardennorthwest" }},
+        {"Seed-Estate Entrance", new DropLocation { UniqueId = "seed_gardenintrostart" }},
+        {"Seed-Estate Hedge Gaps", new DropLocation { UniqueId = "seed_gardenbush" }},
+        {"Seed-Garden of Joy", new DropLocation { UniqueId = "seed_gardensouthwest" }},
+        {"Seed-Manor Boxes", new DropLocation { UniqueId = "seed_mansionsquareroom" }},
+        {"Seed-Manor Near Brazier", new DropLocation { UniqueId = "seed_mansionrightshelves" }},
+        {"Seed-Manor Below Big Pot Arena", new DropLocation { UniqueId = "seed_ballroom" }},
+        {"Seed-Manor Rafters", new DropLocation { UniqueId = "seed_mansionattic" }},
+        {"Seed-Manor Main Room Upper", new DropLocation { UniqueId = "seed_mansioncentre" }},
+        {"Seed-Manor Spinny Pot Room", new DropLocation { UniqueId = "seed_mansionleftshelves" }},
+        {"Seed-Manor Library Shelf", new DropLocation { UniqueId = "seed_mansionlibraryshelves" }},
+        {"Seed-Cart Puzzle", new DropLocation { UniqueId = "seed_basementshrineabyss" }},
+        {"Seed-Furnace Entrance", new DropLocation { UniqueId = "seed_basementintro" }},
+        {"Seed-Inner Furnace Horizontal Pistons", new DropLocation { UniqueId = "seed_basementplague1" }},
+        {"Seed-Inner Furnace Conveyor Bridge", new DropLocation { UniqueId = "seed_basementconveyor" }},
+        {"Seed-Inner Furnace Conveyor Gauntlet", new DropLocation { UniqueId = "seed_basementplague2" }},
 
-        {"Hookshot_Silent_Servant_Lever", new FrogLeverLocation { UniqueId = "lever_connectcave" }},
-        {"Greatsword_Lever", new IronLeverLocation { UniqueId = "sailorgate" }},
+        // Soul Orbs
+        {"Soul Orb-Fire Return Upper", new DropLocation { UniqueId = "dropsoul_HoDfirereturn1" }},
+        {"Soul Orb-Hookshot Secret", new DropLocation { UniqueId = "dropsoul_hodhookshotsecret" }},
+        {"Soul Orb-Bomb Return", new DropLocation { UniqueId = "dropsoul_hodbombreturn" }},
+        {"Soul Orb-Bomb Secret", new DropLocation { UniqueId = "dropsoul_hodbombsecret" }},
+        {"Soul Orb-Hookshot Return", new DropLocation { UniqueId = "dropsoul_hookshotreturn" }},
+        {"Soul Orb-Fire Return Lower", new DropLocation { UniqueId = "dropsoul_hodfirereturn2" }},
+        {"Soul Orb-Fire Secret", new DropLocation { UniqueId = "dropsoul_hodfiresecret" }},
+        {"Soul Orb-Catacombs Exit", new DropLocation { UniqueId = "dropsoul_catacombsexit" }},
+        {"Soul Orb-Cemetery Hookshot Towers", new DropLocation { UniqueId = "dropsoul_graveyardhookshot" }},
+        {"Soul Orb-Cemetery Under Bridge", new DropLocation { UniqueId = "dropsoul_graveyardbridge" }},
+        {"Soul Orb-Cemetery East Tree", new DropLocation { UniqueId = "dropsoul_graveyardtree" }},
+        {"Soul Orb-Cemetery Winding Bridge End", new DropLocation { UniqueId = "dropsoul_graveyardbridgeroom" }},
+        {"Soul Orb-Catacombs Room 2", new DropLocation { UniqueId = "dropsoul_catacombs2" }},
+        {"Soul Orb-Catacombs Room 1", new DropLocation { UniqueId = "dropsoul_catacombs1" }},
+        {"Soul Orb-Cemetery Gated Sewer", new DropLocation { UniqueId = "dropsoul_graveyardsewer" }},
+        {"Soul Orb-Catacombs Entrance", new DropLocation { UniqueId = "dropsoul_catacombsentrance" }},
+        {"Soul Orb-Cemetery Cave", new DropLocation { UniqueId = "dropsoul_graveyardcave" }},
+        {"Soul Orb-Sailor Turncam", new DropLocation { UniqueId = "dropsoul_sailorturncam" }},
+        {"Soul Orb-North Lockstone Sewer", new DropLocation { UniqueId = "dropsoul_castlesewer2" }},
+        {"Soul Orb-Lockstone Hookshot North", new DropLocation { UniqueId = "dropsoul_castlehookshoteast" }},
+        {"Soul Orb-Lockstone Exit", new DropLocation { UniqueId = "dropsoul_castleexit" }},
+        {"Soul Orb-West Lockstone Sewer", new DropLocation { UniqueId = "dropsoul_castlesewer1" }},
+        {"Soul Orb-Camp Rooftops", new DropLocation { UniqueId = "dropsoul_fortressexterior" }},
+        {"Soul Orb-Camp Broken Bridge", new DropLocation { UniqueId = "dropsoul_crowcavesbridge" }},
+        {"Soul Orb-Watchtowers Behind Barb Elevator", new DropLocation { UniqueId = "dropsoul_mountaintopsturncam" }},
+        {"Soul Orb-Dungeon Vine", new DropLocation { UniqueId = "dropsoul_dungeonpeek" }},
+        {"Soul Orb-Ruins Stump", new DropLocation { UniqueId = "dropsoul_forestcolliseumhookshot" }},
+        {"Soul Orb-Ruins Outside Left Dungeon Exit", new DropLocation { UniqueId = "dropsoul_forestraised" }},
+        {"Soul Orb-Dungeon Cobweb", new DropLocation { UniqueId = "dropsoul_dungeoncobweb" }},
+        {"Soul Orb-Ruins Left After Key Door", new DropLocation { UniqueId = "dropsoul_forestcorner" }},
+        {"Soul Orb-Ruins Lower Bomb Wall", new DropLocation { UniqueId = "dropsoul_forestblocked" }},
+        {"Soul Orb-Ruins Lord of Doors Arena Hookshot", new DropLocation { UniqueId = "dropsoul_forestnorthhookshot" }},
+        {"Soul Orb-Dungeon Lower Entrance", new DropLocation { UniqueId = "dropsoul_swamproute" }},
+        {"Soul Orb-Ruins Upper Above Horn", new DropLocation { UniqueId = "dropsoul_forestcolliseum" }},
+        {"Soul Orb-Ruins Above Three Plants", new DropLocation { UniqueId = "dropsoul_forestvine" }},
+        {"Soul Orb-Ruins Up Turncam Ladder", new DropLocation { UniqueId = "dropsoul_forestladder" }},
+        {"Soul Orb-Ruins Above Entrance Gate", new DropLocation { UniqueId = "dropsoul_forestentrancewall" }},
+        {"Soul Orb-Ruins Upper Bomb Wall", new DropLocation { UniqueId = "dropsoul_forestbomber" }},
+        {"Soul Orb-Dungeon Left Exit Shelf", new DropLocation { UniqueId = "dropsoul_dungeonshelfdrop" }},
+        {"Soul Orb-Ruins Lower Hookshot", new DropLocation { UniqueId = "dropsoul_forestintrohookshot" }},
+        {"Soul Orb-Fortress Bomb", new DropLocation { UniqueId = "dropsoul_swampbomb" }},
+        {"Soul Orb-Fortress Hidden Sewer", new DropLocation { UniqueId = "dropsoul_swampsewer" }},
+        {"Soul Orb-Fortress Drop", new DropLocation { UniqueId = "dropsoul_swampdrop" }},
+        {"Soul Orb-Estate Access Crypt", new DropLocation { UniqueId = "dropsoul_cryptgrave" }},
+        {"Soul Orb-Estate Balcony", new DropLocation { UniqueId = "dropsoul_gardenbalcony" }},
+        {"Soul Orb-Garden of Love Turncam", new DropLocation { UniqueId = "dropsoul_gardenturncam" }},
+        {"Soul Orb-Garden of Life Hookshot Loop", new DropLocation { UniqueId = "dropsoul_gardennorthhookshot" }},
+        {"Soul Orb-Garden of Love Bomb Walls", new DropLocation { UniqueId = "dropsoul_familytombbomb" }},
+        {"Soul Orb-Garden of Life Bomb Wall", new DropLocation { UniqueId = "dropsoul_gardenknight" }},
+        {"Soul Orb-Estate Broken Boardwalk", new DropLocation { UniqueId = "dropsoul_gardensouthhookshot" }},
+        {"Soul Orb-Estate Secret Cave", new DropLocation { UniqueId = "dropsoul_gardencave" }},
+        {"Soul Orb-Estate Twin Benches", new DropLocation { UniqueId = "dropsoul_gardensbenches" }},
+        {"Soul Orb-Estate Sewer Middle", new DropLocation { UniqueId = "dropsoul_gardensewerroute1" }},
+        {"Soul Orb-Estate Sewer End", new DropLocation { UniqueId = "dropsoul_gardensewerroute2" }},
+        {"Soul Orb-Garden of Peace", new DropLocation { UniqueId = "dropsoul_gardensouthbomb" }},
+        {"Soul Orb-Manor Imp Loft", new DropLocation { UniqueId = "dropsoul_mansionladder" }},
+        {"Soul Orb-Manor Library Shelf", new DropLocation { UniqueId = "dropsoul_mansionlibrary" }},
+        {"Soul Orb-Manor Chandelier", new DropLocation { UniqueId = "chand_souls" }},
+        {"Soul Orb-Furnace Lantern Chain", new DropLocation { UniqueId = "dropsoul_basementlanternchain" }},
+        {"Soul Orb-Small Room", new DropLocation { UniqueId = "dropsoul_basementsmallroom" }},
+        {"Soul Orb-Furnace Entrance Sewer", new DropLocation { UniqueId = "dropsoul_basementsewer" }},
 
-        {"Grove_of_Spirits_Door", new DoorLocation { KeyId = "sdoor_tutorial" }},
-        {"Mushroom_Dungeon_Door", new DoorLocation { KeyId = "sdoor_forest_dung" }},
+        // Tablets
+        {"Red Ancient Tablet of Knowledge", new DropLocation { UniqueId = "truthtablet_1" }},
+        {"Yellow Ancient Tablet of Knowledge", new DropLocation { UniqueId = "truthtablet_2" }},
+        {"Green Ancient Tablet of Knowledge", new DropLocation { UniqueId = "truthtablet_3" }},
+        {"Cyan Ancient Tablet of Knowledge", new DropLocation { UniqueId = "truthtablet_4" }},
+        {"Blue Ancient Tablet of Knowledge", new DropLocation { UniqueId = "truthtablet_5" }},
+        {"Purple Ancient Tablet of Knowledge", new DropLocation { UniqueId = "truthtablet_6" }},
+        {"Pink Ancient Tablet of Knowledge", new DropLocation { UniqueId = "truthtablet_7" }},
+
+        // Levers
+        {"Bomb Exit Lever", new FrogLeverLocation { UniqueId = "hod_frog_lever" }},
+        {"Cemetery Sewer Lever", new FrogLeverLocation { UniqueId = "lever_graveyardsummiteast" }},
+        {"Guardian of the Door Access Lever", new FrogLeverLocation { UniqueId = "lever_graveyardredeemer" }},
+        {"Cemetery Shortcut to East Tree Lever", new FrogLeverLocation { UniqueId = "lever_graveyardforestroute" }},
+        {"Cemetery East Tree Lever", new FrogLeverLocation { UniqueId = "lever_graveyardeast" }},
+        {"Catacombs Tower Lever", new FrogLeverLocation { UniqueId = "lever_graveyardcentraltower" }},
+        {"Cemetery Exit to Estate Lever", new FrogLeverLocation { UniqueId = "lever_graveyardsummitwest" }},
+        {"Catacombs Exit Lever", new FrogLeverLocation { UniqueId = "lever_catacombsexit" }},
+        {"Hookshot Silent Servant Lever", new FrogLeverLocation { UniqueId = "lever_connectcave" }},
+        {"Sailor Turncam Upper Lever", new FrogLeverLocation { UniqueId = "lever_sailorturncam1" }},
+        {"Sailor Turncam Lower Lever", new FrogLeverLocation { UniqueId = "lever_sailorturncam2" }},
+        {"Sailor Greatsword Gate Lever", new IronLeverLocation { UniqueId = "sailorgate" }},
+        {"Lockstone East Start Shortcut Lever", new FrogLeverLocation { UniqueId = "fort_east_start" }},
+        {"Lockstone Entrance Lever", new IronLeverLocation { UniqueId = "fort_gate_1" }},
+        {"Lockstone East Lower Lever", new FrogLeverLocation { UniqueId = "fort_upper1" }},
+        {"Lockstone Upper Shortcut Lever", new FrogLeverLocation { UniqueId = "fort_ladlev_2" }},
+        {"Lockstone Dual Laser Puzzle Lever", new IronLeverLocation { UniqueId = "fort_gate_4" }},
+        {"Lockstone Tracking Beam Puzzle Lever", new IronLeverLocation { UniqueId = "fort_gate_2" }},
+        {"Lockstone Vertical Laser Puzzle Lever", new IronLeverLocation { UniqueId = "fort_gate_3" }},
+        {"Lockstone North Puzzle Lever", new IronLeverLocation { UniqueId = "fort_gate_5" }},
+        {"Lockstone Secret West Lever", new FrogLeverLocation { UniqueId = "lever_fortresssecretwest" }},
+        {"Lockstone Hookshot Puzzle Lever", new IronLeverLocation { UniqueId = "fort_gate_8" }},
+        {"Lockstone Upper Puzzle Lever", new IronLeverLocation { UniqueId = "fort_gate_upper" }},
+        {"Lockstone Upper Dual Laser Puzzle Lever", new IronLeverLocation { UniqueId = "fort_gate_6" }},
+        {"Watchtowers Before Ice Arena Lever", new FrogLeverLocation { UniqueId = "lever_mountaintopsshortcut2" }},
+        {"Watchtowers After Ice Skating Lever", new FrogLeverLocation { UniqueId = "lever_mountaintopsshortcut3" }},
+        {"Watchtowers After Boomers Lever", new FrogLeverLocation { UniqueId = "lever_mountaintopsshortcut1" }},
+        {"Ruins Settlement Gate Lever", new FrogLeverLocation { UniqueId = "forestoldsettlementgate" }},
+        {"Ruins Upper Dungeon Entrance Lever", new FrogLeverLocation { UniqueId = "colliseumsecret" }},
+        {"Ruins Ladder Left of Lord of Doors Arena Lever", new FrogLeverLocation { UniqueId = "fsettle_sc_1" }},
+        {"Ruins Entrance Ladder Shortcut Lever", new FrogLeverLocation { UniqueId = "forest_short1" }},
+        {"Ruins Main Gate Lever", new FrogLeverLocation { UniqueId = "forest_gate_lever" }},
+        {"Dungeon Entrance Right Gate Lever", new FrogLeverLocation { UniqueId = "jail2" }},
+        {"Dungeon Entrance Left Gate Lever", new FrogLeverLocation { UniqueId = "jail1" }},
+        {"Dungeon Above Crow 2 Lever", new FrogLeverLocation { UniqueId = "foresteastexit" }},
+        {"Fortress Bomb Lever", new FrogLeverLocation { UniqueId = "swampladdershortcut2" }},
+        {"Fortress Main Gate Lever", new FrogLeverLocation { UniqueId = "swamp_enter_maingatelever" }},
+        {"Fortress Central Shortcut Lever", new FrogLeverLocation { UniqueId = "swampladdershortcut1" }},
+        {"Fortress Statue Lever", new FrogLeverLocation { UniqueId = "swampgateshortcut1" }},
+        {"Fortress Watchtower Lower Lever", new FrogLeverLocation { UniqueId = "swampladdershortcut4" }},
+        {"Fortress Bridge Ladder", new FrogLeverLocation { UniqueId = "swampladdershortcut3" }},
+        {"Fortress Pre-Main Gate Lever", new FrogLeverLocation { UniqueId = "swampgateshortcut2" }},
+        {"Fortress Watchtower Upper Lever", new FrogLeverLocation { UniqueId = "swampladdershortcut5" }},
+        {"Fortress North West Lever", new FrogLeverLocation { UniqueId = "lever_swampnorthwest" }},
+        {"Estate Elevator Left Lever", new FrogLeverLocation { UniqueId = "crypt_exit1" }},
+        {"Estate Elevator Right Lever", new FrogLeverLocation { UniqueId = "crypt_exit2" }},
+        {"Garden of Love Lever", new FrogLeverLocation { UniqueId = "lever_gardennorthwest" }},
+        {"Garden of Life End Lever", new FrogLeverLocation { UniqueId = "lever_gardennortheast" }},
+        {"Garden of Peace Lever", new FrogLeverLocation { UniqueId = "Garden2End" }},
+        {"Garden of Joy Lever", new FrogLeverLocation { UniqueId = "Garden1End" }},
+        {"Garden of Love Turncam Lever", new FrogLeverLocation { UniqueId = "lever_gardenturncam" }},
+        {"Garden of Life Lanterns Lever", new FrogLeverLocation { UniqueId = "garden4lantern" }},
+        {"Estate Underground Urn Shed Lever", new FrogLeverLocation { UniqueId = "lever_Gardenselixir" }},
+        {"Manor Big Pot Arena Lever", new FrogLeverLocation { UniqueId = "lever_dumbwaiter" }},
+        {"Manor Bookshelf Shortcut Lever", new FrogLeverLocation { UniqueId = "mansionlibrarylever" }},
+
+        // Doors
+        {"Grove of Spirits Door", new DoorLocation { KeyId = "sdoor_tutorial" }},
+        {"Lost Cemetery Door", new DoorLocation { KeyId = "sdoor_graveyard" }},
+        {"Stranded Sailor Door", new DoorLocation { KeyId = "sdoor_sailor" }},
+        {"Castle Lockstone Door", new DoorLocation { KeyId = "sdoor_fortress" }},
+        {"Camp of the Free Crows Door", new DoorLocation { KeyId = "sdoor_covenant" }},
+        {"Old Watchtowers Door", new DoorLocation { KeyId = "sdoor_mountaintops" }},
+        {"Betty's Lair Door", new DoorLocation { KeyId = "sdoor_betty" }},
+        {"Overgrown Ruins Door", new DoorLocation { KeyId = "sdoor_forest" }},
+        {"Mushroom Dungeon Door", new DoorLocation { KeyId = "sdoor_forest_dung" }},
+        {"Flooded Fortress Door", new DoorLocation { KeyId = "sdoor_swamp" }},
+        {"Throne of the Frog King Door", new DoorLocation { KeyId = "sdoor_frogboss" }},
+        {"Estate of the Urn Witch Door", new DoorLocation { KeyId = "sdoor_gardens" }},
+        {"Ceramic Manor Door", new DoorLocation { KeyId = "sdoor_mansion" }},
+        {"Inner Furnace Door", new DoorLocation { KeyId = "sdoor_basementromp" }},
+        {"The Urn Witch's Laboratory Door", new DoorLocation { KeyId = "sdoor_grandmaboss" }},
     };
 
     public static Location Location(string name)
@@ -41,58 +280,58 @@ public static class Predefined
         {"Hookshot", HookshotItem.Instance},
         {"Fire", FireItem.Instance},
         {"Bomb", BombItem.Instance},
-        {"Arrow_Upgrade", ArrowUpgradeItem.Instance},
+        {"Arrow Upgrade", ArrowUpgradeItem.Instance},
 
         // Weapons
-        {"Rogue_Daggers", new CountableInventoryItem {
+        {"Rogue Daggers", new CountableInventoryItem {
             DisplayName = "Rogue Daggers",
             UniqueId = "daggers",
             CountId = "weapons_count"
         }},
-        {"Umbrella", new CountableInventoryItem {
+        {"Discarded Umbrella", new CountableInventoryItem {
             DisplayName = "Discarded Umbrella",
             UniqueId = "umbrella",
             CountId = "weapons_count"
         }},
-        {"Reaper's_Greatsword", new CountableInventoryItem {
+        {"Reaper's Greatsword", new CountableInventoryItem {
             DisplayName = "Reaper's Greatsword",
             UniqueId = "sword_heavy",
             CountId = "weapons_count"
         }},
-        {"Thunder_Hammer", new CountableInventoryItem {
+        {"Thunder Hammer", new CountableInventoryItem {
             DisplayName = "Thunder Hammer",
             UniqueId = "hammer",
             CountId = "weapons_count"
         }},
 
         // Giant Souls
-        {"Giant_Soul_of_The_Urn_Witch", new CountableInventoryItem {
+        {"Giant Soul of The Urn Witch", new CountableInventoryItem {
             DisplayName = "Giant Soul of The Urn Witch",
             UniqueId = "soul_gran", 
             CountId = "boss_souls"
         }},
-        {"Giant_Soul_of_The_Frog_King", new CountableInventoryItem {
+        {"Giant Soul of The Frog King", new CountableInventoryItem {
             DisplayName = "Giant Soul of The Frog King", 
             UniqueId = "soul_frog",
             CountId = "boss_souls"
         }},
-        {"Giant_Soul_of_Betty", new CountableInventoryItem {
+        {"Giant Soul of Betty", new CountableInventoryItem {
             DisplayName = "Giant Soul of Betty",
             UniqueId = "soul_yeti",
             CountId = "boss_souls"
         }},
 
         // Shards
-        {"Vitality_Shard", VitalityShardItem.Instance},
-        {"Magic_Shard", MagicShardItem.Instance},
+        {"Vitality Shard", VitalityShardItem.Instance},
+        {"Magic Shard", MagicShardItem.Instance},
 
         // Shiny Things
-        {"Engagement_Ring", new CountableInventoryItem {
+        {"Engagement Ring", new CountableInventoryItem {
             DisplayName = "Engagement Ring",
             UniqueId = "trinket_ring",
             CountId = "trinket_collect_count"
         }},
-        {"Old_Compass", new CountableInventoryItem {
+        {"Old Compass", new CountableInventoryItem {
             DisplayName = "Old Compass",
             UniqueId = "trinket_compass",
             CountId = "trinket_collect_count"
@@ -102,176 +341,228 @@ public static class Predefined
             UniqueId = "trinket_incense",
             CountId = "trinket_collect_count"
         }},
-        {"Undying_Blossom", new CountableInventoryItem {
+        {"Undying Blossom", new CountableInventoryItem {
             DisplayName = "Undying Blossom",
             UniqueId = "trinket_flower",
             CountId = "trinket_collect_count"
         }},
-        {"Old_Photograph", new CountableInventoryItem {
+        {"Old Photograph", new CountableInventoryItem {
             DisplayName = "Old Photograph",
             UniqueId = "trinket_photo",
             CountId = "trinket_collect_count"
         }},
-        {"Sludge-Filled_Urn", new CountableInventoryItem {
+        {"Sludge-Filled Urn", new CountableInventoryItem {
             DisplayName = "Sludge-Filled Urn",
             UniqueId = "trinket_elixir",
             CountId = "trinket_collect_count"
         }},
-        {"Token_of_Death", new CountableInventoryItem {
+        {"Token of Death", new CountableInventoryItem {
             DisplayName = "Token of Death",
             UniqueId = "trinket_coin",
             CountId = "trinket_collect_count"
         }},
-        {"Rusty_Garden_Trowel", new CountableInventoryItem {
+        {"Rusty Garden Trowel", new CountableInventoryItem {
             DisplayName = "Rusty Garden Trowel",
             UniqueId = "trinket_trowel",
             CountId = "trinket_collect_count"
         }},
-        {"Captain's_Log", new CountableInventoryItem {
+        {"Captain's Log", new CountableInventoryItem {
             DisplayName = "Captain's Log",
             UniqueId = "trinket_journal",
             CountId = "trinket_collect_count"
         }},
-        {"Giant_Arrowhead", new CountableInventoryItem {
+        {"Giant Arrowhead", new CountableInventoryItem {
             DisplayName = "Giant Arrowhead",
             UniqueId = "trinket_arrow",
             CountId = "trinket_collect_count"
         }},
-        {"Malformed_Seed", new CountableInventoryItem {
+        {"Malformed Seed", new CountableInventoryItem {
             DisplayName = "Malformed Seed",
             UniqueId = "trinket_seed",
             CountId = "trinket_collect_count"
         }},
-        {"Corrupted_Antler", new CountableInventoryItem {
+        {"Corrupted Antler", new CountableInventoryItem {
             DisplayName = "Corrupted Antler",
             UniqueId = "trinket_antler",
             CountId = "trinket_collect_count"
         }},
-        {"Magical_Forest_Horn", new CountableInventoryItem {
+        {"Magical Forest Horn", new CountableInventoryItem {
             DisplayName = "Magical Forest Horn",
             UniqueId = "trinket_basoon",
             CountId = "trinket_collect_count"
         }},
-        {"Ancient_Crown", new CountableInventoryItem {
+        {"Ancient Crown", new CountableInventoryItem {
             DisplayName = "Ancient Crown",
             UniqueId = "trinket_crown",
             CountId = "trinket_collect_count"
         }},
-        {"Grunt's_Old_Mask", new CountableInventoryItem {
+        {"Grunt's Old Mask", new CountableInventoryItem {
             DisplayName = "Grunt's Old Mask",
             UniqueId = "trinket_mask",
             CountId = "trinket_collect_count"
         }},
-        {"Ancient_Door_Scale_Model", new CountableInventoryItem {
+        {"Ancient Door Scale Model", new CountableInventoryItem {
             DisplayName = "Ancient Door Scale Model",
             UniqueId = "trinket_door_old",
             CountId = "trinket_collect_count"
         }},
-        {"Modern_Door_Scale_Model", new CountableInventoryItem {
+        {"Modern Door Scale Model", new CountableInventoryItem {
             DisplayName = "Modern Door Scale Model",
             UniqueId = "trinket_door_new",
             CountId = "trinket_collect_count"
         }},
-        {"Rusty_Belltower_Key", new CountableInventoryItem {
+        {"Rusty Belltower Key", new CountableInventoryItem {
             DisplayName = "Rusty Belltower Key",
             UniqueId = "trinket_rusty_key",
             CountId = "trinket_collect_count"
         }},
-        {"Surveillance_Device", new CountableInventoryItem {
+        {"Surveillance Device", new CountableInventoryItem {
             DisplayName = "Surveillance Device",
             UniqueId = "trinket_surv",
             CountId = "trinket_collect_count"
         }},
-        {"Shiny_Medallion", new CountableInventoryItem {
+        {"Shiny Medallion", new CountableInventoryItem {
             DisplayName = "Shiny Medallion",
             UniqueId = "trinket_medal",
             CountId = "trinket_collect_count"
         }},
-        {"Ink-Covered_Teddy_Bear", new CountableInventoryItem {
+        {"Ink-Covered Teddy Bear", new CountableInventoryItem {
             DisplayName = "Ink-Covered Teddy Bear",
             UniqueId = "trinket_teddy",
             CountId = "trinket_collect_count"
         }},
-        {"Death's_Contract", new CountableInventoryItem {
+        {"Death's Contract", new CountableInventoryItem {
             DisplayName = "Death's Contract",
             UniqueId = "trinket_contract",
             CountId = "trinket_collect_count"
         }},
-        {"Makeshift_Soul_Key", new CountableInventoryItem {
+        {"Makeshift Soul Key", new CountableInventoryItem {
             DisplayName = "Makeshift Soul Key",
             UniqueId = "trinket_soulkey",
             CountId = "trinket_collect_count"
         }},
-        {"Mysterious_Locket", new CountableInventoryItem {
+        {"Mysterious Locket", new CountableInventoryItem {
             DisplayName = "Mysterious Locket",
             UniqueId = "trinket_locket",
             CountId = "trinket_collect_count"
         }},
 
         // Seeds
-        {"Life_Seed", SeedItem.Instance},
+        {"Life Seed", SeedItem.Instance},
 
         // Soul Orbs
         {"100_Souls", new SoulsItem { Amount = 100 }},
 
         // Tablets
-        {"Red_Ancient_Tablet_of_Knowledge", new CountableInventoryItem {
+        {"Red Ancient Tablet of Knowledge", new CountableInventoryItem {
             DisplayName = "Red Ancient Tablet of Knowledge",
             UniqueId = "truthtablet_1",
             CountId = "truth_tablet_count"
         }},
-        {"Yellow_Ancient_Tablet_of_Knowledge", new CountableInventoryItem {
+        {"Yellow Ancient Tablet of Knowledge", new CountableInventoryItem {
             DisplayName = "Yellow Ancient Tablet of Knowledge",
             UniqueId = "truthtablet_2",
             CountId = "truth_tablet_count"
         }},
-        {"Green_Ancient_Tablet_of_Knowledge", new CountableInventoryItem {
+        {"Green Ancient Tablet of Knowledge", new CountableInventoryItem {
             DisplayName = "Green Ancient Tablet of Knowledge",
             UniqueId = "truthtablet_3",
             CountId = "truth_tablet_count"
         }},
-        {"Cyan_Ancient_Tablet_of_Knowledge", new CountableInventoryItem {
+        {"Cyan Ancient Tablet of Knowledge", new CountableInventoryItem {
             DisplayName = "Cyan Ancient Tablet of Knowledge",
             UniqueId = "truthtablet_4",
             CountId = "truth_tablet_count"
         }},
-        {"Blue_Ancient_Tablet_of_Knowledge", new CountableInventoryItem {
+        {"Blue Ancient Tablet of Knowledge", new CountableInventoryItem {
             DisplayName = "Blue Ancient Tablet of Knowledge",
             UniqueId = "truthtablet_5",
             CountId = "truth_tablet_count"
         }},
-        {"Purple_Ancient_Tablet_of_Knowledge", new CountableInventoryItem {
+        {"Purple Ancient Tablet of Knowledge", new CountableInventoryItem {
             DisplayName = "Purple Ancient Tablet of Knowledge",
             UniqueId = "truthtablet_6",
             CountId = "truth_tablet_count"
         }},
-        {"Pink_Ancient_Tablet_of_Knowledge", new CountableInventoryItem {
+        {"Pink Ancient Tablet of Knowledge", new CountableInventoryItem {
             DisplayName = "Pink Ancient Tablet of Knowledge",
             UniqueId = "truthtablet_7",
             CountId = "truth_tablet_count"
         }},
 
         // Levers
-        {"Hookshot_Silent_Servant_Lever", new KeyItem { UniqueId = "lever_connectcave", DisplayName = "Hookshot Silent Servant Lever" }},
-        {"Greatsword_Lever", new KeyItem { UniqueId = "sailorgate", DisplayName = "Greatsword Lever" }},
-        {"Stranded_Sailor_Upper_Shrine_Lever", new KeyItem { UniqueId = "lever_sailorturncam1", DisplayName = "Stranded Sailor Upper Shrine Lever" }},
+        {"Bomb Exit Lever", new KeyItem { UniqueId = "hod_frog_lever" }},
+        {"Cemetery Sewer Lever", new KeyItem { UniqueId = "lever_graveyardsummiteast" }},
+        {"Guardian of the Door Access Lever", new KeyItem { UniqueId = "lever_graveyardredeemer" }},
+        {"Cemetery Shortcut to East Tree Lever", new KeyItem { UniqueId = "lever_graveyardforestroute" }},
+        {"Cemetery East Tree Lever", new KeyItem { UniqueId = "lever_graveyardeast" }},
+        {"Catacombs Tower Lever", new KeyItem { UniqueId = "lever_graveyardcentraltower" }},
+        {"Cemetery Exit to Estate Lever", new KeyItem { UniqueId = "lever_graveyardsummitwest" }},
+        {"Catacombs Exit Lever", new KeyItem { UniqueId = "lever_catacombsexit" }},
+        {"Hookshot Silent Servant Lever", new KeyItem { UniqueId = "lever_connectcave" }},
+        {"Sailor Turncam Upper Lever", new KeyItem { UniqueId = "lever_sailorturncam1" }},
+        {"Sailor Turncam Lower Lever", new KeyItem { UniqueId = "lever_sailorturncam2" }},
+        {"Sailor Greatsword Gate Lever", new KeyItem { UniqueId = "sailorgate" }},
+        {"Lockstone East Start Shortcut Lever", new KeyItem { UniqueId = "fort_east_start" }},
+        {"Lockstone Entrance Lever", new KeyItem { UniqueId = "fort_gate_1" }},
+        {"Lockstone East Lower Lever", new KeyItem { UniqueId = "fort_upper1" }},
+        {"Lockstone Upper Shortcut Lever", new KeyItem { UniqueId = "fort_ladlev_2" }},
+        {"Lockstone Dual Laser Puzzle Lever", new KeyItem { UniqueId = "fort_gate_4" }},
+        {"Lockstone Tracking Beam Puzzle Lever", new KeyItem { UniqueId = "fort_gate_2" }},
+        {"Lockstone Vertical Laser Puzzle Lever", new KeyItem { UniqueId = "fort_gate_3" }},
+        {"Lockstone North Puzzle Lever", new KeyItem { UniqueId = "fort_gate_5" }},
+        {"Lockstone Secret West Lever", new KeyItem { UniqueId = "lever_fortresssecretwest" }},
+        {"Lockstone Hookshot Puzzle Lever", new KeyItem { UniqueId = "fort_gate_8" }},
+        {"Lockstone Upper Puzzle Lever", new KeyItem { UniqueId = "fort_gate_upper" }},
+        {"Lockstone Upper Dual Laser Puzzle Lever", new KeyItem { UniqueId = "fort_gate_6" }},
+        {"Watchtowers Before Ice Arena Lever", new KeyItem { UniqueId = "lever_mountaintopsshortcut2" }},
+        {"Watchtowers After Ice Skating Lever", new KeyItem { UniqueId = "lever_mountaintopsshortcut3" }},
+        {"Watchtowers After Boomers Lever", new KeyItem { UniqueId = "lever_mountaintopsshortcut1" }},
+        {"Ruins Settlement Gate Lever", new KeyItem { UniqueId = "forestoldsettlementgate" }},
+        {"Ruins Upper Dungeon Entrance Lever", new KeyItem { UniqueId = "colliseumsecret" }},
+        {"Ruins Ladder Left of Lord of Doors Arena Lever", new KeyItem { UniqueId = "fsettle_sc_1" }},
+        {"Ruins Entrance Ladder Shortcut Lever", new KeyItem { UniqueId = "forest_short1" }},
+        {"Ruins Main Gate Lever", new KeyItem { UniqueId = "forest_gate_lever" }},
+        {"Dungeon Entrance Right Gate Lever", new KeyItem { UniqueId = "jail2" }},
+        {"Dungeon Entrance Left Gate Lever", new KeyItem { UniqueId = "jail1" }},
+        {"Dungeon Above Crow 2 Lever", new KeyItem { UniqueId = "foresteastexit" }},
+        {"Fortress Bomb Lever", new KeyItem { UniqueId = "swampladdershortcut2" }},
+        {"Fortress Main Gate Lever", new KeyItem { UniqueId = "swamp_enter_maingatelever" }},
+        {"Fortress Central Shortcut Lever", new KeyItem { UniqueId = "swampladdershortcut1" }},
+        {"Fortress Statue Lever", new KeyItem { UniqueId = "swampgateshortcut1" }},
+        {"Fortress Watchtower Lower Lever", new KeyItem { UniqueId = "swampladdershortcut4" }},
+        {"Fortress Bridge Ladder", new KeyItem { UniqueId = "swampladdershortcut3" }},
+        {"Fortress Pre-Main Gate Lever", new KeyItem { UniqueId = "swampgateshortcut2" }},
+        {"Fortress Watchtower Upper Lever", new KeyItem { UniqueId = "swampladdershortcut5" }},
+        {"Fortress North West Lever", new KeyItem { UniqueId = "lever_swampnorthwest" }},
+        {"Estate Elevator Left Lever", new KeyItem { UniqueId = "crypt_exit1" }},
+        {"Estate Elevator Right Lever", new KeyItem { UniqueId = "crypt_exit2" }},
+        {"Garden of Love Lever", new KeyItem { UniqueId = "lever_gardennorthwest" }},
+        {"Garden of Life End Lever", new KeyItem { UniqueId = "lever_gardennortheast" }},
+        {"Garden of Peace Lever", new KeyItem { UniqueId = "Garden2End" }},
+        {"Garden of Joy Lever", new KeyItem { UniqueId = "Garden1End" }},
+        {"Garden of Love Turncam Lever", new KeyItem { UniqueId = "lever_gardenturncam" }},
+        {"Garden of Life Lanterns Lever", new KeyItem { UniqueId = "garden4lantern" }},
+        {"Estate Underground Urn Shed Lever", new KeyItem { UniqueId = "lever_Gardenselixir" }},
+        {"Manor Big Pot Arena Lever", new KeyItem { UniqueId = "lever_dumbwaiter" }},
+        {"Manor Bookshelf Shortcut Lever", new KeyItem { UniqueId = "mansionlibrarylever" }},
 
         // Doors
-        {"Grove_of_Spirits_Door", new KeyItem { UniqueId = "sdoor_tutorial", DisplayName = "Grove of Spirits Door" }},
-        {"Lost_Cemetery_Door", new KeyItem { UniqueId = "sdoor_graveyard", DisplayName = "Lost Cemetery Door" }},
-        {"Stranded_Sailor_Door", new KeyItem { UniqueId = "sdoor_sailor", DisplayName = "Stranded Sailor Door" }},
-        {"Castle_Lockstone_Door", new KeyItem { UniqueId = "sdoor_fortress", DisplayName = "Castle Lockstone Door" }},
-        {"Camp_of_the_Free_Crows_Door", new KeyItem { UniqueId = "sdoor_covenant", DisplayName = "Camp of the Free Crows Door" }},
-        {"Old_Watchtowers_Door", new KeyItem { UniqueId = "sdoor_mountaintops", DisplayName = "Old Watchtowers Door" }},
-        {"Betty's_Lair_Door", new KeyItem { UniqueId = "sdoor_betty", DisplayName = "Betty's Lair Door" }},
-        {"Overgrown_Ruins_Door", new KeyItem { UniqueId = "sdoor_forest", DisplayName = "Overgrown Ruins Door" }},
-        {"Mushroom_Dungeon_Door", new KeyItem { UniqueId = "sdoor_forest_dung", DisplayName = "Mushroom Dungeon Door" }},
-        {"Flooded_Fortress_Door", new KeyItem { UniqueId = "sdoor_swamp", DisplayName = "Flooded Fortress Door" }},
-        {"Throne_of_the_Frog_King_Door", new KeyItem { UniqueId = "sdoor_frogboss", DisplayName = "Throne of the Frog King Door" }},
-        {"Estate_of_the_Urn_Witch_Door", new KeyItem { UniqueId = "sdoor_gardens", DisplayName = "Estate of the Urn Witch Door" }},
-        {"Ceramic_Manor_Door", new KeyItem { UniqueId = "sdoor_mansion", DisplayName = "Ceramic Manor Door" }},
-        {"Inner_Furnace_Door", new KeyItem { UniqueId = "sdoor_basementromp", DisplayName = "Inner Furnace Door" }},
-        {"The_Urn_Witch's_Laboratory_Door", new KeyItem { UniqueId = "sdoor_grandmaboss", DisplayName = "The Urn Witch's Laboratory Door" }},
+        {"Grove of Spirits Door", new KeyItem { UniqueId = "sdoor_tutorial", DisplayName = "Grove of Spirits Door" }},
+        {"Lost Cemetery Door", new KeyItem { UniqueId = "sdoor_graveyard", DisplayName = "Lost Cemetery Door" }},
+        {"Stranded Sailor Door", new KeyItem { UniqueId = "sdoor_sailor", DisplayName = "Stranded Sailor Door" }},
+        {"Castle Lockstone Door", new KeyItem { UniqueId = "sdoor_fortress", DisplayName = "Castle Lockstone Door" }},
+        {"Camp of the Free Crows Door", new KeyItem { UniqueId = "sdoor_covenant", DisplayName = "Camp of the Free Crows Door" }},
+        {"Old Watchtowers Door", new KeyItem { UniqueId = "sdoor_mountaintops", DisplayName = "Old Watchtowers Door" }},
+        {"Betty's Lair Door", new KeyItem { UniqueId = "sdoor_betty", DisplayName = "Betty's Lair Door" }},
+        {"Overgrown Ruins Door", new KeyItem { UniqueId = "sdoor_forest", DisplayName = "Overgrown Ruins Door" }},
+        {"Mushroom Dungeon Door", new KeyItem { UniqueId = "sdoor_forest_dung", DisplayName = "Mushroom Dungeon Door" }},
+        {"Flooded Fortress Door", new KeyItem { UniqueId = "sdoor_swamp", DisplayName = "Flooded Fortress Door" }},
+        {"Throne of the Frog King Door", new KeyItem { UniqueId = "sdoor_frogboss", DisplayName = "Throne of the Frog King Door" }},
+        {"Estate of the Urn Witch Door", new KeyItem { UniqueId = "sdoor_gardens", DisplayName = "Estate of the Urn Witch Door" }},
+        {"Ceramic Manor Door", new KeyItem { UniqueId = "sdoor_mansion", DisplayName = "Ceramic Manor Door" }},
+        {"Inner Furnace Door", new KeyItem { UniqueId = "sdoor_basementromp", DisplayName = "Inner Furnace Door" }},
+        {"The Urn Witch's Laboratory Door", new KeyItem { UniqueId = "sdoor_grandmaboss", DisplayName = "The Urn Witch's Laboratory Door" }},
     };
 
     public static Item Item(string name)

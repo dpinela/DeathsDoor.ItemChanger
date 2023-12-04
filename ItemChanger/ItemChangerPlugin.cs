@@ -16,18 +16,7 @@ internal class ItemChangerPlugin : Bep.BaseUnityPlugin
         SaveFile.OnNewGame += () =>
         {
             var placements = SaveFile.CurrentData!.Placements;
-            placements.Add(new() { LocationName = "Discarded_Umbrella", ItemName = "Hookshot" });
-            placements.Add(new() { LocationName = "100_Souls-Hall_of_Doors_(Hookshot_Secret)", ItemName = "Hookshot" });
-            placements.Add(new() { LocationName = "Frog_King", ItemName = "Giant_Soul_of_Betty" });
-            placements.Add(new() { LocationName = "Hookshot_Avarice", ItemName = "Giant_Soul_of_The_Frog_King" });
-            placements.Add(new() { LocationName = "Magic_Shrine_(Forest_Turn_Cam)", ItemName = "Giant_Soul_of_The_Urn_Witch" });
-            placements.Add(new() { LocationName = "Hookshot_Silent_Servant", ItemName = "Fire" });
-            placements.Add(new() { LocationName = "Hookshot_Silent_Servant_Lever", ItemName = "Fire" });
-            placements.Add(new() { LocationName = "Seed-Stranded_Sailor_(Cave)", ItemName = "Hookshot_Silent_Servant_Lever" });
-            placements.Add(new() { LocationName = "Greatsword_Lever", ItemName = "Stranded_Sailor_Upper_Shrine_Lever" });
-            placements.Add(new() { LocationName = "Seed-Stranded Sailor_(Mountain)", ItemName = "Greatsword_Lever" });
-            placements.Add(new() { LocationName = "Grove_of_Spirits_Door", ItemName = "Mushroom_Dungeon_Door" });
-            placements.Add(new() { LocationName = "Mushroom_Dungeon_Door", ItemName = "Grove_of_Spirits_Door" });
+            placements.Add(new() { LocationName = "Discarded Umbrella", ItemName = "Hookshot" });
         };
         SaveFile.OnLoadGame += () =>
         {
