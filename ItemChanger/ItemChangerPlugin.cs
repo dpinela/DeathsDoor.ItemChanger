@@ -3,7 +3,7 @@ using Collections = System.Collections.Generic;
 using Bep = BepInEx;
 using HL = HarmonyLib;
 
-namespace DDoorItemChanger;
+namespace DeathsDoor.ItemChanger;
 
 [Bep.BepInPlugin("deathsdoor.itemchanger", "ItemChanger", "1.0.0.0")]
 internal class ItemChangerPlugin : Bep.BaseUnityPlugin

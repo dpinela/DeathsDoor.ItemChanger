@@ -1,6 +1,6 @@
 using Collections = System.Collections.Generic;
 
-namespace DDoorItemChanger;
+namespace DeathsDoor.ItemChanger;
 
 public static class Predefined
 {

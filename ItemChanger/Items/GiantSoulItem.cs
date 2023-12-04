@@ -1,4 +1,4 @@
-namespace DDoorItemChanger;
+namespace DeathsDoor.ItemChanger;
 
 internal class GiantSoulItem : Item
 {

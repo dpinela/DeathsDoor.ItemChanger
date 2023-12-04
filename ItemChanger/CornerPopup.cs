@@ -1,7 +1,7 @@
 using System;
 using UE = UnityEngine;
 
-namespace DDoorItemChanger;
+namespace DeathsDoor.ItemChanger;
 
 public class CornerPopup
 {

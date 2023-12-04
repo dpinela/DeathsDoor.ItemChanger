@@ -1,4 +1,4 @@
-namespace DDoorItemChanger;
+namespace DeathsDoor.ItemChanger;
 
 public interface Item
 {

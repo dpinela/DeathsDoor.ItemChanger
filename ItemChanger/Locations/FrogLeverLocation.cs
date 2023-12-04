@@ -1,7 +1,7 @@
 using HL = HarmonyLib;
 using UE = UnityEngine;
 
-namespace DDoorItemChanger;
+namespace DeathsDoor.ItemChanger;
 
 internal class FrogLeverLocation : Location
 {

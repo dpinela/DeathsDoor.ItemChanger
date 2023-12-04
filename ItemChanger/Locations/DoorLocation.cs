@@ -1,6 +1,6 @@
 using HL = HarmonyLib;
 
-namespace DDoorItemChanger;
+namespace DeathsDoor.ItemChanger;
 
 internal class DoorLocation : Location
 {

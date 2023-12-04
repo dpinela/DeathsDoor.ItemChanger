@@ -4,7 +4,7 @@ using HL = HarmonyLib;
 // Cutscene.AddItem soul_gran, soul_frog, soul_yeti
 // Cutscene.UnlockPower
 // ShortcutDoor.Trigger
-namespace DDoorItemChanger;
+namespace DeathsDoor.ItemChanger;
 
 internal class CutsceneItemLocation : Location
 {
