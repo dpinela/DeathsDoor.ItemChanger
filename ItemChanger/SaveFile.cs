@@ -15,7 +15,6 @@ internal class SaveFile
 
     public static SaveData? CurrentData => current?.data;
 
-    public static event System.Action? OnNewGame;
     public static event System.Action? OnLoadGame;
 
     public SaveFile(string saveId)
@@ -68,7 +67,7 @@ internal class SaveFile
             
             if (!__instance.saveFile.IsLoaded())
             {
-                OnNewGame?.Invoke();
+                altGameModes[selectedGameMode].Effect();
             }
             OnLoadGame?.Invoke();
         }
@@ -104,6 +103,41 @@ internal class SaveFile
                     return;
                 }
                 SaveFile.current.Save();
+            }
+        }
+    }
+
+    private struct AltGameMode
+    {
+        internal string Name;
+        internal System.Action Effect;
+    }
+
+    private static readonly Collections.List<AltGameMode> altGameModes = new()
+    {
+        new() {Name = "START", Effect = () => {}}
+    };
+
+    private static int selectedGameMode = 0;
+
+    public static void AddGameMode(string name, System.Action effect)
+    {
+        altGameModes.Add(new() { Name = name, Effect = effect });
+    }
+
+    [HL.HarmonyPatch(typeof(UIObject), nameof(UIObject.onRightEvent))]
+    private static class AltGameModePatch
+    {
+        private static void Postfix(UIObject __instance)
+        {
+            if (!(__instance is SaveMenu sm))
+            {
+                return;
+            }
+            if (sm.selectedSlot && sm.optionIndex == 0)
+            {
+                selectedGameMode = (selectedGameMode + 1) % altGameModes.Count;
+                sm.selectedOptions[0].buttonText.text = altGameModes[selectedGameMode].Name;
             }
         }
     }
