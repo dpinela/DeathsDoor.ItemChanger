@@ -13,16 +13,16 @@ internal class ItemChangerPlugin : Bep.BaseUnityPlugin
     public void Start()
     {
         Instance = this;
-        SaveFile.AddGameMode("START SPECIAL MODE", () =>
-        {
-            var placements = SaveFile.CurrentData!.Placements;
-            placements.Add(new() { LocationName = "Discarded Umbrella", ItemName = "Hookshot" });
-        });
-        SaveFile.OnLoadGame += () =>
+        SaveData.OnLoadGame += () =>
         {
             activePlacements.Clear();
 
-            foreach (var p in SaveFile.CurrentData!.Placements)
+            if (SaveData.current == null)
+            {
+                return;
+            }
+
+            foreach (var p in SaveData.current.Placements)
             {
                 var loc = Predefined.Location(p.LocationName);
                 var item = Predefined.Item(p.ItemName);
