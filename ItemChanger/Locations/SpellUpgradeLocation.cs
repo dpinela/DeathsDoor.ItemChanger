@@ -1,6 +1,6 @@
 using HL = HarmonyLib;
 
-namespace DeathsDoor.ItemChanger;
+namespace DDoor.ItemChanger;
 
 internal class SpellUpgradeLocation : Location
 {

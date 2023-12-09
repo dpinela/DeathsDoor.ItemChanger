@@ -1,4 +1,4 @@
-namespace DeathsDoor.ItemChanger;
+namespace DDoor.ItemChanger;
 
 internal static class SpeechPopup
 {

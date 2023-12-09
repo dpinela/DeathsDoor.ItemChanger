@@ -1,4 +1,4 @@
-namespace DeathsDoor.ItemChanger;
+namespace DDoor.ItemChanger;
 
 public class BombItem : Item
 {

@@ -4,7 +4,7 @@ using Json = Newtonsoft.Json;
 using UE = UnityEngine;
 using HL = HarmonyLib;
 
-namespace DeathsDoor.ItemChanger;
+namespace DDoor.ItemChanger;
 
 public class SaveData
 {

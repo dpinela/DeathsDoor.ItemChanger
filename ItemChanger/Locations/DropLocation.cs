@@ -3,7 +3,7 @@ using SysDiag = System.Diagnostics;
 using HL = HarmonyLib;
 using UE = UnityEngine;
 
-namespace DeathsDoor.ItemChanger;
+namespace DDoor.ItemChanger;
 
 public class DropLocation : Location
 {

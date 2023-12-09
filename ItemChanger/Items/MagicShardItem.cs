@@ -1,4 +1,4 @@
-namespace DeathsDoor.ItemChanger;
+namespace DDoor.ItemChanger;
 
 internal class MagicShardItem : Item
 {

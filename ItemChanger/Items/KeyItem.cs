@@ -2,7 +2,7 @@ using Collections = System.Collections.Generic;
 using UE = UnityEngine;
 using HL = HarmonyLib;
 
-namespace DeathsDoor.ItemChanger;
+namespace DDoor.ItemChanger;
 
 internal class KeyItem : Item
 {

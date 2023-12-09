@@ -1,7 +1,7 @@
 using HL = HarmonyLib;
 using UE = UnityEngine;
 
-namespace DeathsDoor.ItemChanger;
+namespace DDoor.ItemChanger;
 
 internal class IronLeverLocation : Location
 {
