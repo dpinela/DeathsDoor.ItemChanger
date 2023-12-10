@@ -9,50 +9,6 @@ public class DropLocation : Location
 {
     public string UniqueId { get; set; } = "";
 
-    [HL.HarmonyPatch(typeof(GameSave), nameof(GameSave.SetKeyState))]
-    internal static class SKSPatch
-    {
-        internal static void Postfix(string id, bool state, bool save)
-        {
-            var st = new SysDiag.StackTrace(true);
-            ItemChangerPlugin.LogInfo($"SET {id} = {state}");
-            ItemChangerPlugin.LogInfo($"FROM: {st}");
-        }
-    }
-
-    [HL.HarmonyPatch(typeof(GameSave), nameof(GameSave.AddToCountKey))]
-    internal static class ATCKPatch
-    {
-        internal static void Postfix(string id, int quantity)
-        {
-            var st = new SysDiag.StackTrace(true);
-            ItemChangerPlugin.LogInfo($"INC {id} += {quantity}");
-            ItemChangerPlugin.LogInfo($"FROM: {st}");
-        }
-    }
-
-    [HL.HarmonyPatch(typeof(GameSave), nameof(GameSave.IncreaseCountKey))]
-    internal static class ICKPatch
-    {
-        internal static void Postfix(string id, int value)
-        {
-            var st = new SysDiag.StackTrace(true);
-            ItemChangerPlugin.LogInfo($"INC {id} += {value}");
-            ItemChangerPlugin.LogInfo($"FROM: {st}");
-        }
-    }
-
-    [HL.HarmonyPatch(typeof(GameSave), nameof(GameSave.SetCountKey))]
-    internal static class SCKPatch
-    {
-        internal static void Postfix(string id, int value)
-        {
-            var st = new SysDiag.StackTrace(true);
-            ItemChangerPlugin.LogInfo($"SET {id} = {value}");
-            ItemChangerPlugin.LogInfo($"FROM: {st}");
-        }
-    }
-
     [HL.HarmonyPatch(typeof(DropItem), nameof(DropItem.Start))]
     internal static class StartPatch
     {
