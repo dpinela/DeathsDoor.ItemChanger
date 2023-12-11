@@ -28,7 +28,7 @@ public static class Predefined
 
         // Shrines
         {"Heart Shrine-Cemetery Behind Entrance", new ShrineLocation { UniqueId = "shrine_graveyardhookshot" }},
-        {"Magic Shrine-Cemetery After Smough Arena ", new ShrineLocation { UniqueId = "shrine_graveyardbomb" }},
+        {"Magic Shrine-Cemetery After Smough Arena", new ShrineLocation { UniqueId = "shrine_graveyardbomb" }},
         {"Heart Shrine-Cemetery Winding Bridge End", new ShrineLocation { UniqueId = "shrine_graveyardturncam" }},
         {"Heart Shrine-Hookshot Arena", new ShrineLocation { UniqueId = "shrine_sailorhookshot" }},
         {"Magic Shrine-Sailor Turncam", new ShrineLocation { UniqueId = "shrine_sailorturncam" }},
