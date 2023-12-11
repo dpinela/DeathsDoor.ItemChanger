@@ -1,4 +1,5 @@
 using Collections = System.Collections.Generic;
+using CA = System.Diagnostics.CodeAnalysis;
 
 namespace DDoor.ItemChanger;
 
@@ -269,10 +270,8 @@ public static class Predefined
         {"The Urn Witch's Laboratory Door", new DoorLocation { KeyId = "sdoor_grandmaboss" }},
     };
 
-    public static Location Location(string name)
-    {
-        return predefinedLocations[name];
-    }
+    public static bool TryGetLocation(string name, [CA.NotNullWhen(true)] out Location? loc) =>
+        predefinedLocations.TryGetValue(name, out loc);
 
     private static readonly Collections.Dictionary<string, Item> predefinedItems = new()
     {
@@ -565,8 +564,6 @@ public static class Predefined
         {"The Urn Witch's Laboratory Door", new KeyItem { UniqueId = "sdoor_grandmaboss", DisplayName = "The Urn Witch's Laboratory Door" }},
     };
 
-    public static Item Item(string name)
-    {
-        return predefinedItems[name];
-    }
+    public static bool TryGetItem(string name, [CA.NotNullWhen(true)] out Item? item) =>
+        predefinedItems.TryGetValue(name, out item);
 }

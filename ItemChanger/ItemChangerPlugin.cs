@@ -24,9 +24,21 @@ internal class ItemChangerPlugin : Bep.BaseUnityPlugin
 
             foreach (var p in SaveData.current.Placements)
             {
-                var loc = Predefined.Location(p.LocationName);
-                var item = Predefined.Item(p.ItemName);
-                activePlacements[(loc.GetType(), loc.UniqueId)] = item;
+                var locOK = Predefined.TryGetLocation(p.LocationName, out var loc);
+                var itemOK = Predefined.TryGetItem(p.ItemName, out var item);
+                if (!locOK)
+                {
+                    Logger.LogError($"location {p.LocationName} does not exist");
+                }
+                if (!itemOK)
+                {
+                    Logger.LogError($"item {p.ItemName} does not exist");
+                }
+                if (itemOK && locOK)
+                {
+                    // The compiler can't tell, but loc and item are guaranteed non-null at this point.
+                    activePlacements[(loc!.GetType(), loc!.UniqueId)] = item!;
+                }
             }
         };
         new HL.Harmony("deathsdoor.itemchanger").PatchAll();
