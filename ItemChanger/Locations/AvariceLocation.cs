@@ -51,7 +51,7 @@ internal class AvariceLocation : Location
                 case "gift_hookshot":
                     ModifyAvaricePopup("hookshot");
                     break;
-                case "gift_bombs":
+                case "gift_bomb":
                     ModifyAvaricePopup("bombs");
                     break;
                 case "gift_fire":
