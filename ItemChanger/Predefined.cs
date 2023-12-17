@@ -450,7 +450,7 @@ public static class Predefined
         {"Life Seed", SeedItem.Instance},
 
         // Soul Orbs
-        {"100_Souls", new SoulsItem { Amount = 100 }},
+        {"100 Souls", new SoulsItem { Amount = 100 }},
 
         // Tablets
         {"Red Ancient Tablet of Knowledge", new CountableInventoryItem {

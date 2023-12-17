@@ -12,27 +12,64 @@ internal class FrogLeverLocation : Location
     [HL.HarmonyPatch(typeof(FrogLever), nameof(FrogLever.Start))]
     private static class StartPatch
     {
-        private static void Prefix(FrogLever __instance, out string __state)
+        private static void Prefix(FrogLever __instance, out string? __state)
         {
             var key = __instance.GetComponent<BaseKey>();
-            __state = key.uniqueId;
-            if (ItemChangerPlugin.TryGetPlacedItem(typeof(FrogLeverLocation), key.uniqueId, out var _))
+            SwapLeverKey(key, out __state);
+        }
+
+        private static void Postfix(FrogLever __instance, string? __state)
+        {
+            if (__state != null)
             {
-                // We need to distinguish "having pulled the lever"
-                // from "having opened the gate". The former switches to using
-                // a prefixed key, the latter sticks with the vanilla one.
-                key.uniqueId = keyPrefix + key.uniqueId;
-                // Every time we change the uniqueId of a BaseKey we must reload
-                // its state, as the BaseKey object stores a copy of it after
-                // it loads.
-                key.loadState();
+                __instance.key.uniqueId = __state;
+                __instance.key.loadState();
+            }
+        }
+    }
+
+    [HL.HarmonyPatch(typeof(FrogLever), nameof(FrogLever.OnEnable))]
+    private static class OnEnablePatch
+    {
+        private static void Prefix(FrogLever __instance, out string? __state)
+        {
+            if (__instance.key == null)
+            {
+                __state = null;
+            }
+            else
+            {
+                SwapLeverKey(__instance.key, out __state);
             }
         }
 
-        private static void Postfix(FrogLever __instance, string __state)
+        private static void Postfix(FrogLever __instance, string? __state)
         {
-            __instance.key.uniqueId = __state;
-            __instance.key.loadState();
+            if (__state != null)
+            {
+                __instance.key.uniqueId = __state;
+                __instance.key.loadState();
+            }
+        }
+    }
+
+    private static void SwapLeverKey(BaseKey leverKey, out string? origKeyName)
+    {
+        if (ItemChangerPlugin.TryGetPlacedItem(typeof(FrogLeverLocation), leverKey.uniqueId, out var _))
+        {
+            origKeyName = leverKey.uniqueId;
+            // We need to distinguish "having pulled the lever"
+            // from "having opened the gate". The former switches to using
+            // a prefixed key, the latter sticks with the vanilla one.
+            leverKey.uniqueId = keyPrefix + leverKey.uniqueId;
+            // Every time we change the uniqueId of a BaseKey we must reload
+            // its state, as the BaseKey object stores a copy of it after
+            // it loads.
+            leverKey.loadState();
+        }
+        else
+        {
+            origKeyName = null;
         }
     }
 
