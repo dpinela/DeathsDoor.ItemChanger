@@ -1,6 +1,6 @@
 using Collections = System.Collections.Generic;
-using SysDiag = System.Diagnostics;
 using HL = HarmonyLib;
+using static HarmonyLib.CodeInstructionExtensions;
 using UE = UnityEngine;
 
 namespace DDoor.ItemChanger;
@@ -51,5 +51,39 @@ public class DropLocation : Location
 
             return false;
         }
+    }
+
+    // The condition for opening the belltower door is normally having
+    // checked the Rusty Belltower Key location; but if an item has been
+    // placed there, this becomes incorrect.
+    // Change the condition to check for the actual key item instead.
+    [HL.HarmonyPatch(typeof(BelltowerDoor), nameof(BelltowerDoor.Trigger))]
+    private static class BelltowerDoorPatch
+    {
+        private static Collections.IEnumerable<HL.CodeInstruction> Transpiler(
+            Collections.IEnumerable<HL.CodeInstruction> orig)
+        {
+            var isKeyUnlocked = typeof(GameSave).GetMethod(nameof(GameSave.IsKeyUnlocked));
+            foreach (var insn in orig)
+            {
+                yield return insn;
+                
+                // If an item has been placed at the Rusty Belltower Key
+                // location, the condition
+                if (insn.Calls(isKeyUnlocked))
+                {
+                    yield return HL.CodeInstruction.CallClosure((System.Func<bool, bool>)ChangeBelltowerDoorCondition);
+                }
+            }
+        }
+    }
+
+    private static bool ChangeBelltowerDoorCondition(bool shouldOpen)
+    {
+        if (!ItemChangerPlugin.TryGetPlacedItem(typeof(DropLocation), "trinket_rusty_key", out var _))
+        {
+            return shouldOpen;
+        }
+        return GameSave.GetSaveData().GetCountKey("trinket_rusty_key") > 0;
     }
 }
