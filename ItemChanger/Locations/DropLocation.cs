@@ -68,8 +68,6 @@ public class DropLocation : Location
             {
                 yield return insn;
                 
-                // If an item has been placed at the Rusty Belltower Key
-                // location, the condition
                 if (insn.Calls(isKeyUnlocked))
                 {
                     yield return HL.CodeInstruction.CallClosure((System.Func<bool, bool>)ChangeBelltowerDoorCondition);

@@ -1,5 +1,7 @@
 using HL = HarmonyLib;
-using USM = UnityEngine.SceneManagement;
+using RefEmit = System.Reflection.Emit;
+using static HarmonyLib.CodeInstructionExtensions;
+using Collections = System.Collections.Generic;
 
 namespace DDoor.ItemChanger;
 
@@ -10,6 +12,9 @@ internal class DoorLocation : Location
     public string UniqueId => KeyId;
 
     private const string keyPrefix = "ItemChanger-collected_door_location_";
+    private const string dfsKey = "bosskill_forestmother";
+    private const string dfsAltKey = "ItemChanger-DFS_killed";
+    private const string groveDoorKey = "sdoor_tutorial";
 
     [HL.HarmonyPatch(typeof(ShortcutDoor), nameof(ShortcutDoor.Trigger))]
     private static class TriggerPatch
@@ -32,11 +37,31 @@ internal class DoorLocation : Location
             // has been applied - then you should also check isHub here.
 
             var collectedKey = keyPrefix + __instance.keyId;
-            if (!GameSave.GetSaveData().IsKeyUnlocked(collectedKey))
+            var save = GameSave.GetSaveData();
+            if (!save.IsKeyUnlocked(collectedKey))
             {
-                GameSave.GetSaveData().SetKeyState(collectedKey, true);
+                save.SetKeyState(collectedKey, true);
                 CornerPopup.Show(item.DisplayName);
                 item.Trigger();
+
+                // Darwin normally only wakes up after defeating DFS.
+                // If the Grove of Spirits door is replaced by something
+                // else, this is problematic as it prevents the player from
+                // upgrading stats until potentially much later in the game.
+                //
+                // It would be preferrable to directly patch whatever is
+                // making the decision to wake Darwin up, but it has been
+                // very difficult to locate the exact object that does it.
+                //
+                // We set these keys after the Grove of Spirits door check
+                // because setting the DFS one earlier also disables the
+                // Chandler cutscene, which triggers the check in the first
+                // place.
+                if (__instance.keyId == groveDoorKey)
+                {
+                    save.SetKeyState("shop_prompted", true);
+                    save.SetKeyState(dfsKey, true);
+                }
             }
 
             // If the door is already open, allow you to go through it anyway.
@@ -61,23 +86,45 @@ internal class DoorLocation : Location
         }
     }
 
-    // Darwin normally only wakes up after defeating DFS.
-    // If the Grove of Spirits door is replaced by something else,
-    // this is problematic as it prevents the player from upgrading stats
-    // until potentially much later in the game.
-    [HL.HarmonyPatch(typeof(GameSave), nameof(GameSave.IsKeyUnlocked))]
-    private static class DarwinPatch
+    // Since we are using the DFS flag for its side effects above,
+    // we must use a different one for the primary purpose of recording
+    // whether DFS herself has actually been killed.
+    [HL.HarmonyPatch(typeof(ForestMother), nameof(ForestMother.Start))]
+    private static class DFSStartPatch
     {
-        private static void Postfix(string id, ref bool __result)
+        private static Collections.IEnumerable<HL.CodeInstruction> Transpiler(
+            Collections.IEnumerable<HL.CodeInstruction> orig)
         {
-            var shouldAct =
-                !__result &&
-                GameSceneManager.currentScene == "lvl_HallOfDoors" &&
-                id == "bosskill_forestmother" &&
-                ItemChangerPlugin.TryGetPlacedItem(typeof(DoorLocation), "sdoor_tutorial", out var _);
-            if (shouldAct)
+            foreach (var insn in orig)
             {
-                __result = true;
+                yield return insn;
+
+                if (insn.Is(RefEmit.OpCodes.Ldstr, dfsKey))
+                {
+                    yield return HL.CodeInstruction.CallClosure(
+                        (System.Func<string, string>)ChangeDFSStartCondition);
+                }
+            }
+        }
+    }
+
+    private static string ChangeDFSStartCondition(string cond)
+    {
+        if (!ItemChangerPlugin.TryGetPlacedItem(typeof(DoorLocation), groveDoorKey, out var _))
+        {
+            return cond;
+        }
+        return dfsAltKey;
+    }
+
+    [HL.HarmonyPatch(typeof(ForestMother), nameof(ForestMother.OnDeath))]
+    private static class DFSEndPatch
+    {
+        private static void Postfix()
+        {
+            if (ItemChangerPlugin.TryGetPlacedItem(typeof(DoorLocation), groveDoorKey, out var _))
+            {
+                GameSave.GetSaveData().SetKeyState(dfsAltKey, true);
             }
         }
     }
