@@ -1,4 +1,5 @@
 using HL = HarmonyLib;
+using USM = UnityEngine.SceneManagement;
 
 namespace DDoor.ItemChanger;
 
@@ -56,6 +57,27 @@ internal class DoorLocation : Location
             if (!__instance.unlocked && GameSave.GetSaveData().IsKeyUnlocked(__instance.keyId))
             {
                 TriggerPatch.OrigTrigger(__instance);
+            }
+        }
+    }
+
+    // Darwin normally only wakes up after defeating DFS.
+    // If the Grove of Spirits door is replaced by something else,
+    // this is problematic as it prevents the player from upgrading stats
+    // until potentially much later in the game.
+    [HL.HarmonyPatch(typeof(GameSave), nameof(GameSave.IsKeyUnlocked))]
+    private static class DarwinPatch
+    {
+        private static void Postfix(string id, ref bool __result)
+        {
+            var shouldAct =
+                !__result &&
+                GameSceneManager.currentScene == "lvl_HallOfDoors" &&
+                id == "bosskill_forestmother" &&
+                ItemChangerPlugin.TryGetPlacedItem(typeof(DoorLocation), "sdoor_tutorial", out var _);
+            if (shouldAct)
+            {
+                __result = true;
             }
         }
     }
