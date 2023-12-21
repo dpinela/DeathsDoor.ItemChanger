@@ -1,9 +1,6 @@
 using Collections = System.Collections.Generic;
 using HL = HarmonyLib;
 
-// Cutscene.AddItem soul_gran, soul_frog, soul_yeti
-// Cutscene.UnlockPower
-// ShortcutDoor.Trigger
 namespace DDoor.ItemChanger;
 
 internal class CutsceneItemLocation : Location
