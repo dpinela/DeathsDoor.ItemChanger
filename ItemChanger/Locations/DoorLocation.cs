@@ -128,4 +128,26 @@ internal class DoorLocation : Location
             }
         }
     }
+
+    // When certain doors and lever locations are replaced by other items,
+    // door overrides - like the one at the entrances to Flooded Fortress or
+    // to the passageway to Stranded Sailor - may softlock the player as
+    // they cannot return to their last open door, due to lacking some of
+    // the items they would normally be expected to have.
+    [HL.HarmonyPatch(typeof(DoorOverrider), nameof(DoorOverrider.activate))]
+    private static class SpawnPointPatch
+    {
+        private static bool Prefix(DoorOverrider __instance)
+        {
+            // Technically we could check for specific combinations of
+            // doors and levers that make certain overrides non-viable,
+            // but that would be a lot of effort for little benefit.
+            if (ItemChangerPlugin.AnyItemsPlaced && __instance.keyId != "bus_overridespawn")
+            {
+                ItemChangerPlugin.LogInfo($"NOT setting override door: {__instance.keyId}");
+                return false;
+            }
+            return true;
+        }
+    }
 }

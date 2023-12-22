@@ -56,6 +56,9 @@ internal class ItemChangerPlugin : Bep.BaseUnityPlugin
         return Instance.activePlacements.TryGetValue((locationType, id), out item);
     }
 
+    internal static bool AnyItemsPlaced =>
+        Instance != null && Instance.activePlacements.Count != 0;
+
     internal static void LogInfo(string msg)
     {
         if (Instance != null)
