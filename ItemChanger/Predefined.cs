@@ -193,7 +193,9 @@ public static class Predefined
         {"Cyan Ancient Tablet of Knowledge", new DropLocation { UniqueId = "truthtablet_4" }},
         {"Blue Ancient Tablet of Knowledge", new DropLocation { UniqueId = "truthtablet_5" }},
         {"Purple Ancient Tablet of Knowledge", new DropLocation { UniqueId = "truthtablet_6" }},
-        {"Pink Ancient Tablet of Knowledge", new DropLocation { UniqueId = "truthtablet_7" }},
+        {"Estate Owl", new DropLocation { UniqueId = "truthshard_1" }},
+        {"Ruins Owl", new DropLocation { UniqueId = "truthshard_2" }},
+        {"Watchtowers Owl", new DropLocation { UniqueId = "truthshard_3" }},
 
         // Levers
         {"Bomb Exit Lever", new FrogLeverLocation { UniqueId = "hod_frog_lever" }},
