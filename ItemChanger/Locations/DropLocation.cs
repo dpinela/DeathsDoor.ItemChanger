@@ -84,4 +84,52 @@ public class DropLocation : Location
         }
         return GameSave.GetSaveData().GetCountKey("trinket_rusty_key") > 0;
     }
+    
+    // The Truth shrine normally lights up according to which tablet
+    // locations have been checked.
+    // This becomes incorrect if other items have been placed there, or
+    // at the owls; change it to check for the actual items instead.
+    [HL.HarmonyPatch(typeof(TruthShrine), nameof(TruthShrine.Start))]
+    private static class TruthShrinePatch
+    {
+        private static Collections.IEnumerable<HL.CodeInstruction> Transpiler(
+            Collections.IEnumerable<HL.CodeInstruction> orig)
+        {
+            var isKeyUnlocked = typeof(GameSave).GetMethod(nameof(GameSave.IsKeyUnlocked));
+            foreach (var insn in orig)
+            {
+                if (insn.Calls(isKeyUnlocked))
+                {
+                    yield return HL.CodeInstruction.CallClosure((System.Func<GameSave, string, bool>)IsTruthShrineKeyUnlocked);
+                }
+                else
+                {
+                    yield return insn;
+                }
+            }
+        }
+    }
+
+    private static bool IsTruthShrineKeyUnlocked(GameSave save, string key)
+    {
+        // Should never happen unless someone else patches TruthShrine.Start.
+        if (key.Length < 5)
+        {
+            return save.IsKeyUnlocked(key);
+        }
+        var sk = key.Substring(5); // cut off "drop_" prefix
+        var cond = sk == "truthtablet_7" ?
+            IsAnyOwlReplaced() :
+            ItemChangerPlugin.TryGetPlacedItem(typeof(DropLocation), sk, out var _);
+        if (cond)
+        {
+            return save.GetCountKey(sk) > 0;
+        }
+        return save.IsKeyUnlocked(key);
+    }
+
+    private static bool IsAnyOwlReplaced() =>
+        ItemChangerPlugin.TryGetPlacedItem(typeof(DropLocation), "truthshard_1", out var _) ||
+        ItemChangerPlugin.TryGetPlacedItem(typeof(DropLocation), "truthshard_2", out var _) ||
+        ItemChangerPlugin.TryGetPlacedItem(typeof(DropLocation), "truthshard_3", out var _);
 }
