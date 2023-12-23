@@ -142,7 +142,9 @@ internal class DoorLocation : Location
             // Technically we could check for specific combinations of
             // doors and levers that make certain overrides non-viable,
             // but that would be a lot of effort for little benefit.
-            if (ItemChangerPlugin.AnyItemsPlaced && __instance.keyId != "bus_overridespawn")
+            if (ItemChangerPlugin.AnyItemsPlaced && 
+                __instance.keyId != "bus_overridespawn" &&
+                __instance.keyId != "lod_gauntlet_spawn_over")
             {
                 ItemChangerPlugin.LogInfo($"NOT setting override door: {__instance.keyId}");
                 return false;
