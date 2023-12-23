@@ -132,4 +132,53 @@ public class DropLocation : Location
         ItemChangerPlugin.TryGetPlacedItem(typeof(DropLocation), "truthshard_1", out var _) ||
         ItemChangerPlugin.TryGetPlacedItem(typeof(DropLocation), "truthshard_2", out var _) ||
         ItemChangerPlugin.TryGetPlacedItem(typeof(DropLocation), "truthshard_3", out var _);
+    
+    private const string forestHornKey = "trinket_basoon";
+    private const string locketKey = "trinket_locket";
+
+    // The Steadhone door normally checks for the Locket location instead of
+    // the item.
+    [HL.HarmonyPatch(typeof(CutsceneControl), nameof(CutsceneControl.check))]
+    private static class SteadhoneDoorPatch
+    {
+        private static bool Prefix(CutsceneControl __instance)
+        {
+            if (!(__instance.gameObject.name == "GD_NIGHT" &&
+                  ItemChangerPlugin.TryGetPlacedItem(typeof(DropLocation), locketKey, out var _)))
+            {
+                return true;
+            }
+
+            if (GameSave.GetSaveData().GetCountKey(locketKey) > 0)
+            {
+                var s = __instance.stages[0];
+                s.triggerEvent?.Invoke();
+                // We know turnOff and turnOn aren't null for this particular
+                // object.
+                s.turnOff.SetActive(false);
+                s.turnOn.SetActive(true);
+                // Not strictly necessary, but might as well, just in case
+                s.used = true;
+            }
+            return false;
+        }
+    }
+
+    // The same applies for the Magical Forest Horn interaction.
+    [HL.HarmonyPatch(typeof(BaseLock), nameof(BaseLock.KeysAreUnlocked))]
+    private static class ForestHornPatch
+    {
+        private static bool Prefix(BaseLock __instance, ref bool __result)
+        {
+            if (__instance is ActivationLock &&
+                __instance.key.Length == 1 &&
+                __instance.key[0].uniqueId == "drop_trinket_basoon" &&
+                ItemChangerPlugin.TryGetPlacedItem(typeof(DropLocation), forestHornKey, out var _))
+            {
+                __result = GameSave.GetSaveData().GetCountKey(forestHornKey) > 0;
+                return false;
+            }
+            return true;
+        }
+    }
 }
