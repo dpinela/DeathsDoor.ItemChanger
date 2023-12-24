@@ -27,12 +27,8 @@ internal class AvariceLocation : Location
     {
         private static void Prefix(NPCCharacter __instance)
         {
-            if (__instance.cutscene == null)
-            {
-                return;
-            }
-            var key = __instance.cutscene.GetComponent<BaseKey>();
-            if (key == null)
+            if (__instance.cutscene == null ||
+                __instance.speech_id.Length != 1)
             {
                 return;
             }
@@ -45,16 +41,15 @@ internal class AvariceLocation : Location
                 }
             }
 
-
-            switch (key.uniqueId)
+            switch (__instance.speech_id[0].id)
             {
-                case "gift_hookshot":
+                case "avarice_hookshot":
                     ModifyAvaricePopup("hookshot");
                     break;
-                case "gift_bomb":
+                case "avarice_bombs":
                     ModifyAvaricePopup("bombs");
                     break;
-                case "gift_fire":
+                case "avarice_fire":
                     ModifyAvaricePopup("fire");
                     break;
             }
