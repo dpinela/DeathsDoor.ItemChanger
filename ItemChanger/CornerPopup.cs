@@ -43,6 +43,7 @@ public class CornerPopup
         counter.showTimer = 0;
         counter.name = "IC-CornerPopup";
         counter.id = "IC-CornerPopup";
+        counter.counter.fontSize = 24;
         counter.enabled = true;
         var cs = origCounter.gameObject.transform.parent.gameObject;
         var rt = cs.GetComponent<UE.RectTransform>();
@@ -58,6 +59,7 @@ public class CornerPopup
     internal void ShowMessage(string s)
     {
         counter.counter.text = s;
+        counter.addText.text = "";
         if (counter.IsShowing())
         {
             counter.ResetShowTimer(DisplayTime);
