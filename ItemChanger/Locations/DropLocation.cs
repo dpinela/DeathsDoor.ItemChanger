@@ -1,4 +1,5 @@
 using Collections = System.Collections.Generic;
+using Reflection = System.Reflection;
 using HL = HarmonyLib;
 using static HarmonyLib.CodeInstructionExtensions;
 using UE = UnityEngine;
@@ -165,9 +166,15 @@ public class DropLocation : Location
     }
 
     // The same applies for the Magical Forest Horn interaction.
-    [HL.HarmonyPatch(typeof(BaseLock), nameof(BaseLock.KeysAreUnlocked))]
+    [HL.HarmonyPatch]
     private static class ForestHornPatch
     {
+        private static Collections.IEnumerable<Reflection.MethodInfo> TargetMethods()
+        {
+            yield return typeof(BaseLock).GetMethod(nameof(BaseLock.KeysAreUnlocked));
+            yield return typeof(BaseLock).GetMethod(nameof(BaseLock.KeysAreUnlockedImmediate));
+        }
+
         private static bool Prefix(BaseLock __instance, ref bool __result)
         {
             if (__instance is ActivationLock &&
