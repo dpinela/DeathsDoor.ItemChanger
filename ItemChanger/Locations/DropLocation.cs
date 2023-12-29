@@ -77,13 +77,18 @@ public class DropLocation : Location
         }
     }
 
+    private const string forestHornKey = "trinket_basoon";
+    private const string locketKey = "trinket_locket";
+    private const string teddyKey = "trinket_teddy";
+    private const string belltowerKey = "trinket_rusty_key";
+
     private static bool ChangeBelltowerDoorCondition(bool shouldOpen)
     {
-        if (!ItemChangerPlugin.TryGetPlacedItem(typeof(DropLocation), "trinket_rusty_key", out var _))
+        if (!ItemChangerPlugin.TryGetPlacedItem(typeof(DropLocation), belltowerKey, out var _))
         {
             return shouldOpen;
         }
-        return GameSave.GetSaveData().GetCountKey("trinket_rusty_key") > 0;
+        return GameSave.GetSaveData().GetCountKey(belltowerKey) > 0;
     }
     
     // The Truth shrine normally lights up according to which tablet
@@ -133,9 +138,6 @@ public class DropLocation : Location
         ItemChangerPlugin.TryGetPlacedItem(typeof(DropLocation), "truthshard_1", out var _) ||
         ItemChangerPlugin.TryGetPlacedItem(typeof(DropLocation), "truthshard_2", out var _) ||
         ItemChangerPlugin.TryGetPlacedItem(typeof(DropLocation), "truthshard_3", out var _);
-    
-    private const string forestHornKey = "trinket_basoon";
-    private const string locketKey = "trinket_locket";
 
     // The Steadhone door normally checks for the Locket location instead of
     // the item.
@@ -186,6 +188,37 @@ public class DropLocation : Location
                 return false;
             }
             return true;
+        }
+    }
+
+    // The same applies for the Jefferson interactions.
+    [HL.HarmonyPatch(typeof(JeffersonBackpackStarter), nameof(JeffersonBackpackStarter.canUse))]
+    private static class JeffersonBackpackPatch
+    {
+        private static bool Prefix(ref bool __result)
+        {
+            if (ItemChangerPlugin.TryGetPlacedItem(typeof(DropLocation), teddyKey, out var _))
+            {
+                __result = GameSave.GetSaveData().GetCountKey(teddyKey) > 0;
+                return false;
+            }
+            return true;
+        }
+    }
+
+    [HL.HarmonyPatch(typeof(NPCCharacter), nameof(NPCCharacter.GetCurrentTextId))]
+    private static class JeffersonDialoguePatch
+    {
+        private static void Postfix(NPCCharacter __instance, ref string __result)
+        {
+            if (__instance.currentSpeechIndex == 1 &&
+                __instance.gameObject.name == "NPC_jeffersonNight_Pickup" &&
+                ItemChangerPlugin.TryGetPlacedItem(typeof(DropLocation), teddyKey, out var _) &&
+                GameSave.GetSaveData().GetCountKey(teddyKey) <= 0)
+            {
+                __instance.currentSpeechIndex = 0;
+                __result = __instance.speech_id[0].id;
+            }
         }
     }
 }
