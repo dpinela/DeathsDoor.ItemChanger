@@ -6,7 +6,7 @@ namespace DDoor.ItemChanger;
 public static class Predefined
 {
     // Item and location names contributed by MrKoiCarp and
-    // TheDancingGrag, as well as myself.
+    // TheDancingGrad, as well as myself.
     private static readonly Collections.Dictionary<string, Location> predefinedLocations = new()
     {
         // Spells and their upgrades
