@@ -9,6 +9,17 @@ namespace DDoor.ItemChanger;
 public class SaveData
 {
     public Collections.List<Placement> Placements = new();
+    public Collections.List<TrackerLogEntry> TrackerLog = new();
+
+    public void AddToTrackerLog(string location, string item)
+    {
+        TrackerLog.Add(new()
+        {
+            LocationName = location,
+            ItemName = item,
+            GameTime = GameTimeTracker.instance.GetTime()
+        });
+    }
 
     private void Save(string saveId)
     {
@@ -104,4 +115,11 @@ public class Placement
 {
     public string LocationName = "";
     public string ItemName = "";
+}
+
+public class TrackerLogEntry
+{
+    public string LocationName = "";
+    public string ItemName = "";
+    public float GameTime = 0;
 }

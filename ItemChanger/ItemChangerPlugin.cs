@@ -37,7 +37,8 @@ internal class ItemChangerPlugin : Bep.BaseUnityPlugin
                 if (itemOK && locOK)
                 {
                     // The compiler can't tell, but loc and item are guaranteed non-null at this point.
-                    activePlacements[(loc!.GetType(), loc!.UniqueId)] = item!;
+                    item = new LoggedItem(item!, p.LocationName);
+                    activePlacements[(loc!.GetType(), loc!.UniqueId)] = item;
                 }
             }
         };
