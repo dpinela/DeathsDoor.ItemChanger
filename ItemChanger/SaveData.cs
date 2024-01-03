@@ -19,6 +19,10 @@ public class SaveData
             ItemName = item,
             GameTime = GameTimeTracker.instance.GetTime()
         });
+        if (this == current)
+        {
+            OnTrackerLogUpdate?.Invoke(TrackerLog);
+        }
     }
 
     private void Save(string saveId)
@@ -32,6 +36,7 @@ public class SaveData
     // everything below should be static
 
     internal static event System.Action? OnLoadGame;
+    public static event System.Action<Collections.List<TrackerLogEntry>?>? OnTrackerLogUpdate;
 
     internal static SaveData? current;
 
@@ -55,14 +60,17 @@ public class SaveData
             using var reader = new Json.JsonTextReader(file);
             var ser = Json.JsonSerializer.CreateDefault();
             current = ser.Deserialize<SaveData>(reader);
+            OnTrackerLogUpdate?.Invoke(current!.TrackerLog);
         }
         catch (IO.FileNotFoundException)
         {
             current = null;
+            OnTrackerLogUpdate?.Invoke(null);
         }
         catch (System.Exception err)
         {
             current = null;
+            OnTrackerLogUpdate?.Invoke(null);
             ItemChangerPlugin.LogError($"Error loading save data for save ID {saveId}: {err.ToString()}");
         }
     }
