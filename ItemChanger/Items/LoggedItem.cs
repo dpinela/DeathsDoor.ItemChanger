@@ -15,7 +15,7 @@ internal class LoggedItem : Item
 
     public void Trigger()
     {
-        SaveData.Open().AddToTrackerLog(Item.DisplayName, Where);
+        SaveData.Open().AddToTrackerLog(location: Where, item: Item.DisplayName);
         Item.Trigger();
     }
 }
