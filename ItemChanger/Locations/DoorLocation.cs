@@ -41,7 +41,7 @@ internal class DoorLocation : Location
             if (!save.IsKeyUnlocked(collectedKey))
             {
                 save.SetKeyState(collectedKey, true);
-                CornerPopup.Show(item.DisplayName);
+                CornerPopup.Show(item);
                 item.Trigger();
 
                 // Darwin normally only wakes up after defeating DFS.

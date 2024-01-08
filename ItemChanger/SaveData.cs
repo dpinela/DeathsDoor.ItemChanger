@@ -11,14 +11,9 @@ public class SaveData
     public Collections.List<Placement> Placements = new();
     public Collections.List<TrackerLogEntry> TrackerLog = new();
 
-    public void AddToTrackerLog(string location, string item)
+    public void AddToTrackerLog(TrackerLogEntry entry)
     {
-        TrackerLog.Add(new()
-        {
-            LocationName = location,
-            ItemName = item,
-            GameTime = GameTimeTracker.instance.GetTime()
-        });
+        TrackerLog.Add(entry);
         if (this == current)
         {
             OnTrackerLogUpdate?.Invoke(TrackerLog);
@@ -129,5 +124,6 @@ public class TrackerLogEntry
 {
     public string LocationName = "";
     public string ItemName = "";
+    public string ItemIcon = "";
     public float GameTime = 0;
 }

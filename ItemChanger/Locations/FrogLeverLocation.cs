@@ -84,7 +84,7 @@ internal class FrogLeverLocation : Location
                 ItemChangerPlugin.TryGetPlacedItem(typeof(FrogLeverLocation), __instance.key.uniqueId, out var item))
             {
                 __instance.key.uniqueId = keyPrefix + __instance.key.uniqueId;
-                CornerPopup.Show(item.DisplayName);
+                CornerPopup.Show(item);
                 item.Trigger();
             }
         }

@@ -6,6 +6,8 @@ public class HookshotItem : Item
 
     public string DisplayName => HasLevel1 ? "Hookshot Level 2" : "Hookshot";
 
+    public string Icon => HasLevel1 ? "Hookshot2" : "Hookshot";
+
     public void Trigger()
     {
         if (HasLevel1)

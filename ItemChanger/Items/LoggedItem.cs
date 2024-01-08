@@ -13,9 +13,17 @@ internal class LoggedItem : Item
 
     public string DisplayName => Item.DisplayName;
 
+    public string Icon => Item.Icon;
+
     public void Trigger()
     {
-        SaveData.Open().AddToTrackerLog(location: Where, item: Item.DisplayName);
+        SaveData.Open().AddToTrackerLog(new TrackerLogEntry
+        {
+            ItemName = Item.DisplayName,
+            ItemIcon = Item.Icon,
+            LocationName = Where,
+            GameTime = GameTimeTracker.instance.GetTime()
+        });
         Item.Trigger();
     }
 }

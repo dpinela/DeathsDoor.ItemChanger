@@ -47,7 +47,7 @@ internal class IronLeverLocation : Location
                 ItemChangerPlugin.TryGetPlacedItem(typeof(IronLeverLocation), __instance.keyComponent.uniqueId, out var item))
             {
                 __instance.keyComponent.uniqueId = keyPrefix + __instance.keyComponent.uniqueId;
-                CornerPopup.Show(item.DisplayName);
+                CornerPopup.Show(item);
                 item.Trigger();
             }
         }

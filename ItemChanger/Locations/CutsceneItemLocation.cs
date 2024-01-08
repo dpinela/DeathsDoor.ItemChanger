@@ -35,7 +35,7 @@ internal class CutsceneItemLocation : Location
                     GameSave.GetSaveData().IncreaseCountKey("boss_souls", -1);
                     break;
             }
-            CornerPopup.Show(item.DisplayName);
+            CornerPopup.Show(item);
             item.Trigger();
             return false;
         }

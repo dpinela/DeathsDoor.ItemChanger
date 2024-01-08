@@ -8,6 +8,8 @@ internal class KeyItem : Item
 {
     public string DisplayName { get; set; } = "";
 
+    public string Icon { get; set; } = "Seed";
+
     public string UniqueId { get; set; } = "";
 
     public void Trigger()

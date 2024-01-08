@@ -45,7 +45,7 @@ public class DropLocation : Location
             
             __instance.getPickedUp();
             __instance.saveCollected();
-            CornerPopup.Show(item.DisplayName);
+            CornerPopup.Show(item);
             item.Trigger();
 
             GameSave.SaveGameState();

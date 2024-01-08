@@ -8,6 +8,8 @@ internal class SeedItem : Item
 
     public string DisplayName => "Life Seed";
 
+    public string Icon => "Seed";
+
     public void Trigger()
     {
         GameSave.GetSaveData().AddToCountKey("seed_total_collected");

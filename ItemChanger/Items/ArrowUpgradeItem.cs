@@ -8,6 +8,8 @@ public class ArrowUpgradeItem : Item
 
     public string DisplayName => "Arrow Level 2";
 
+    public string Icon => "Arrow2";
+
     public void Trigger()
     {
         WeaponSwitcher.instance.Upgrade("arrows");

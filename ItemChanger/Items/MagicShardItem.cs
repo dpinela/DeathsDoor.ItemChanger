@@ -8,6 +8,8 @@ internal class MagicShardItem : Item
 
     public string DisplayName => "Magic Shard";
 
+    public string Icon => "MagicShard";
+
     public void Trigger()
     {
         var save = GameSave.GetSaveData();

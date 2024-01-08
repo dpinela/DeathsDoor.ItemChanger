@@ -8,6 +8,8 @@ internal class VitalityShardItem : Item
 
     public string DisplayName => "Vitality Shard";
 
+    public string Icon => "VitalityShard";
+
     public void Trigger()
     {
         var save = GameSave.GetSaveData();

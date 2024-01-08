@@ -6,6 +6,8 @@ public class FireItem : Item
 
     public string DisplayName => HasLevel1 ? "Fire Level 2" : "Fire";
 
+    public string Icon => HasLevel1 ? "Fire2" : "Fire";
+
     public void Trigger()
     {
         if (HasLevel1)

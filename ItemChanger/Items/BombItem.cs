@@ -6,6 +6,8 @@ public class BombItem : Item
 
     public string DisplayName => HasLevel1 ? "Bomb Level 2" : "Bomb";
 
+    public string Icon => HasLevel1 ? "Bomb2" : "Bomb";
+
     public void Trigger()
     {
         if (HasLevel1)

@@ -6,6 +6,8 @@ internal class SoulsItem : Item
 
     public string DisplayName => Amount == 1 ? "1 Soul" : $"{Amount} Souls";
 
+    public string Icon => "Soul";
+
     public void Trigger()
     {
         GameSave.GetSaveData().AddToCountKey("soul_bundles_collected");
