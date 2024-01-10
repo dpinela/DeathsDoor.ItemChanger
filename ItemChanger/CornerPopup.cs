@@ -1,5 +1,6 @@
 using System;
 using UE = UnityEngine;
+using UI = UnityEngine.UI;
 
 namespace DDoor.ItemChanger;
 
@@ -7,7 +8,7 @@ public class CornerPopup
 {
     private static CornerPopup? Instance;
 
-    public static void Show(string msg)
+    public static void Show(UE.Sprite icon, string msg)
     {
         if (Instance == null)
         {
@@ -25,11 +26,17 @@ public class CornerPopup
             }
             Instance = new();
         }
-        Instance.ShowMessage(msg);
+        Instance.ShowMessage(icon, msg);
+    }
+
+    public static void Show(Item x)
+    {
+        Show(ItemIcons.Get(x.Icon), x.DisplayName);
     }
 
     private UE.GameObject go;
     private UICount counter;
+    private UI.Image image;
 
     internal CornerPopup()
     {
@@ -49,17 +56,27 @@ public class CornerPopup
         var rt = cs.GetComponent<UE.RectTransform>();
         rt.SetSizeWithCurrentAnchors(UE.RectTransform.Axis.Horizontal, 800f);
         go.SetActive(true);
-        // cs also has an Image component, probably the sprite (which we will want
-        // to change at some point)
+        image = go.GetComponentInChildren<UI.Image>();
+        // Remove the little "x" (which in the original UI item, is meant
+        // to precede a number).
+        foreach (var txt in go.GetComponentsInChildren<TMPro.TextMeshProUGUI>())
+        {
+            if (txt.name == "x")
+            {
+                UE.Object.Destroy(txt);
+                break;
+            }
+        }
     }
 
     private const float DisplayTime = 3f;
     private const float Xpos = -250f;
 
-    internal void ShowMessage(string s)
+    internal void ShowMessage(UE.Sprite icon, string s)
     {
         counter.counter.text = s;
         counter.addText.text = "";
+        image.sprite = icon;
         if (counter.IsShowing())
         {
             counter.ResetShowTimer(DisplayTime);
