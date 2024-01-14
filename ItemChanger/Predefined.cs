@@ -288,21 +288,25 @@ public static class Predefined
         // Weapons
         {"Rogue Daggers", new CountableInventoryItem {
             DisplayName = "Rogue Daggers",
+            Icon = "Daggers",
             UniqueId = "daggers",
             CountId = "weapons_count"
         }},
         {"Discarded Umbrella", new CountableInventoryItem {
             DisplayName = "Discarded Umbrella",
+            Icon = "Umbrella",
             UniqueId = "umbrella",
             CountId = "weapons_count"
         }},
         {"Reaper's Greatsword", new CountableInventoryItem {
             DisplayName = "Reaper's Greatsword",
+            Icon = "Greatsword",
             UniqueId = "sword_heavy",
             CountId = "weapons_count"
         }},
         {"Thunder Hammer", new CountableInventoryItem {
             DisplayName = "Thunder Hammer",
+            Icon = "ThunderHammer",
             UniqueId = "hammer",
             CountId = "weapons_count"
         }},
@@ -310,16 +314,19 @@ public static class Predefined
         // Giant Souls
         {"Giant Soul of The Urn Witch", new CountableInventoryItem {
             DisplayName = "Giant Soul of The Urn Witch",
+            Icon = "Grandma",
             UniqueId = "soul_gran", 
             CountId = "boss_souls"
         }},
         {"Giant Soul of The Frog King", new CountableInventoryItem {
-            DisplayName = "Giant Soul of The Frog King", 
+            DisplayName = "Giant Soul of The Frog King",
+            Icon = "FrogKing",
             UniqueId = "soul_frog",
             CountId = "boss_souls"
         }},
         {"Giant Soul of Betty", new CountableInventoryItem {
             DisplayName = "Giant Soul of Betty",
+            Icon = "Betty",
             UniqueId = "soul_yeti",
             CountId = "boss_souls"
         }},
@@ -331,121 +338,145 @@ public static class Predefined
         // Shiny Things
         {"Engagement Ring", new CountableInventoryItem {
             DisplayName = "Engagement Ring",
+            Icon = "Ring",
             UniqueId = "trinket_ring",
             CountId = "trinket_collect_count"
         }},
         {"Old Compass", new CountableInventoryItem {
             DisplayName = "Old Compass",
+            Icon = "Compass",
             UniqueId = "trinket_compass",
             CountId = "trinket_collect_count"
         }},
         {"Incense", new CountableInventoryItem {
             DisplayName = "Incense",
+            Icon = "Incense",
             UniqueId = "trinket_incense",
             CountId = "trinket_collect_count"
         }},
         {"Undying Blossom", new CountableInventoryItem {
             DisplayName = "Undying Blossom",
+            Icon = "Blossom",
             UniqueId = "trinket_flower",
             CountId = "trinket_collect_count"
         }},
         {"Old Photograph", new CountableInventoryItem {
             DisplayName = "Old Photograph",
+            Icon = "OldPhoto",
             UniqueId = "trinket_photo",
             CountId = "trinket_collect_count"
         }},
         {"Sludge-Filled Urn", new CountableInventoryItem {
             DisplayName = "Sludge-Filled Urn",
+            Icon = "SludgeUrn",
             UniqueId = "trinket_elixir",
             CountId = "trinket_collect_count"
         }},
         {"Token of Death", new CountableInventoryItem {
             DisplayName = "Token of Death",
+            Icon = "TokenOfDeath",
             UniqueId = "trinket_coin",
             CountId = "trinket_collect_count"
         }},
         {"Rusty Garden Trowel", new CountableInventoryItem {
             DisplayName = "Rusty Garden Trowel",
+            Icon = "Trowel",
             UniqueId = "trinket_trowel",
             CountId = "trinket_collect_count"
         }},
         {"Captain's Log", new CountableInventoryItem {
             DisplayName = "Captain's Log",
+            Icon = "CaptainsLog",
             UniqueId = "trinket_journal",
             CountId = "trinket_collect_count"
         }},
         {"Giant Arrowhead", new CountableInventoryItem {
             DisplayName = "Giant Arrowhead",
+            Icon = "Arrowhead",
             UniqueId = "trinket_arrow",
             CountId = "trinket_collect_count"
         }},
         {"Malformed Seed", new CountableInventoryItem {
             DisplayName = "Malformed Seed",
+            Icon = "CorruptedSeed",
             UniqueId = "trinket_seed",
             CountId = "trinket_collect_count"
         }},
         {"Corrupted Antler", new CountableInventoryItem {
             DisplayName = "Corrupted Antler",
+            Icon = "CorruptedAntler",
             UniqueId = "trinket_antler",
             CountId = "trinket_collect_count"
         }},
         {"Magical Forest Horn", new CountableInventoryItem {
             DisplayName = "Magical Forest Horn",
+            Icon = "ForestHorn",
             UniqueId = "trinket_basoon",
             CountId = "trinket_collect_count"
         }},
         {"Ancient Crown", new CountableInventoryItem {
             DisplayName = "Ancient Crown",
+            Icon = "Crown",
             UniqueId = "trinket_crown",
             CountId = "trinket_collect_count"
         }},
         {"Grunt's Old Mask", new CountableInventoryItem {
             DisplayName = "Grunt's Old Mask",
+            Icon = "GruntMask",
             UniqueId = "trinket_mask",
             CountId = "trinket_collect_count"
         }},
         {"Ancient Door Scale Model", new CountableInventoryItem {
             DisplayName = "Ancient Door Scale Model",
+            Icon = "AncientDoor",
             UniqueId = "trinket_door_old",
             CountId = "trinket_collect_count"
         }},
         {"Modern Door Scale Model", new CountableInventoryItem {
             DisplayName = "Modern Door Scale Model",
+            Icon = "ModernDoor",
             UniqueId = "trinket_door_new",
             CountId = "trinket_collect_count"
         }},
         {"Rusty Belltower Key", new CountableInventoryItem {
             DisplayName = "Rusty Belltower Key",
+            Icon = "BelltowerKey",
             UniqueId = "trinket_rusty_key",
             CountId = "trinket_collect_count"
         }},
         {"Surveillance Device", new CountableInventoryItem {
             DisplayName = "Surveillance Device",
+            Icon = "SurveillanceDevice",
             UniqueId = "trinket_surv",
             CountId = "trinket_collect_count"
         }},
         {"Shiny Medallion", new CountableInventoryItem {
             DisplayName = "Shiny Medallion",
+            Icon = "ShinyMedallion",
             UniqueId = "trinket_medal",
             CountId = "trinket_collect_count"
         }},
         {"Ink-Covered Teddy Bear", new CountableInventoryItem {
             DisplayName = "Ink-Covered Teddy Bear",
+            Icon = "TeddyBear",
             UniqueId = "trinket_teddy",
             CountId = "trinket_collect_count"
         }},
         {"Death's Contract", new CountableInventoryItem {
             DisplayName = "Death's Contract",
+            Icon = "DeathsContract",
             UniqueId = "trinket_contract",
             CountId = "trinket_collect_count"
         }},
         {"Makeshift Soul Key", new CountableInventoryItem {
             DisplayName = "Makeshift Soul Key",
+            Icon = "SoulKey",
             UniqueId = "trinket_soulkey",
             CountId = "trinket_collect_count"
         }},
         {"Mysterious Locket", new CountableInventoryItem {
             DisplayName = "Mysterious Locket",
+            Icon = "Locket",
             UniqueId = "trinket_locket",
             CountId = "trinket_collect_count"
         }},
@@ -551,21 +582,21 @@ public static class Predefined
         {"Manor Bookshelf Shortcut Lever", new KeyItem { UniqueId = "mansionlibrarylever", DisplayName = "Manor Bookshelf Shortcut Lever" }},
 
         // Doors
-        {"Grove of Spirits Door", new KeyItem { UniqueId = "sdoor_tutorial", DisplayName = "Grove of Spirits Door" }},
-        {"Lost Cemetery Door", new KeyItem { UniqueId = "sdoor_graveyard", DisplayName = "Lost Cemetery Door" }},
-        {"Stranded Sailor Door", new KeyItem { UniqueId = "sdoor_sailor", DisplayName = "Stranded Sailor Door" }},
-        {"Castle Lockstone Door", new KeyItem { UniqueId = "sdoor_fortress", DisplayName = "Castle Lockstone Door" }},
-        {"Camp of the Free Crows Door", new KeyItem { UniqueId = "sdoor_covenant", DisplayName = "Camp of the Free Crows Door" }},
-        {"Old Watchtowers Door", new KeyItem { UniqueId = "sdoor_mountaintops", DisplayName = "Old Watchtowers Door" }},
-        {"Betty's Lair Door", new KeyItem { UniqueId = "sdoor_betty", DisplayName = "Betty's Lair Door" }},
-        {"Overgrown Ruins Door", new KeyItem { UniqueId = "sdoor_forest", DisplayName = "Overgrown Ruins Door" }},
-        {"Mushroom Dungeon Door", new KeyItem { UniqueId = "sdoor_forest_dung", DisplayName = "Mushroom Dungeon Door" }},
-        {"Flooded Fortress Door", new KeyItem { UniqueId = "sdoor_swamp", DisplayName = "Flooded Fortress Door" }},
-        {"Throne of the Frog King Door", new KeyItem { UniqueId = "sdoor_frogboss", DisplayName = "Throne of the Frog King Door" }},
-        {"Estate of the Urn Witch Door", new KeyItem { UniqueId = "sdoor_gardens", DisplayName = "Estate of the Urn Witch Door" }},
-        {"Ceramic Manor Door", new KeyItem { UniqueId = "sdoor_mansion", DisplayName = "Ceramic Manor Door" }},
-        {"Inner Furnace Door", new KeyItem { UniqueId = "sdoor_basementromp", DisplayName = "Inner Furnace Door" }},
-        {"The Urn Witch's Laboratory Door", new KeyItem { UniqueId = "sdoor_grandmaboss", DisplayName = "The Urn Witch's Laboratory Door" }},
+        {"Grove of Spirits Door", new KeyItem { UniqueId = "sdoor_tutorial", DisplayName = "Grove of Spirits Door", Icon = "ModernDoor" }},
+        {"Lost Cemetery Door", new KeyItem { UniqueId = "sdoor_graveyard", DisplayName = "Lost Cemetery Door", Icon = "ModernDoor" }},
+        {"Stranded Sailor Door", new KeyItem { UniqueId = "sdoor_sailor", DisplayName = "Stranded Sailor Door", Icon = "ModernDoor" }},
+        {"Castle Lockstone Door", new KeyItem { UniqueId = "sdoor_fortress", DisplayName = "Castle Lockstone Door", Icon = "ModernDoor" }},
+        {"Camp of the Free Crows Door", new KeyItem { UniqueId = "sdoor_covenant", DisplayName = "Camp of the Free Crows Door", Icon = "ModernDoor" }},
+        {"Old Watchtowers Door", new KeyItem { UniqueId = "sdoor_mountaintops", DisplayName = "Old Watchtowers Door", Icon = "ModernDoor" }},
+        {"Betty's Lair Door", new KeyItem { UniqueId = "sdoor_betty", DisplayName = "Betty's Lair Door", Icon = "ModernDoor" }},
+        {"Overgrown Ruins Door", new KeyItem { UniqueId = "sdoor_forest", DisplayName = "Overgrown Ruins Door", Icon = "ModernDoor" }},
+        {"Mushroom Dungeon Door", new KeyItem { UniqueId = "sdoor_forest_dung", DisplayName = "Mushroom Dungeon Door", Icon = "ModernDoor" }},
+        {"Flooded Fortress Door", new KeyItem { UniqueId = "sdoor_swamp", DisplayName = "Flooded Fortress Door", Icon = "ModernDoor" }},
+        {"Throne of the Frog King Door", new KeyItem { UniqueId = "sdoor_frogboss", DisplayName = "Throne of the Frog King Door", Icon = "ModernDoor" }},
+        {"Estate of the Urn Witch Door", new KeyItem { UniqueId = "sdoor_gardens", DisplayName = "Estate of the Urn Witch Door", Icon = "ModernDoor" }},
+        {"Ceramic Manor Door", new KeyItem { UniqueId = "sdoor_mansion", DisplayName = "Ceramic Manor Door", Icon = "ModernDoor" }},
+        {"Inner Furnace Door", new KeyItem { UniqueId = "sdoor_basementromp", DisplayName = "Inner Furnace Door", Icon = "ModernDoor" }},
+        {"The Urn Witch's Laboratory Door", new KeyItem { UniqueId = "sdoor_grandmaboss", DisplayName = "The Urn Witch's Laboratory Door", Icon = "ModernDoor" }},
     };
 
     public static bool TryGetItem(string name, [CA.NotNullWhen(true)] out Item? item) =>
