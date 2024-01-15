@@ -77,6 +77,7 @@ public class CornerPopup
         counter.counter.text = s;
         counter.addText.text = "";
         image.sprite = icon;
+        image.preserveAspect = true;
         if (counter.IsShowing())
         {
             counter.ResetShowTimer(DisplayTime);
