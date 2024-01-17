@@ -152,4 +152,26 @@ internal class DoorLocation : Location
             return true;
         }
     }
+
+    // If entering Lockstone for the first time from above,
+    // bard_crows will be set but bard_fort_intro will not.
+    // If the player does not have hookshot, this will cause
+    // the game to hardlock.
+    // Fix this by not allowing that requiring bard_fort_intro
+    // to be set first.
+    [HL.HarmonyPatch(typeof(GameSave), nameof(GameSave.SetKeyState))]
+    private static class LockstoneBardPatch
+    {
+        private static bool Prefix(GameSave __instance, string id, bool state)
+        {
+            if (ItemChangerPlugin.AnyItemsPlaced &&
+                state &&
+                id == "bard_crows" &&
+                !__instance.IsKeyUnlocked("bard_fort_intro"))
+            {
+                return false;
+            }
+            return true;
+        }
+    }
 }
