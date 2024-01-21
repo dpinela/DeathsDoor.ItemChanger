@@ -272,6 +272,20 @@ public static class Predefined
         {"Ceramic Manor Door", new DoorLocation { KeyId = "sdoor_mansion" }},
         {"Inner Furnace Door", new DoorLocation { KeyId = "sdoor_basementromp" }},
         {"The Urn Witch's Laboratory Door", new DoorLocation { KeyId = "sdoor_grandmaboss" }},
+
+        // Keys
+        {"Key-Cemetery Central", new KeyLocation { UniqueId = "collectablekey_graveyardroute1" }},
+        {"Key-Cemetery Grey Crow", new KeyLocation { UniqueId = "collectablekey_graveyardsummit" }},
+        {"Key-Camp of the Free Crows", new KeyLocation { UniqueId = "covenant_key" }},
+        {"Key-Lockstone West", new KeyLocation { UniqueId = "collectablekey_fortresswest" }},
+        {"Key-Lockstone North", new KeyLocation { UniqueId = "collectablekey_fortresseast" }},
+        {"Key-Overgrown Ruins", new KeyLocation { UniqueId = "forest_key_4" }},
+        {"Key-Dungeon Hall", new KeyLocation { UniqueId = "forest_key_2" }},
+        {"Key-Dungeon Right", new KeyLocation { UniqueId = "forest_key_1" }},
+        {"Key-Dungeon Near Water Arena", new KeyLocation { UniqueId = "forest_key_3" }},
+        {"Key-Manor Under Dining Room", new KeyLocation { UniqueId = "mansion_key1" }},
+        {"Key-Manor After Spinny Pot Room", new KeyLocation { UniqueId = "mansion_key2" }},
+        {"Key-Manor Library", new KeyLocation { UniqueId = "collectablekey_mansion3" }},
     };
 
     public static bool TryGetLocation(string name, [CA.NotNullWhen(true)] out Location? loc) =>
