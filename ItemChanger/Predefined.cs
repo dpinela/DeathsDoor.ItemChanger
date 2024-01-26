@@ -300,6 +300,12 @@ public static class Predefined
         {"Arrow Upgrade", ArrowUpgradeItem.Instance},
 
         // Weapons
+        {"Reaper's Sword", new CountableInventoryItem {
+            DisplayName = "Reaper's Sword",
+            Icon = "Sword",
+            UniqueId = "sword",
+            CountId = "weapons_count"
+        }},
         {"Rogue Daggers", new CountableInventoryItem {
             DisplayName = "Rogue Daggers",
             Icon = "Daggers",

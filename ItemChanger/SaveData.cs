@@ -8,8 +8,26 @@ namespace DDoor.ItemChanger;
 
 public class SaveData
 {
-    public Collections.List<Placement> Placements = new();
-    public Collections.List<TrackerLogEntry> TrackerLog = new();
+    [Json.JsonProperty]
+    internal Collections.List<Placement> Placements = new();
+
+    [Json.JsonProperty]
+    internal Collections.List<TrackerLogEntry> TrackerLog = new();
+
+    // Determines which weapon is added to the inventory at the start of
+    // the game.
+    // Does *not* change the starting equipped weapon; that must be done
+    // separately, if appropriate.
+    public string StartingWeapon { get; set; } = "sword";
+
+    public void Place(string item, string location)
+    {
+        Placements.Add(new()
+        {
+            LocationName = location,
+            ItemName = item
+        });
+    }
 
     public void AddToTrackerLog(TrackerLogEntry entry)
     {
@@ -114,7 +132,7 @@ public class SaveData
     }
 }
 
-public class Placement
+internal class Placement
 {
     public string LocationName = "";
     public string ItemName = "";
