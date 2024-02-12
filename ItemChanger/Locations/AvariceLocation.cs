@@ -71,7 +71,7 @@ internal class AvariceLocation : Location
             {
                 if (!GameSave.GetSaveData().IsKeyUnlocked(s))
                 {
-                    __instance.returnSceneId = "lvl_HallOfDoors";
+                    __instance.returnSceneId = hallOfDoorsRoom;
                 }
             }
 
@@ -86,7 +86,21 @@ internal class AvariceLocation : Location
                 case "hod_anc_fortress":
                     RedirectIfLocked("anc_door_fortress_unlocked");
                     break;
+                // Avarice 4 normally sends the player back to the Ruins
+                // door, but that door might not be unlocked.
+                // The bus cutscene is a safe alternative respawn, if
+                // a bit cumbersome.
+                case ruinsDoor:
+                    if (!GameSave.GetSaveData().IsKeyUnlocked(ruinsDoor))
+                    {
+                        __instance.returnSceneId = hallOfDoorsRoom;
+                        __instance.returnDoorId = "bus_overridespawn";
+                    }
+                    break;
             }
         }
     }
+
+    private const string hallOfDoorsRoom = "lvl_HallOfDoors";
+    private const string ruinsDoor = "sdoor_forest";
 }
