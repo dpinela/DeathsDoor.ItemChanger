@@ -44,4 +44,22 @@ internal class KeyLocation : Location
         CornerPopup.Show(item);
         item.Trigger();
     }
+
+    // The Grey Crow key normally unlocks after watching the initial
+    // Grey Crow cutscene. However, if the player already has all of the
+    // Giant Souls (or Truth Ending) upon the first visit to that Crow,
+    // the key would become inaccessible.
+    [HL.HarmonyPatch(typeof(KeyShrine), nameof(KeyShrine.Start))]
+    private static class GreyCrowKeyPatch
+    {
+        private static void Postfix(KeyShrine __instance)
+        {
+            if (!__instance.theKey.enabled &&
+                __instance.keyObj.keyId == "collectablekey_graveyardsummit" &&
+                ItemChangerPlugin.AnyItemsPlaced)
+            {
+                __instance.doUnlock();
+            }
+        }
+    }
 }
