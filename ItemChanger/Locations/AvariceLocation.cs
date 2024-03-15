@@ -22,7 +22,7 @@ internal class AvariceLocation : Location
         }
     }
 
-    [HL.HarmonyPatch(typeof(NPCCharacter), nameof(NPCCharacter.Trigger))]
+    [HL.HarmonyPatch(typeof(NPCCharacter), nameof(NPCCharacter.Start))]
     private static class TextboxPatch
     {
         private static void Prefix(NPCCharacter __instance)
