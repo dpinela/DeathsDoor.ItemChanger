@@ -1,3 +1,4 @@
+using CA = System.Diagnostics.CodeAnalysis;
 using Collections = System.Collections.Generic;
 using IO = System.IO;
 using Json = Newtonsoft.Json;
@@ -9,7 +10,7 @@ namespace DDoor.ItemChanger;
 public class SaveData
 {
     [Json.JsonProperty]
-    internal Collections.List<Placement> Placements = new();
+    internal Collections.Dictionary<string, string> Placements = new();
 
     [Json.JsonProperty]
     internal Collections.List<TrackerLogEntry> TrackerLog = new();
@@ -22,12 +23,10 @@ public class SaveData
 
     public void Place(string item, string location)
     {
-        Placements.Add(new()
-        {
-            LocationName = location,
-            ItemName = item
-        });
+        Placements[location] = item;
     }
+
+    public Collections.IReadOnlyDictionary<string, string> NamedPlacements => Placements;
 
     public void AddToTrackerLog(TrackerLogEntry entry)
     {
@@ -130,12 +129,6 @@ public class SaveData
             }
         }
     }
-}
-
-internal class Placement
-{
-    public string LocationName = "";
-    public string ItemName = "";
 }
 
 public class TrackerLogEntry

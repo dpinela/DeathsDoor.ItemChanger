@@ -22,22 +22,22 @@ internal class ItemChangerPlugin : Bep.BaseUnityPlugin
                 return;
             }
 
-            foreach (var p in SaveData.current.Placements)
+            foreach (var (locationName, itemName) in SaveData.current.Placements)
             {
-                var locOK = Predefined.TryGetLocation(p.LocationName, out var loc);
-                var itemOK = Predefined.TryGetItem(p.ItemName, out var item);
+                var locOK = Predefined.TryGetLocation(locationName, out var loc);
+                var itemOK = Predefined.TryGetItem(itemName, out var item);
                 if (!locOK)
                 {
-                    Logger.LogError($"location {p.LocationName} does not exist");
+                    Logger.LogError($"location {locationName} does not exist");
                 }
                 if (!itemOK)
                 {
-                    Logger.LogError($"item {p.ItemName} does not exist");
+                    Logger.LogError($"item {itemName} does not exist");
                 }
                 if (itemOK && locOK)
                 {
                     // The compiler can't tell, but loc and item are guaranteed non-null at this point.
-                    item = new LoggedItem(item!, p.LocationName);
+                    item = new LoggedItem(item!, locationName);
                     activePlacements[(loc!.GetType(), loc!.UniqueId)] = item;
                 }
             }
