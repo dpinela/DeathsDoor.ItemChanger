@@ -33,7 +33,14 @@ public class SaveData
         TrackerLog.Add(entry);
         if (this == current)
         {
-            OnTrackerLogUpdate?.Invoke(TrackerLog);
+            try
+            {
+                OnTrackerLogUpdate?.Invoke(TrackerLog);
+            }
+            catch (System.Exception err)
+            {
+                ItemChangerPlugin.LogError($"Error running subscriber to SaveData.OnTrackerLogUpdate: {err}");
+            }
         }
     }
 
