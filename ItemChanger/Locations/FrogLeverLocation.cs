@@ -7,6 +7,8 @@ internal class FrogLeverLocation : Location
 {
     public string UniqueId { get; set; } = "";
 
+    public Area Area { get; set; } = Area.Unknown;
+
     private const string keyPrefix = "ItemChanger-collected_lever_location_";
 
     [HL.HarmonyPatch(typeof(FrogLever), nameof(FrogLever.Start))]

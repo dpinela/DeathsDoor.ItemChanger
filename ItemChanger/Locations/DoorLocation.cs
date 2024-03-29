@@ -11,6 +11,8 @@ internal class DoorLocation : Location
 
     public string UniqueId => KeyId;
 
+    public Area Area { get; set; } = Area.Unknown;
+
     private const string keyPrefix = "ItemChanger-collected_door_location_";
     private const string dfsKey = "bosskill_forestmother";
     private const string dfsAltKey = "ItemChanger-DFS_killed";

@@ -8,6 +8,8 @@ internal class SpellUpgradeLocation : Location
 
     public string UniqueId => UpgradeKey;
 
+    public Area Area => Area.Cemetery;
+
     [HL.HarmonyPatch(typeof(UpgraderSoul), nameof(UpgraderSoul.absorb))]
     private static class AbsorbPatch
     {

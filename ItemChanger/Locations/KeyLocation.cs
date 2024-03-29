@@ -9,6 +9,8 @@ internal class KeyLocation : Location
 {
     public string UniqueId { get; set; } = "";
 
+    public Area Area { get; set; } = Area.Unknown;
+
     [HL.HarmonyPatch(typeof(CollectableKey), nameof(CollectableKey.Update))]
     private static class UpdatePatch
     {

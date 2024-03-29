@@ -8,6 +8,8 @@ internal class AvariceLocation : Location
 
     public string UniqueId => PowerId;
 
+    public Area Area => Area.HallOfDoors;
+
     [HL.HarmonyPatch(typeof(Cutscene), nameof(Cutscene.UnlockPower))]
     private static class UnlockPowerPatch
     {

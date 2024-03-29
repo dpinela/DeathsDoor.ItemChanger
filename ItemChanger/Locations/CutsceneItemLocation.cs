@@ -9,6 +9,8 @@ internal class CutsceneItemLocation : Location
 
     public string UniqueId => ItemId;
 
+    public Area Area { get; set; } = Area.Unknown;
+
     private const string grandmaSoulKey = "soul_gran";
     private const string frogKingSoulKey = "soul_frog";
     private const string bettySoulKey = "soul_yeti";

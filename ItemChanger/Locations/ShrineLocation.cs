@@ -7,6 +7,8 @@ internal class ShrineLocation : Location
 {
     public string UniqueId { get; set; } = "";
 
+    public Area Area { get; set; } = Area.Unknown;
+
     [HL.HarmonyPatch(typeof(Item_HeartContainer), nameof(Item_HeartContainer.Trigger))]
     private static class TriggerPatch
     {

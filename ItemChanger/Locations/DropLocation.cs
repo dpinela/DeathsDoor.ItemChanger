@@ -10,6 +10,8 @@ public class DropLocation : Location
 {
     public string UniqueId { get; set; } = "";
 
+    public Area Area { get; set; } = Area.Unknown;
+
     [HL.HarmonyPatch(typeof(DropItem), nameof(DropItem.Start))]
     internal static class StartPatch
     {
