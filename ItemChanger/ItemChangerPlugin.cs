@@ -12,38 +12,49 @@ internal class ItemChangerPlugin : Bep.BaseUnityPlugin
 
     public void Start()
     {
-        Instance = this;
-        SaveData.OnLoadGame += () =>
+        try
         {
-            activePlacements.Clear();
-
-            if (SaveData.current == null)
+            Instance = this;
+            SaveData.OnLoadGame += () =>
             {
-                return;
-            }
+                activePlacements.Clear();
 
-            foreach (var (locationName, itemName) in SaveData.current.Placements)
-            {
-                var locOK = Predefined.TryGetLocation(locationName, out var loc);
-                var itemOK = Predefined.TryGetItem(itemName, out var item);
-                if (!locOK)
+                if (SaveData.current == null)
                 {
-                    Logger.LogError($"location {locationName} does not exist");
+                    return;
                 }
-                if (!itemOK)
+
+                foreach (var (locationName, itemName) in SaveData.current.Placements)
                 {
-                    Logger.LogError($"item {itemName} does not exist");
+                    var locOK = Predefined.TryGetLocation(locationName, out var loc);
+                    var itemOK = Predefined.TryGetItem(itemName, out var item);
+                    if (!locOK)
+                    {
+                        Logger.LogError($"location {locationName} does not exist");
+                    }
+                    if (!itemOK)
+                    {
+                        Logger.LogError($"item {itemName} does not exist");
+                    }
+                    if (itemOK && locOK)
+                    {
+                        // The compiler can't tell, but loc and item are guaranteed non-null at this point.
+                        item = new LoggedItem(item!, locationName);
+                        activePlacements[(loc!.GetType(), loc!.UniqueId)] = item;
+                    }
                 }
-                if (itemOK && locOK)
-                {
-                    // The compiler can't tell, but loc and item are guaranteed non-null at this point.
-                    item = new LoggedItem(item!, locationName);
-                    activePlacements[(loc!.GetType(), loc!.UniqueId)] = item;
-                }
-            }
-        };
-        new HL.Harmony("deathsdoor.itemchanger").PatchAll();
+            };
+            new HL.Harmony("deathsdoor.itemchanger").PatchAll();
+            InitStatus = 1;
+        }
+        catch (System.Exception err)
+        {
+            InitStatus = 2;
+            throw err;
+        }
     }
+
+    public int InitStatus { get; internal set; } = 0;
 
     private Collections.Dictionary<(System.Type, string), Item> activePlacements = new();
 
