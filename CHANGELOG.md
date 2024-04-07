@@ -1,3 +1,27 @@
+# 1.2 (7 April 2024)
+
+New features:
+
+- The 12 key locations can be replaced.
+- There are Green, Pink and Yellow Key items available for placement.
+- The starting weapon can be changed using the `SaveData.StartingWeapon` property.
+- All locations have an Area attribute, denoting which area of the game they
+  are in, for display and classification purposes.
+- Lever locations and items all begin with "Lever-" instead of ending with "Lever"
+  for more consistency with other location types.
+  The old names are still accepted as aliases to the same locations and items.
+
+Bug fixes:
+
+- The key location besides Grey Crow is collectible even if the initial
+  Grey Crow cutscene is no longer watchable - as can happen if the player
+  obtains all Giant Souls.
+- Progressive items (such as spells) given from the Avarice cutscenes will
+  now show the correct level in the text box that appears after the cutscene.
+- The Avarice in Overgrown Ruins now sends the player all the way back
+  to Hall of Doors if exited without having the Ruins door unlocked.
+  This prevents a softlock that could previously occur under those circumstances.
+
 # 1.1 (20 January 2024)
 
 New features:

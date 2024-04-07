@@ -12,6 +12,7 @@ This is a Death's Door mod for changing item pickups to give other items.
 - Soul Orbs
 - Levers
 - Doors
+- Keys
 
 The full list of modifiable locations, and of items that can be
 placed at those locations, can be found in the [Predefined.cs][]
@@ -27,7 +28,7 @@ interacting with them gives the new item.
 To change an item pickup, start by calling `SaveData.Open()` at some
 point after the start of `SaveSlot.LoadSave` but before it ends; the
 delegate that the [AlternativeGameModes][AGM] mod accepts is one
-such point. Then, modify the contents of the `Placements` list in
+such point. Then, call `Place` on
 the returned `SaveData` object. Here is an example:
 
     using AGM = DDoor.AlternativeGameModes;
@@ -36,10 +37,7 @@ the returned `SaveData` object. Here is an example:
     AGM.AlternativeGameModes.Add("IC EXAMPLE", () =>
     {
         var data = IC.SaveData.Open();
-        data.Placements.Add(new() {
-            ItemName = "Hookshot",
-            LocationName = "Discarded Umbrella"
-        });
+        data.Place("Hookshot", "Discarded Umbrella");
     });
 
 [AGM]: https://github.com/dpinela/DeathsDoor.AlternativeGameModes#how-to-add-modes
@@ -55,6 +53,10 @@ the returned `SaveData` object. Here is an example:
   points that are not doors are disabled; exiting to the main menu
   and returning will always return the player to Hall of Doors or
   to an open door, in order to prevent softlocks.
+- If any pickups were replaced with a different item, the pink key
+  beside Grey Crow is obtainable without having to watch the initial
+  Grey Crow cutscene first, so that getting all three Giant Souls
+  or the Truth Ending does not make it permanently unreachable.
 - If placed with this mod, the pink Ancient Tablet of Knowledge
   exists as a single item instead of in 3 shards, for symmetry with
   the other tablets. The three owl locations can still be changed
