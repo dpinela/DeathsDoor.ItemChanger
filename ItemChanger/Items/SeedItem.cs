@@ -1,19 +1,17 @@
 namespace DDoor.ItemChanger;
 
-internal class SeedItem : Item
+internal class SeedsItem : Item
 {
-    private SeedItem() {}
+    public int Amount = 1;
 
-    public static readonly SeedItem Instance = new();
-
-    public string DisplayName => "Life Seed";
+    public string DisplayName => Amount == 1 ? "Life Seed" : $"{Amount} Life Seeds";
 
     public string Icon => "Seed";
 
     public void Trigger()
     {
         GameSave.GetSaveData().AddToCountKey("seed_total_collected");
-        Inventory.instance.AddItem("seed", 1);
+        Inventory.instance.AddItem("seed", Amount);
         UICount.Show("SEEDS", 1);
     }
 }

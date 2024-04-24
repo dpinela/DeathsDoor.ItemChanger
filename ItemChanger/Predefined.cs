@@ -504,7 +504,7 @@ public static class Predefined
         }},
 
         // Seeds
-        {"Life Seed", SeedItem.Instance},
+        {"Life Seed", new SeedsItem { Amount = 1 }},
 
         // Soul Orbs
         {"100 Souls", new SoulsItem { Amount = 100 }},
@@ -645,8 +645,23 @@ public static class Predefined
         }},
     };
 
-    public static bool TryGetItem(string name, [CA.NotNullWhen(true)] out Item? item) =>
-        predefinedItems.TryGetValue(name, out item);
+    public static bool TryGetItem(string name, [CA.NotNullWhen(true)] out Item? item)
+    {
+        if (predefinedItems.TryGetValue(name, out item))
+        {
+            return true;
+        }
+
+        const string seedsPrefix = "Life Seed x";
+        if (name.StartsWith(seedsPrefix) && int.TryParse(name.Substring(seedsPrefix.Length), out var n))
+        {
+            item = new SeedsItem { Amount = n };
+            return true;
+        }
+
+        item = null;
+        return false;
+    }
     
     // When the Plando mod and most original plandos were made, lever names
     // ended in " Lever". Since then ItemChanger has changed to begin them

@@ -5,7 +5,7 @@ using HL = HarmonyLib;
 
 namespace DDoor.ItemChanger;
 
-[Bep.BepInPlugin("deathsdoor.itemchanger", "ItemChanger", "1.2.0.0")]
+[Bep.BepInPlugin("deathsdoor.itemchanger", "ItemChanger", "1.3.0.0")]
 internal class ItemChangerPlugin : Bep.BaseUnityPlugin
 {
     private static ItemChangerPlugin? Instance;
