@@ -170,7 +170,7 @@ public static class Predefined
         {"Soul Orb-Fortress Bomb", new DropLocation { UniqueId = "dropsoul_swampbomb", Area = Area.Fortress }},
         {"Soul Orb-Fortress Hidden Sewer", new DropLocation { UniqueId = "dropsoul_swampsewer", Area = Area.Fortress }},
         {"Soul Orb-Fortress Drop", new DropLocation { UniqueId = "dropsoul_swampdrop", Area = Area.Fortress }},
-        {"Soul Orb-Estate Access Crypt", new DropLocation { UniqueId = "dropsoul_cryptgrave", Area = Area.Estate }},
+        {"Soul Orb-Estate Access Crypt", new DropLocation { UniqueId = "dropsoul_cryptgrave", Area = Area.Cemetery }},
         {"Soul Orb-Estate Balcony", new DropLocation { UniqueId = "dropsoul_gardenbalcony", Area = Area.Estate }},
         {"Soul Orb-Garden of Love Turncam", new DropLocation { UniqueId = "dropsoul_gardenturncam", Area = Area.Estate }},
         {"Soul Orb-Garden of Life Hookshot Loop", new DropLocation { UniqueId = "dropsoul_gardennorthhookshot", Area = Area.Estate }},
