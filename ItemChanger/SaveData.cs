@@ -26,6 +26,7 @@ public class SaveData
         Placements[location] = item;
     }
 
+    [Json.JsonIgnore]
     public Collections.IReadOnlyDictionary<string, string> NamedPlacements => Placements;
 
     public void AddToTrackerLog(TrackerLogEntry entry)
