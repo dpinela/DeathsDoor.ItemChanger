@@ -1,3 +1,15 @@
+# 1.3 (29 April 2024)
+
+New features:
+
+- It is possible to create multi-seed items by requesting "Life Seed xN", where N is the
+  desired number of seeds.
+
+Bug fixes:
+
+- The area for the Soul Orb and the levers in the Estate access crypt is reported as Cemetery,
+  instead of Estate.
+
 # 1.2 (7 April 2024)
 
 New features:
