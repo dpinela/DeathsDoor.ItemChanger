@@ -77,9 +77,12 @@ still compatible with the standard game assembly.
 
 This mod also uses [Newtonsoft.JSON][nsjson], which it imports from
 NuGet.
-The version included in the releases is the version for `net20`,
-as the version that NuGet provides for `net472` does not work under
-the Unity Mono runtime DD uses.
+The version included in the releases should be the version for
+`netstandard2.0`, as the version that NuGet provides for `net472`
+does not work under the Unity Mono runtime DD uses.
+
+(Due to a mistake, the releases currently use an older version of the
+library instead.)
 
 [beppub]: https://github.com/BepInEx/BepInEx.AssemblyPublicizer
 [nsjson]: https://www.nuget.org/packages/Newtonsoft.Json
