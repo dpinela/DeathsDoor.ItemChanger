@@ -288,6 +288,20 @@ public static class Predefined
         {"Key-Manor Under Dining Room", new KeyLocation { UniqueId = "mansion_key1", Area = Area.Manor }},
         {"Key-Manor After Spinny Pot Room", new KeyLocation { UniqueId = "mansion_key2", Area = Area.Manor }},
         {"Key-Manor Library", new KeyLocation { UniqueId = "collectablekey_mansion3", Area = Area.Manor }},
+
+        // Crow Souls
+        {"Crow-Manor After Torch Puzzle", new CrowSoulLocation { UniqueId = "crowskele_mansion_4", Area = Area.Manor }},
+        {"Crow-Manor Imp Loft", new CrowSoulLocation { UniqueId = "crowskele_mansion_1", Area = Area.Manor }},
+        {"Crow-Manor Library", new CrowSoulLocation { UniqueId = "crowskele_mansion_2", Area = Area.Manor }},
+        {"Crow-Manor Bedroom", new CrowSoulLocation { UniqueId = "crowskele_mansion_3", Area = Area.Manor }},
+        {"Crow-Dungeon Hall", new CrowSoulLocation { UniqueId = "crowskele_forest_4", Area = Area.Dungeon}},
+        {"Crow-Dungeon Water Arena", new CrowSoulLocation { UniqueId = "crowskele_forest_1", Area = Area.Dungeon }},
+        {"Crow-Dungeon Cobweb", new CrowSoulLocation { UniqueId = "crowskele_forest_3", Area = Area.Dungeon }},
+        {"Crow-Dungeon Crow 2", new CrowSoulLocation { UniqueId = "crowskele_forest_2", Area = Area.Dungeon }},
+        {"Crow-Lockstone East", new CrowSoulLocation { UniqueId = "crowskele_fortress_4", Area = Area.Lockstone }},
+        {"Crow-Lockstone West", new CrowSoulLocation { UniqueId = "crowskele_fortress_1", Area = Area.Lockstone }},
+        {"Crow-Lockstone West Locked", new CrowSoulLocation { UniqueId = "crowskele_fortress_2", Area = Area.Lockstone }},
+        {"Crow-Lockstone South West", new CrowSoulLocation { UniqueId = "crowskele_fortress_3", Area = Area.Lockstone }},
     };
 
     public static bool TryGetLocation(string name, [CA.NotNullWhen(true)] out Location? loc) =>
