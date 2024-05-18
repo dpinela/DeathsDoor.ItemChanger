@@ -101,7 +101,7 @@ public static class Predefined
         {"Seed-Ruins On Settlement Wall", new DropLocation { UniqueId = "seed_forestvillage", Area = Area.Ruins }},
         {"Seed-Ruins Behind Boxes", new DropLocation { UniqueId = "seed_forestintro", Area = Area.Ruins }},
         {"Seed-Ruins Down Through Bomb Wall", new DropLocation { UniqueId = "seed_forestdrop", Area = Area.Ruins }},
-        {"Seed-Dungeon Above Crow 2", new DropLocation { UniqueId = "seed_dungeoneastexit", Area = Area.Dungeon }},
+        {"Seed-Dungeon Above Rightmost Crow", new DropLocation { UniqueId = "seed_dungeoneastexit", Area = Area.Dungeon }},
         {"Seed-Dungeon Right Above Key", new DropLocation { UniqueId = "seed_dungeonprisonbreak", Area = Area.Dungeon }},
         {"Seed-Dungeon Avarice Bridge", new DropLocation { UniqueId = "seed_dungeonbridge", Area = Area.Dungeon }},
         {"Seed-Fortress Watchtower", new DropLocation { UniqueId = "seed_swampwatchtower", Area = Area.Fortress }},
@@ -236,7 +236,7 @@ public static class Predefined
         {"Lever-Ruins Main Gate", new FrogLeverLocation { UniqueId = "forest_gate_lever", Area = Area.Ruins }},
         {"Lever-Dungeon Entrance Right Gate", new FrogLeverLocation { UniqueId = "jail2", Area = Area.Dungeon }},
         {"Lever-Dungeon Entrance Left Gate", new FrogLeverLocation { UniqueId = "jail1", Area = Area.Dungeon }},
-        {"Lever-Dungeon Above Crow 2", new FrogLeverLocation { UniqueId = "foresteastexit", Area = Area.Dungeon }},
+        {"Lever-Dungeon Above Rightmost Crow", new FrogLeverLocation { UniqueId = "foresteastexit", Area = Area.Dungeon }},
         {"Lever-Fortress Bomb", new FrogLeverLocation { UniqueId = "swampladdershortcut2", Area = Area.Fortress }},
         {"Lever-Fortress Main Gate", new FrogLeverLocation { UniqueId = "swamp_enter_maingatelever", Area = Area.Fortress }},
         {"Lever-Fortress Central Shortcut", new FrogLeverLocation { UniqueId = "swampladdershortcut1", Area = Area.Fortress }},
@@ -297,7 +297,7 @@ public static class Predefined
         {"Crow-Dungeon Hall", new CrowSoulLocation { UniqueId = "crowskele_forest_4", Area = Area.Dungeon}},
         {"Crow-Dungeon Water Arena", new CrowSoulLocation { UniqueId = "crowskele_forest_1", Area = Area.Dungeon }},
         {"Crow-Dungeon Cobweb", new CrowSoulLocation { UniqueId = "crowskele_forest_3", Area = Area.Dungeon }},
-        {"Crow-Dungeon Crow 2", new CrowSoulLocation { UniqueId = "crowskele_forest_2", Area = Area.Dungeon }},
+        {"Crow-Dungeon Rightmost", new CrowSoulLocation { UniqueId = "crowskele_forest_2", Area = Area.Dungeon }},
         {"Crow-Lockstone East", new CrowSoulLocation { UniqueId = "crowskele_fortress_4", Area = Area.Lockstone }},
         {"Crow-Lockstone West", new CrowSoulLocation { UniqueId = "crowskele_fortress_1", Area = Area.Lockstone }},
         {"Crow-Lockstone West Locked", new CrowSoulLocation { UniqueId = "crowskele_fortress_2", Area = Area.Lockstone }},
@@ -602,7 +602,7 @@ public static class Predefined
         {"Lever-Ruins Main Gate", new BoolItem { UniqueId = "forest_gate_lever", DisplayName = "Ruins Main Gate Lever", Icon = "FrogLever" }},
         {"Lever-Dungeon Entrance Right Gate", new BoolItem { UniqueId = "jail2", DisplayName = "Dungeon Entrance Right Gate Lever", Icon = "FrogLever" }},
         {"Lever-Dungeon Entrance Left Gate", new BoolItem { UniqueId = "jail1", DisplayName = "Dungeon Entrance Left Gate Lever", Icon = "FrogLever" }},
-        {"Lever-Dungeon Above Crow 2", new BoolItem { UniqueId = "foresteastexit", DisplayName = "Dungeon Above Crow 2 Lever" , Icon = "FrogLever"}},
+        {"Lever-Dungeon Above Rightmost Crow", new BoolItem { UniqueId = "foresteastexit", DisplayName = "Dungeon Above Rightmost Crow" , Icon = "FrogLever"}},
         {"Lever-Fortress Bomb", new BoolItem { UniqueId = "swampladdershortcut2", DisplayName = "Fortress Bomb Lever", Icon = "FrogLever" }},
         {"Lever-Fortress Main Gate", new BoolItem { UniqueId = "swamp_enter_maingatelever", DisplayName = "Fortress Main Gate Lever", Icon = "FrogLever" }},
         {"Lever-Fortress Central Shortcut", new BoolItem { UniqueId = "swampladdershortcut1", DisplayName = "Fortress Central Shortcut Lever", Icon = "FrogLever" }},
@@ -657,6 +657,56 @@ public static class Predefined
             Icon = "YellowKey",
             Type = CollectableKey.KeyType.Mansion
         }},
+
+        // Crow Souls
+        {"Crow-Manor After Torch Puzzle", new CrowSoulItem {
+            DisplayName = "Manor Crow 1",
+            UniqueId = "crowskele_mansion_4"
+        }},
+        {"Crow-Manor Imp Loft", new CrowSoulItem {
+            DisplayName = "Manor Crow 2",
+            UniqueId = "crowskele_mansion_1"
+        }},
+        {"Crow-Manor Library", new CrowSoulItem {
+            DisplayName = "Manor Crow 3",
+            UniqueId = "crowskele_mansion_2"
+        }},
+        {"Crow-Manor Bedroom", new CrowSoulItem {
+            DisplayName = "Manor Crow 4",
+            UniqueId = "crowskele_mansion_3"
+        }},
+        {"Crow-Dungeon Hall", new CrowSoulItem {
+            DisplayName = "Dungeon Crow 1",
+            UniqueId = "crowskele_forest_4"
+        }},
+        {"Crow-Dungeon Water Arena", new CrowSoulItem {
+            DisplayName = "Dungeon Crow 2",
+            UniqueId = "crowskele_forest_1"
+        }},
+        {"Crow-Dungeon Cobweb", new CrowSoulItem {
+            DisplayName = "Dungeon Crow 3",
+            UniqueId = "crowskele_forest_3"
+        }},
+        {"Crow-Dungeon Rightmost", new CrowSoulItem {
+            DisplayName = "Dungeon Crow 4",
+            UniqueId = "crowskele_forest_2"
+        }},
+        {"Crow-Lockstone East", new CrowSoulItem {
+            DisplayName = "Lockstone Crow 1",
+            UniqueId = "crowskele_fortress_4"
+        }},
+        {"Crow-Lockstone West", new CrowSoulItem {
+            DisplayName = "Lockstone Crow 2",
+            UniqueId = "crowskele_fortress_1"
+        }},
+        {"Crow-Lockstone West Locked", new CrowSoulItem {
+            DisplayName = "Lockstone Crow 3",
+            UniqueId = "crowskele_fortress_2"
+        }},
+        {"Crow-Lockstone South West", new CrowSoulItem {
+            DisplayName = "Lockstone Crow 4",
+            UniqueId = "crowskele_fortress_3"
+        }}
     };
 
     public static bool TryGetItem(string name, [CA.NotNullWhen(true)] out Item? item)
@@ -680,6 +730,8 @@ public static class Predefined
     // When the Plando mod and most original plandos were made, lever names
     // ended in " Lever". Since then ItemChanger has changed to begin them
     // with "Lever-", in line with other kinds of locations/items.
+    // Also, the Rightmost Crow in Dungeon was previously called "Crow 2",
+    // after its position in the 100% and Any% routes.
     // Keep the old names as aliases for the sake of compatibility.
     static Predefined()
     {
@@ -695,5 +747,9 @@ public static class Predefined
             predefinedLocations[alias] = predefinedLocations[name];
             predefinedItems[alias] = predefinedItems[name];
         }
+
+        predefinedItems["Lever-Dungeon Above Crow 2"] = predefinedItems["Lever-Dungeon Above Rightmost Crow"];
+        predefinedLocations["Lever-Dungeon Above Crow 2"] = predefinedLocations["Lever-Dungeon Above Rightmost Crow"];
+        predefinedLocations["Seed-Dungeon Above Crow 2"] = predefinedLocations["Seed-Dungeon Above Rightmost Crow"];
     }
 }

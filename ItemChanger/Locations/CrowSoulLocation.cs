@@ -15,7 +15,6 @@ internal class CrowSoulLocation : Location
     {
         private static void Prefix(SoulKey __instance, out string? __state)
         {
-            ItemChangerPlugin.LogInfo($"SoulKey: {GetKey(__instance)}");
             SwapCrowKey(__instance, out __state);
         }
 
