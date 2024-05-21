@@ -10,7 +10,7 @@ internal class CrowSoulItem : Item
 
     public string DisplayName { get; set; } = "";
 
-    public string Icon => "Soul";
+    public string Icon => "CrowSoul";
 
     public void Trigger()
     {
