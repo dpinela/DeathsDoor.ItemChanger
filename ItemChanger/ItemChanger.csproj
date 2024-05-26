@@ -130,6 +130,9 @@
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>$(LocalRefs)/UnityEngine.CoreModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>$(LocalRefs)/UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.ImageConversionModule">
       <HintPath>$(LocalRefs)/UnityEngine.ImageConversionModule.dll</HintPath>
     </Reference>

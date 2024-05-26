@@ -33,6 +33,11 @@ internal class CrowSoulItem : Item
         }
     }
 
+    private class UntriggeredCutscene
+    {
+        internal UE.GameObject? CameraFocus, CrowCharge;
+    }
+
     private static CG.Dictionary<string, UntriggeredCutscene> untriggeredCutscenes = new()
     {
         {"crowskele_mansion_1", new()},
@@ -50,10 +55,11 @@ internal class CrowSoulItem : Item
     };
 
     [HL.HarmonyPatch(typeof(CameraFocusTrigger), nameof(CameraFocusTrigger.Start))]
-    private static class ChargeCutscenePatch
+    private static class CameraFocusStartPatch
     {
         private static void Postfix(CameraFocusTrigger __instance)
         {
+            
             var key = __instance.key[0].uniqueId;
             if (untriggeredCutscenes.TryGetValue(key, out var uc) && !GameSave.GetSaveData().IsKeyUnlocked(key))
             {
@@ -63,20 +69,16 @@ internal class CrowSoulItem : Item
     }
 
     [HL.HarmonyPatch(typeof(CrowSoulCharge), nameof(CrowSoulCharge.Start))]
-    private static class ChargeCutscenePatch2
+    private static class ChargeCutsceneStartPatch
     {
         private static void Postfix(CrowSoulCharge __instance)
         {
+            ItemChangerPlugin.LogInfo($"CSC flash color: {__instance.fadeColor}");
             var key = __instance.key[0].uniqueId;
             if (untriggeredCutscenes.TryGetValue(key, out var uc) && !GameSave.GetSaveData().IsKeyUnlocked(key))
             {
                 uc.CrowCharge = __instance.gameObject;
             }
         }
-    }
-
-    private class UntriggeredCutscene
-    {
-        internal UE.GameObject? CameraFocus, CrowCharge;
     }
 }
