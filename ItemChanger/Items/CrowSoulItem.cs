@@ -73,7 +73,6 @@ internal class CrowSoulItem : Item
     {
         private static void Postfix(CrowSoulCharge __instance)
         {
-            ItemChangerPlugin.LogInfo($"CSC flash color: {__instance.fadeColor}");
             var key = __instance.key[0].uniqueId;
             if (untriggeredCutscenes.TryGetValue(key, out var uc) && !GameSave.GetSaveData().IsKeyUnlocked(key))
             {

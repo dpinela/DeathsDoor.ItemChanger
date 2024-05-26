@@ -52,7 +52,7 @@ internal class CrowSoulLocation : Location
             __instance.key = null;
             // Make the crow disappear after being collected; for vanilla crows,
             // the charge cutscene handles this.
-            var d = __instance.gameObject.AddComponent<DelayedCrowDestroyer>();
+            var d = __instance.gameObject.AddComponent<DelayedCrowDeactivator>();
             d.key = __instance;
             d.enabled = true;
             return false;
@@ -88,6 +88,15 @@ internal class CrowSoulLocation : Location
         {
             var destroy = typeof(UE.Object).GetMethod(nameof(UE.Object.Destroy),
                 new System.Type[] { typeof(UE.Object) });
+            // We only want to rewrite the *second* call to Object.Destroy.
+            foreach (var insn in orig)
+            {
+                yield return insn;
+                if (insn.Calls(destroy))
+                {
+                    break;
+                }
+            }
             foreach (var insn in orig)
             {
                 if (insn.Calls(destroy))
@@ -111,7 +120,7 @@ internal class CrowSoulLocation : Location
         }
     }
 
-    private class DelayedCrowDestroyer : UE.MonoBehaviour
+    private class DelayedCrowDeactivator : UE.MonoBehaviour
     {
         public SoulKey? key;
 
@@ -119,7 +128,14 @@ internal class CrowSoulLocation : Location
         {
             if (key!.riseTween >= 1)
             {
-                UE.Object.Destroy(gameObject);
+                // Flash the screen to cover up the crow's sudden disappearance.
+                ScreenFade.instance.SetColor(new UE.Color(1, .514f, .665f, 1));
+                ScreenFade.instance.FadeIn(2.5f);
+                // We cannot just destroy the crow object. For some reason, that
+                // causes the vanilla crow charge cutscene to trigger.
+                // Deactivating it is sufficient.
+                gameObject.SetActive(false);
+                UE.Object.Destroy(this);
             }
         }
     }
