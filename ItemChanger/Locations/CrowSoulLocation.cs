@@ -88,20 +88,23 @@ internal class CrowSoulLocation : Location
         {
             var destroy = typeof(UE.Object).GetMethod(nameof(UE.Object.Destroy),
                 new System.Type[] { typeof(UE.Object) });
-            // We only want to rewrite the *second* call to Object.Destroy.
+            // We only want to rewrite the *second* call to Object.Destroy
+            // (the one in the loop)
+            var n = 0;
             foreach (var insn in orig)
             {
                 yield return insn;
                 if (insn.Calls(destroy))
                 {
-                    break;
-                }
-            }
-            foreach (var insn in orig)
-            {
-                if (insn.Calls(destroy))
-                {
-                    yield return HL.CodeInstruction.CallClosure((System.Action<UE.GameObject>)DestroyIfVanillaCrow);
+                    n++;
+                    if (n == 2)
+                    {
+                        yield return HL.CodeInstruction.CallClosure((System.Action<UE.GameObject>)DestroyIfVanillaCrow);
+                    }
+                    else
+                    {
+                        yield return insn;
+                    }
                 }
                 else
                 {
