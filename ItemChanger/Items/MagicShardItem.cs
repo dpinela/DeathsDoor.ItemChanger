@@ -50,6 +50,10 @@ internal class MagicShardItem : Item
                 {
                     yield return new(RefEmit.OpCodes.Ldc_I4, patchedMPCap);
                 }
+                else
+                {
+                    yield return insn;
+                }
             }
         }
     }

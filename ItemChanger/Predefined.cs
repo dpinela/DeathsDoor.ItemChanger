@@ -222,7 +222,7 @@ public static class Predefined
         {"Lever-Lockstone Tracking Beam Puzzle", new IronLeverLocation { UniqueId = "fort_gate_2", Area = Area.Lockstone }},
         {"Lever-Lockstone Vertical Laser Puzzle", new IronLeverLocation { UniqueId = "fort_gate_3", Area = Area.Lockstone }},
         {"Lever-Lockstone North Puzzle", new IronLeverLocation { UniqueId = "fort_gate_5", Area = Area.Lockstone }},
-        {"Lever-Lockstone Secret West", new FrogLeverLocation { UniqueId = "lever_fortresssecretwest", Area = Area.Lockstone }},
+        {"Lever-Lockstone Shrine", new FrogLeverLocation { UniqueId = "lever_fortresssecretwest", Area = Area.Lockstone }},
         {"Lever-Lockstone Hookshot Puzzle", new IronLeverLocation { UniqueId = "fort_gate_8", Area = Area.Lockstone }},
         {"Lever-Lockstone Upper Puzzle", new IronLeverLocation { UniqueId = "fort_gate_upper", Area = Area.Lockstone }},
         {"Lever-Lockstone Upper Dual Laser Puzzle", new IronLeverLocation { UniqueId = "fort_gate_6", Area = Area.Lockstone }},
@@ -588,7 +588,7 @@ public static class Predefined
         {"Lever-Lockstone Tracking Beam Puzzle", new BoolItem { UniqueId = "fort_gate_2", DisplayName = "Lockstone Tracking Beam Puzzle Lever", Icon = "FrogLever" }},
         {"Lever-Lockstone Vertical Laser Puzzle", new BoolItem { UniqueId = "fort_gate_3", DisplayName = "Lockstone Vertical Laser Puzzle Lever", Icon = "FrogLever" }},
         {"Lever-Lockstone North Puzzle", new BoolItem { UniqueId = "fort_gate_5", DisplayName = "Lockstone North Puzzle Lever", Icon = "FrogLever" }},
-        {"Lever-Lockstone Secret West", new BoolItem { UniqueId = "lever_fortresssecretwest", DisplayName = "Lockstone Secret West Lever", Icon = "FrogLever" }},
+        {"Lever-Lockstone Shrine", new BoolItem { UniqueId = "lever_fortresssecretwest", DisplayName = "Lockstone Secret West Lever", Icon = "FrogLever" }},
         {"Lever-Lockstone Hookshot Puzzle", new BoolItem { UniqueId = "fort_gate_8", DisplayName = "Lockstone Hookshot Puzzle Lever", Icon = "FrogLever" }},
         {"Lever-Lockstone Upper Puzzle", new BoolItem { UniqueId = "fort_gate_upper", DisplayName = "Lockstone Upper Puzzle Lever", Icon = "FrogLever" }},
         {"Lever-Lockstone Upper Dual Laser Puzzle", new BoolItem { UniqueId = "fort_gate_6", DisplayName = "Lockstone Upper Dual Laser Puzzle Lever", Icon = "FrogLever" }},
@@ -602,7 +602,7 @@ public static class Predefined
         {"Lever-Ruins Main Gate", new BoolItem { UniqueId = "forest_gate_lever", DisplayName = "Ruins Main Gate Lever", Icon = "FrogLever" }},
         {"Lever-Dungeon Entrance Right Gate", new BoolItem { UniqueId = "jail2", DisplayName = "Dungeon Entrance Right Gate Lever", Icon = "FrogLever" }},
         {"Lever-Dungeon Entrance Left Gate", new BoolItem { UniqueId = "jail1", DisplayName = "Dungeon Entrance Left Gate Lever", Icon = "FrogLever" }},
-        {"Lever-Dungeon Above Rightmost Crow", new BoolItem { UniqueId = "foresteastexit", DisplayName = "Dungeon Above Rightmost Crow" , Icon = "FrogLever"}},
+        {"Lever-Dungeon Above Rightmost Crow", new BoolItem { UniqueId = "foresteastexit", DisplayName = "Dungeon Above Rightmost Crow Lever" , Icon = "FrogLever"}},
         {"Lever-Fortress Bomb", new BoolItem { UniqueId = "swampladdershortcut2", DisplayName = "Fortress Bomb Lever", Icon = "FrogLever" }},
         {"Lever-Fortress Main Gate", new BoolItem { UniqueId = "swamp_enter_maingatelever", DisplayName = "Fortress Main Gate Lever", Icon = "FrogLever" }},
         {"Lever-Fortress Central Shortcut", new BoolItem { UniqueId = "swampladdershortcut1", DisplayName = "Fortress Central Shortcut Lever", Icon = "FrogLever" }},
@@ -751,5 +751,8 @@ public static class Predefined
         predefinedItems["Lever-Dungeon Above Crow 2"] = predefinedItems["Lever-Dungeon Above Rightmost Crow"];
         predefinedLocations["Lever-Dungeon Above Crow 2"] = predefinedLocations["Lever-Dungeon Above Rightmost Crow"];
         predefinedLocations["Seed-Dungeon Above Crow 2"] = predefinedLocations["Seed-Dungeon Above Rightmost Crow"];
+
+        predefinedLocations["Lever-Lockstone Secret West"] = predefinedLocations["Lever-Lockstone Shrine"];
+        predefinedItems["Lever-Lockstone Secret West"] = predefinedItems["Lever-Lockstone Shrine"];
     }
 }

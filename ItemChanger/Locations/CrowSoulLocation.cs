@@ -93,7 +93,6 @@ internal class CrowSoulLocation : Location
             var n = 0;
             foreach (var insn in orig)
             {
-                yield return insn;
                 if (insn.Calls(destroy))
                 {
                     n++;
