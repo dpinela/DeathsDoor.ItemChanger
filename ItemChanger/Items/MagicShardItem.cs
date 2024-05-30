@@ -1,3 +1,8 @@
+using HL = HarmonyLib;
+using static HarmonyLib.CodeInstructionExtensions;
+using CG = System.Collections.Generic;
+using RefEmit = System.Reflection.Emit;
+
 namespace DDoor.ItemChanger;
 
 internal class MagicShardItem : Item
@@ -25,5 +30,27 @@ internal class MagicShardItem : Item
             UIArrowChargeBar.instance.SetMaxChargeDelayed();
         }
         save.SetCountKey("arrow_shard", shards);
+    }
+
+    // _ArrowPower.Start hard caps the amount of magic points that can be held at 6
+    // (the initial 4 + 2 extra from shards), but this is entirely redundant in a
+    // vanilla game since there are only 8 magic shrines to begin with. We remove the
+    // cap so that excess magic shard items added through this mod work as expected.
+    private const int patchedMPCap = 999_999_999;
+
+    [HL.HarmonyPatch(typeof(_ArrowPower), nameof(_ArrowPower.Start))]
+    private static class UncapMagicPointsPatch
+    {
+        private static CG.IEnumerable<HL.CodeInstruction> Transpiler(
+            CG.IEnumerable<HL.CodeInstruction> orig)
+        {
+            foreach (var insn in orig)
+            {
+                if (insn.LoadsConstant(2))
+                {
+                    yield return new(RefEmit.OpCodes.Ldc_I4, patchedMPCap);
+                }
+            }
+        }
     }
 }
