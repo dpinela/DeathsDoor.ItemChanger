@@ -53,4 +53,20 @@ internal class MagicShardItem : Item
             }
         }
     }
+
+    // The inventory counters for shards normally turn off when the vanilla maximum of
+    // 8 of either is collected. Override that when shards beyond that limit are obtained.
+    // (This retains the vanilla behaviour when the number of shards is a multiple of 4,
+    // but that's good enough since in that case the counter would always show 0 anyway.)
+    [HL.HarmonyPatch(typeof(UICollectableCellLimited), nameof(UICollectableCellLimited.checkItem))]
+    private static class UncapInventoryShardCounterPatch
+    {
+        private static void Postfix(UICollectableCellLimited __instance)
+        {
+            if (GameSave.GetSaveData().GetCountKey(__instance.itemId) > 0)
+            {
+                __instance.counter.gameObject.SetActive(true);
+            }
+        }
+    }
 }
