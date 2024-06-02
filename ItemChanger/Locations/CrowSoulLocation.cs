@@ -17,9 +17,31 @@ internal class CrowSoulLocation : Location
     [HL.HarmonyPatch(typeof(SoulKey), nameof(SoulKey.Start))]
     private static class StartPatch
     {
-        private static void Prefix(SoulKey __instance, out string? __state)
+        private static bool Prefix(SoulKey __instance, out string? __state)
         {
-            SwapCrowKey(__instance, out __state);
+            var npc = __instance.GetComponentInChildren<NPCCharacter>();
+            var key = npc.speech_id[0].unlocks;
+            if (!ItemChangerPlugin.TryGetPlacedItem(typeof(CrowSoulLocation), key, out var _))
+            {
+                __state = null;
+                return true;
+            }
+            // Destruction of the crow object triggers the vanilla crow cutscene
+            // if it has not already been triggered.
+            // The cause for this is unknown.
+            // If the crow has been replaced with another item, this is obviously
+            // not what we want, so set the object to inactive as a substitute.
+            if (GameSave.GetSaveData().IsKeyUnlocked(keyPrefix + key))
+            {
+                __state = null;
+                __instance.gameObject.SetActive(false);
+                return false;
+            }
+            // If the item at this crow hasn't been obtained, let the vanilla
+            // SoulKey.Start run, but make it not destroy the crow object.
+            npc.speech_id[0].unlocks = keyPrefix + key;
+            __state = key;
+            return true;
         }
 
         private static void Postfix(SoulKey __instance, string? __state)
