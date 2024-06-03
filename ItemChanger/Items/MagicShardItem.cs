@@ -2,6 +2,7 @@ using HL = HarmonyLib;
 using static HarmonyLib.CodeInstructionExtensions;
 using CG = System.Collections.Generic;
 using RefEmit = System.Reflection.Emit;
+using UE = UnityEngine;
 
 namespace DDoor.ItemChanger;
 
@@ -71,6 +72,24 @@ internal class MagicShardItem : Item
             {
                 __instance.counter.gameObject.SetActive(true);
             }
+        }
+    }
+
+    // Keep the magic point HUD in one line even when exceeding the normal maximum of six,
+    // so that it doesn't end up overlapping the key HUD.
+    [HL.HarmonyPatch(typeof(UIArrowChargeBar), nameof(UIArrowChargeBar.Awake))]
+    private static class ExtendMagicPointsBarPatch
+    {
+        private static void Postfix(UIArrowChargeBar __instance)
+        {
+            var lg = __instance.GetComponent<UE.UI.GridLayoutGroup>();
+            if (lg == null)
+            {
+                ItemChangerPlugin.LogInfo("missing GridLayoutGroup on the arrow charge bar");
+                return;
+            }
+            lg.constraint = UE.UI.GridLayoutGroup.Constraint.FixedRowCount;
+            lg.constraintCount = 1;
         }
     }
 }
