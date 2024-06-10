@@ -8,25 +8,26 @@ namespace DDoor.ItemChanger;
 
 internal class MagicShardItem : Item
 {
-    private MagicShardItem() {}
-
     public static readonly MagicShardItem Instance = new();
 
-    public string DisplayName => "Magic Shard";
+    public string DisplayName => Amount == 1 ? "Magic Shard" : $"{Amount} Magic Shards";
 
     public string Icon => "MagicShard";
+
+    public int Amount = 1;
 
     public void Trigger()
     {
         var save = GameSave.GetSaveData();
         save.AddToCountKey("arrow_shard_total");
-        var shards = save.GetCountKey("arrow_shard") + 1;
+        var shards = save.GetCountKey("arrow_shard") + Amount;
         if (shards >= 4)
         {
-            shards = 0;
-            save.AddToCountKey("arrow_shard_complete");
+            var chargesAdded = shards / 4;
+            shards %= 4;
+            save.AddToCountKey("arrow_shard_complete", chargesAdded);
             // from Item_HeartContainer.giveExtraStats
-            save.AddToCountKey("extra_arrow_charges");
+            save.AddToCountKey("extra_arrow_charges", chargesAdded);
             WeaponSwitcher.instance.Refresh();
             UIArrowChargeBar.instance.SetMaxChargeDelayed();
         }

@@ -368,8 +368,8 @@ public static class Predefined
         }},
 
         // Shards
-        {"Vitality Shard", VitalityShardItem.Instance},
-        {"Magic Shard", MagicShardItem.Instance},
+        {"Vitality Shard", new VitalityShardItem { Amount = 1 }},
+        {"Magic Shard", new MagicShardItem { Amount = 1 }},
 
         // Shiny Things
         {"Engagement Ring", new CountableInventoryItem {
@@ -716,16 +716,25 @@ public static class Predefined
             return true;
         }
 
-        const string seedsPrefix = "Life Seed x";
-        if (name.StartsWith(seedsPrefix) && int.TryParse(name.Substring(seedsPrefix.Length), out var n))
+        foreach (var (prefix, f) in multiplicableItems)
         {
-            item = new SeedsItem { Amount = n };
-            return true;
+            if (name.StartsWith(prefix) && int.TryParse(name.Substring(prefix.Length), out var n))
+            {
+                item = f(n);
+                return true;
+            }
         }
 
         item = null;
         return false;
     }
+
+    private static readonly Collections.List<(string, System.Func<int, Item>)> multiplicableItems = new()
+    {
+        ("Life Seed x", n => new SeedsItem { Amount = n }),
+        ("Magic Shard x", n => new MagicShardItem { Amount = n }),
+        ("Vitality Shard x", n => new VitalityShardItem { Amount = n }),
+    };
     
     // When the Plando mod and most original plandos were made, lever names
     // ended in " Lever". Since then ItemChanger has changed to begin them

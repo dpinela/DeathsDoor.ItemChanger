@@ -2,23 +2,24 @@ namespace DDoor.ItemChanger;
 
 internal class VitalityShardItem : Item
 {
-    private VitalityShardItem() {}
-
     public static readonly VitalityShardItem Instance = new();
 
-    public string DisplayName => "Vitality Shard";
+    public string DisplayName => Amount == 1 ? "Vitality Shard" : $"{Amount} Vitality Shards";
 
     public string Icon => "VitalityShard";
+
+    public int Amount = 1;
 
     public void Trigger()
     {
         var save = GameSave.GetSaveData();
         save.AddToCountKey("heart_shard_total");
-        var shards = save.GetCountKey("heart_shard") + 1;
+        var shards = save.GetCountKey("heart_shard") + Amount;
         if (shards >= 4)
         {
-            shards = 0;
-            save.AddToCountKey("heart_shard_complete");
+            var heartsAdded = shards / 4;
+            shards %= 4;
+            save.AddToCountKey("heart_shard_complete", heartsAdded);
             // from Item_HeartContainer.giveExtraStats
             UIHealthEnergyBar.instance.SetPermanentHP(UIHealthEnergyBar.instance.GetMaxHealth() + 1);
         }
