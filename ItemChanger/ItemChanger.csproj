@@ -9,8 +9,8 @@
     <Product>ItemChanger</Product>
     <Description>A Death's Door mod for altering item placements.</Description>
     <Copyright></Copyright>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.0</FileVersion>
+    <AssemblyVersion>1.4.0.0</AssemblyVersion>
+    <FileVersion>1.4.0.0</FileVersion>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <LangVersion>10.0</LangVersion>
     <Nullable>enable</Nullable>
