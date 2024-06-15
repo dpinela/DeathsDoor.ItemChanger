@@ -21,6 +21,8 @@ public class SaveData
     // separately, if appropriate.
     public string StartingWeapon { get; set; } = "sword";
 
+    public int GreenTabletDoorCost { get; set; } = 50;
+
     public void Place(string item, string location)
     {
         Placements[location] = item;
