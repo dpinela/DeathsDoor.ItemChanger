@@ -588,7 +588,7 @@ public static class Predefined
         {"Lever-Lockstone Tracking Beam Puzzle", new BoolItem { UniqueId = "fort_gate_2", DisplayName = "Lockstone Tracking Beam Puzzle Lever", Icon = "FrogLever" }},
         {"Lever-Lockstone Vertical Laser Puzzle", new BoolItem { UniqueId = "fort_gate_3", DisplayName = "Lockstone Vertical Laser Puzzle Lever", Icon = "FrogLever" }},
         {"Lever-Lockstone North Puzzle", new BoolItem { UniqueId = "fort_gate_5", DisplayName = "Lockstone North Puzzle Lever", Icon = "FrogLever" }},
-        {"Lever-Lockstone Shrine", new BoolItem { UniqueId = "lever_fortresssecretwest", DisplayName = "Lockstone Secret West Lever", Icon = "FrogLever" }},
+        {"Lever-Lockstone Shrine", new BoolItem { UniqueId = "lever_fortresssecretwest", DisplayName = "Lockstone Shrine Lever", Icon = "FrogLever" }},
         {"Lever-Lockstone Hookshot Puzzle", new BoolItem { UniqueId = "fort_gate_8", DisplayName = "Lockstone Hookshot Puzzle Lever", Icon = "FrogLever" }},
         {"Lever-Lockstone Upper Puzzle", new BoolItem { UniqueId = "fort_gate_upper", DisplayName = "Lockstone Upper Puzzle Lever", Icon = "FrogLever" }},
         {"Lever-Lockstone Upper Dual Laser Puzzle", new BoolItem { UniqueId = "fort_gate_6", DisplayName = "Lockstone Upper Dual Laser Puzzle Lever", Icon = "FrogLever" }},
