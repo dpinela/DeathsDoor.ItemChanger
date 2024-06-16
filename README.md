@@ -13,6 +13,7 @@ This is a Death's Door mod for changing item pickups to give other items.
 - Levers
 - Doors
 - Keys
+- Crow Souls
 
 The full list of modifiable locations, and of items that can be
 placed at those locations, can be found in the [Predefined.cs][]
@@ -80,9 +81,6 @@ NuGet.
 The version included in the releases should be the version for
 `netstandard2.0`, as the version that NuGet provides for `net472`
 does not work under the Unity Mono runtime DD uses.
-
-(Due to a mistake, the releases currently use an older version of the
-library instead.)
 
 [beppub]: https://github.com/BepInEx/BepInEx.AssemblyPublicizer
 [nsjson]: https://www.nuget.org/packages/Newtonsoft.Json

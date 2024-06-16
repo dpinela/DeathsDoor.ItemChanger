@@ -1,12 +1,12 @@
-# 1.4 (??? June 2024)
+# 1.4 (16 June 2024)
 
 New features:
 
 - The 12 crow soul locations can be replaced.
 - There are 12 corresponding crow soul items available for placement.
 - It is possible to create multi-shard (magic or vitality) items by requesting "Vitality Shard xN" or "Magic Shard xN", where N is the desired number of shards.
-- The caps on magic and health points are removed, allowing the use of extra
-  shards beyond the vanilla 8 of each kind.
+- The cap on magic points is removed, allowing the use of extra
+  shards beyond the vanilla 8.
 - There is an option to change the number of planted pots required to open
   the Green Tablet door, from the default of 50.
 
