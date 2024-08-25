@@ -10,6 +10,9 @@ namespace DDoor.ItemChanger;
 public class SaveData
 {
     [Json.JsonProperty]
+    internal Collections.Dictionary<string, Item> UnnamedPlacements = new();
+
+    [Json.JsonProperty]
     internal Collections.Dictionary<string, string> Placements = new();
 
     [Json.JsonProperty]
@@ -26,6 +29,11 @@ public class SaveData
     public void Place(string item, string location)
     {
         Placements[location] = item;
+    }
+
+    public void Place(Item item, string location)
+    {
+        UnnamedPlacements[location] = item;
     }
 
     [Json.JsonIgnore]

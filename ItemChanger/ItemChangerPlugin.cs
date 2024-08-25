@@ -5,7 +5,7 @@ using HL = HarmonyLib;
 
 namespace DDoor.ItemChanger;
 
-[Bep.BepInPlugin("deathsdoor.itemchanger", "ItemChanger", "1.4.0.0")]
+[Bep.BepInPlugin("deathsdoor.itemchanger", "ItemChanger", "1.5.0.0")]
 internal class ItemChangerPlugin : Bep.BaseUnityPlugin
 {
     private static ItemChangerPlugin? Instance;
@@ -42,6 +42,16 @@ internal class ItemChangerPlugin : Bep.BaseUnityPlugin
                         item = new LoggedItem(item!, locationName);
                         activePlacements[(loc!.GetType(), loc!.UniqueId)] = item;
                     }
+                }
+                foreach (var (locationName, item) in SaveData.current.UnnamedPlacements)
+                {
+                    if (!Predefined.TryGetLocation(locationName, out var loc))
+                    {
+                        Logger.LogError($"location {locationName} does not exist");
+                        continue;
+                    }
+                    var placedItem = new LoggedItem(item, locationName);
+                    activePlacements[(loc.GetType(), loc.UniqueId)] = placedItem;
                 }
             };
             new HL.Harmony("deathsdoor.itemchanger").PatchAll();
