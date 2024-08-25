@@ -59,7 +59,7 @@ public class SaveData
     {
         // Serialize the data into a buffer so that we don't destroy an existing
         // file if serialization fails.
-        var json = Json.JsonConvert.SerializeObject(this);
+        var json = Json.JsonConvert.SerializeObject(this, jsonSettings);
         IO.File.WriteAllText(Location(saveId), json);
     }
 
@@ -82,13 +82,18 @@ public class SaveData
     private static string Location(string saveId) =>
         IO.Path.Combine(UE.Application.persistentDataPath, "SAVEDATA", "Save_" + saveId + "-ItemChanger.json");
 
+    private static Json.JsonSerializerSettings jsonSettings = new()
+    {
+        TypeNameHandling = Json.TypeNameHandling.Auto
+    };
+
     private static void Load(string saveId)
     {
         try
         {
             using var file = IO.File.OpenText(Location(saveId));
             using var reader = new Json.JsonTextReader(file);
-            var ser = Json.JsonSerializer.CreateDefault();
+            var ser = Json.JsonSerializer.CreateDefault(jsonSettings);
             current = ser.Deserialize<SaveData>(reader);
             OnTrackerLogUpdate?.Invoke(current!.TrackerLog);
         }
