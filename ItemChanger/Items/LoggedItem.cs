@@ -2,12 +2,14 @@ namespace DDoor.ItemChanger;
 
 internal class LoggedItem : Item
 {
-    public Item Item;
-    public string Where;
+    private Item Item;
+    private string What;
+    private string Where;
 
-    public LoggedItem(Item item, string location)
+    public LoggedItem(Item item, string itemName, string location)
     {
         Item = item;
+        What = itemName;
         Where = location;
     }
 
@@ -19,7 +21,8 @@ internal class LoggedItem : Item
     {
         SaveData.Open().AddToTrackerLog(new TrackerLogEntry
         {
-            ItemName = Item.DisplayName,
+            ItemName = What,
+            ItemDisplayName = Item.DisplayName,
             ItemIcon = Item.Icon,
             LocationName = Where,
             GameTime = GameTimeTracker.instance.GetTime()

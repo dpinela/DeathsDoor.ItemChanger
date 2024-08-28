@@ -39,7 +39,7 @@ internal class ItemChangerPlugin : Bep.BaseUnityPlugin
                     if (itemOK && locOK)
                     {
                         // The compiler can't tell, but loc and item are guaranteed non-null at this point.
-                        item = new LoggedItem(item!, locationName);
+                        item = new LoggedItem(item!, itemName, locationName);
                         activePlacements[(loc!.GetType(), loc!.UniqueId)] = item;
                     }
                 }
@@ -50,7 +50,7 @@ internal class ItemChangerPlugin : Bep.BaseUnityPlugin
                         Logger.LogError($"location {locationName} does not exist");
                         continue;
                     }
-                    var placedItem = new LoggedItem(item, locationName);
+                    var placedItem = new LoggedItem(item, "", locationName);
                     activePlacements[(loc.GetType(), loc.UniqueId)] = placedItem;
                 }
             };

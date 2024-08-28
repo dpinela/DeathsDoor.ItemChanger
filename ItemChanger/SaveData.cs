@@ -156,8 +156,10 @@ public class SaveData
 
 public class TrackerLogEntry
 {
+    public bool LocationIsVirtual = false;
     public string LocationName = "";
     public string ItemName = "";
+    public string ItemDisplayName = "";
     public string ItemIcon = "";
     public float GameTime = 0;
 }
