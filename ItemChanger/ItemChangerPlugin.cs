@@ -43,7 +43,7 @@ internal class ItemChangerPlugin : Bep.BaseUnityPlugin
                         activePlacements[(loc!.GetType(), loc!.UniqueId)] = item;
                     }
                 }
-                foreach (var (locationName, item) in SaveData.current.UnnamedPlacements)
+                foreach (var (locationName, item) in SaveData.current._UnnamedPlacements)
                 {
                     if (!Predefined.TryGetLocation(locationName, out var loc))
                     {

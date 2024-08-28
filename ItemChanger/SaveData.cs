@@ -10,7 +10,7 @@ namespace DDoor.ItemChanger;
 public class SaveData
 {
     [Json.JsonProperty]
-    internal Collections.Dictionary<string, Item> UnnamedPlacements = new();
+    internal Collections.Dictionary<string, Item> _UnnamedPlacements = new();
 
     [Json.JsonProperty]
     internal Collections.Dictionary<string, string> Placements = new();
@@ -33,11 +33,14 @@ public class SaveData
 
     public void Place(Item item, string location)
     {
-        UnnamedPlacements[location] = item;
+        _UnnamedPlacements[location] = item;
     }
 
     [Json.JsonIgnore]
     public Collections.IReadOnlyDictionary<string, string> NamedPlacements => Placements;
+
+    [Json.JsonIgnore]
+    public Collections.IReadOnlyDictionary<string, Item> UnnamedPlacements => _UnnamedPlacements;
 
     public void AddToTrackerLog(TrackerLogEntry entry)
     {
