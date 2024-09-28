@@ -1,3 +1,13 @@
+# 1.5 (29 September 2024)
+
+New features:
+
+- Non-predefined items can be placed by passing an implementation of Item
+  directly to SaveData.Place.
+- Additional icon lookup paths can be added.
+- The tracker log can now record items given at virtual locations
+  (locations that don't actually exist in the game).
+
 # 1.4 (16 June 2024)
 
 New features:

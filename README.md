@@ -15,7 +15,7 @@ This is a Death's Door mod for changing item pickups to give other items.
 - Keys
 - Crow Souls
 
-The full list of modifiable locations, and of items that can be
+The full list of modifiable locations, and of predefined items that can be
 placed at those locations, can be found in the [Predefined.cs][]
 file.
 
@@ -40,6 +40,9 @@ the returned `SaveData` object. Here is an example:
         var data = IC.SaveData.Open();
         data.Place("Hookshot", "Discarded Umbrella");
     });
+  
+`Place` accepts either the name of a predefined item, or a JSON-serializable
+implementation of the `Item` interface.
 
 [AGM]: https://github.com/dpinela/DeathsDoor.AlternativeGameModes#how-to-add-modes
 
