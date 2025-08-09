@@ -4,6 +4,7 @@ using IO = System.IO;
 using Json = Newtonsoft.Json;
 using UE = UnityEngine;
 using HL = HarmonyLib;
+using UnityEngine.SceneManagement;
 
 namespace DDoor.ItemChanger;
 
@@ -110,6 +111,15 @@ public class SaveData
             current = null;
             OnTrackerLogUpdate?.Invoke(null);
             ItemChangerPlugin.LogError($"Error loading save data for save ID {saveId}: {err.ToString()}");
+        }
+    }
+
+    public static void OnSceneLoaded(Scene scene, LoadSceneMode _)
+    {
+        if (scene.name == "TitleScreen")
+        {
+            // If loading into the TitleScreen, clear the TrackerLog so that RecentItemsDisplay does not keep showing the items from the previous play.
+            OnTrackerLogUpdate?.Invoke(null);
         }
     }
 
