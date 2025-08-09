@@ -4,7 +4,7 @@ using IO = System.IO;
 using Json = Newtonsoft.Json;
 using UE = UnityEngine;
 using HL = HarmonyLib;
-using UnityEngine.SceneManagement;
+using USM = UnityEngine.SceneManagement;
 
 namespace DDoor.ItemChanger;
 
@@ -114,7 +114,7 @@ public class SaveData
         }
     }
 
-    public static void OnSceneLoaded(Scene scene, LoadSceneMode _)
+    public static void OnSceneLoaded(USM.Scene scene, USM.LoadSceneMode _)
     {
         if (scene.name == "TitleScreen")
         {
