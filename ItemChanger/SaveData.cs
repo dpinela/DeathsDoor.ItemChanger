@@ -98,7 +98,14 @@ public class SaveData
             using var reader = new Json.JsonTextReader(file);
             var ser = Json.JsonSerializer.CreateDefault(jsonSettings);
             current = ser.Deserialize<SaveData>(reader);
-            OnTrackerLogUpdate?.Invoke(current!.TrackerLog);
+            try
+            {
+                OnTrackerLogUpdate?.Invoke(current!.TrackerLog);
+            }
+            catch (System.Exception err)
+            {
+                ItemChangerPlugin.LogError($"Error running subscriber to SaveData.OnTrackerLogUpdate: {err}");
+            }
         }
         catch (IO.FileNotFoundException)
         {
