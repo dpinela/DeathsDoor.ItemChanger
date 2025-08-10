@@ -2,6 +2,7 @@
 using Collections = System.Collections.Generic;
 using Bep = BepInEx;
 using HL = HarmonyLib;
+using USM = UnityEngine.SceneManagement;
 
 namespace DDoor.ItemChanger;
 
@@ -54,6 +55,9 @@ internal class ItemChangerPlugin : Bep.BaseUnityPlugin
                     activePlacements[(loc.GetType(), loc.UniqueId)] = placedItem;
                 }
             };
+
+            USM.SceneManager.sceneLoaded += SaveData.OnSceneLoaded;
+
             new HL.Harmony("deathsdoor.itemchanger").PatchAll();
             InitStatus = 1;
         }
